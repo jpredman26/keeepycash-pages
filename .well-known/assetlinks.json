@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jpredman27.keepycash",
+      "sha256_cert_fingerprints": [
+        "48:36:98:CD:93:D4:E2:AC:C6:F6:49:F5:90:AB:1E:4D:FA:14:E7:EF:E9:18:15:A2:A0:A3:82:AD:D4:E7:54:FB"
+      ]
+    }
+  }
+]
