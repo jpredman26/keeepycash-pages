@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeepyCash — Zero Based Budgeting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #007AFF;
+      --blue-light: #4DA3FF;
+      --blue-pale: #E8F4FF;
+      --surface: #E8F5E9;
+      --cream: #FAFAFA;
+      --dark: #0F2027;
+      --dark-surface: #203A43;
+      --mid: #555555;
+      --soft: #888888;
+      --accent: #27AE60;
+      --accent-light: #34C759;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: #333333;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(250,250,250,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #333333;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    nav a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-light) !important;
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, var(--blue-pale) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-bg-2 {
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(39,174,96,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-30px); }
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-pale);
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      width: fit-content;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-tag::before {
+      content: '💰';
+      font-size: 14px;
+    }
+
+    .hero h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(52px, 8vw, 92px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -3px;
+      max-width: 800px;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--blue);
+    }
+
+    .hero h1 .underline {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero h1 .underline::after {
+      content: '';
+      position: absolute;
+      bottom: 4px; left: 0; right: 0;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      animation: expandWidth 1s 0.6s ease both;
+    }
+
+    @keyframes expandWidth {
+      from { transform: scaleX(0); transform-origin: left; }
+      to { transform: scaleX(1); transform-origin: left; }
+    }
+
+    .hero-sub {
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--mid);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-top: 28px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-form {
+      display: flex;
+      gap: 12px;
+      margin-top: 40px;
+      max-width: 460px;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .hero-form input {
+      flex: 1;
+      padding: 16px 20px;
+      border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: white;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .hero-form input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,122,255,0.12);
+    }
+
+    .hero-form button {
+      padding: 16px 28px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .hero-form button:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+    }
+
+    .hero-form button:active { transform: translateY(0); }
+
+    .hero-note {
+      font-size: 13px;
+      color: var(--soft);
+      margin-top: 12px;
+      animation: fadeUp 0.8s 0.4s ease both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      margin-top: 64px;
+      animation: fadeUp 0.8s 0.5s ease both;
+    }
+
+    .stat-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--soft);
+      margin-top: 4px;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.08), transparent);
+      margin: 0 48px;
+    }
+
+    /* FEATURES */
+    .features {
+      padding: 100px 48px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(0,122,255,0.10);
+    }
+
+    .feature-card:hover::before { transform: scaleX(1); }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* PRICING */
+    .pricing {
+      padding: 100px 48px;
+      background: var(--dark);
+      color: white;
+    }
+
+    .pricing .section-label { color: var(--blue-light); }
+    .pricing .section-title { color: white; }
+
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .toggle-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .toggle-label.active { color: white; }
+
+    .toggle {
+      position: relative;
+      width: 52px; height: 28px;
+      background: var(--blue);
+      border-radius: 100px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 22px; height: 22px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+
+    .toggle.monthly::after { transform: translateX(24px); }
+
+    .save-badge {
+      background: var(--accent);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 800px;
+    }
+
+    .pricing-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 40px;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+
+    .pricing-card.featured {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .pricing-card.featured .price-period,
+    .pricing-card.featured .feature-list li,
+    .pricing-card.featured .plan-name { color: rgba(255,255,255,0.8); }
+
+    .plan-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+
+    .price-amount {
+      font-family: 'Inter', sans-serif;
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .price-amount sup {
+      font-size: 24px;
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+
+    .price-period {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 6px;
+      margin-bottom: 32px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 36px;
+    }
+
+    .feature-list li {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      color: var(--blue-light);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .pricing-card.featured .feature-list li::before { color: white; }
+
+    .pricing-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      background: transparent;
+      color: white;
+    }
+
+    .pricing-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .pricing-card.featured .pricing-btn {
+      background: white;
+      color: var(--blue);
+      border-color: white;
+    }
+
+    .pricing-card.featured .pricing-btn:hover {
+      background: var(--blue-pale);
+      border-color: var(--blue-pale);
+      color: var(--blue);
+    }
+
+    /* HOW IT WORKS */
+    .how {
+      padding: 100px 48px;
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 64px;
+    }
+
+    .steps { display: flex; flex-direction: column; gap: 32px; }
+
+    .step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+
+    .step.visible { opacity: 1; transform: translateX(0); }
+
+    .step-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--blue-pale);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 48px;
+    }
+
+    .step-content h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+
+    .step-content p {
+      font-size: 15px;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    .how-visual {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-surface) 100%);
+      border-radius: 32px;
+      padding: 48px;
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .how-visual::before {
+      content: '💸';
+      position: absolute;
+      bottom: 24px; right: 24px;
+      font-size: 64px;
+      opacity: 0.2;
+    }
+
+    .budget-row {
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .budget-row-label {
+      font-size: 14px;
+      color: white;
+      font-weight: 500;
+    }
+
+    .budget-row-amount {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .budget-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 3px;
+      margin-top: 8px;
+      overflow: hidden;
+    }
+
+    .budget-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: var(--blue-light);
+    }
+
+    .budget-bar-fill.warning {
+      background: #FF9500;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 100px 48px;
+      background: var(--blue-pale);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+    }
+
+    .testimonial-stars {
+      color: var(--blue);
+      font-size: 16px;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mid);
+    }
+
+    /* CTA */
+    .cta {
+      padding: 120px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--blue-pale) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta h2 {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      line-height: 1.05;
+    }
+
+    .cta h2 em { font-style: italic; color: var(--blue); }
+
+    .cta p {
+      font-size: 18px;
+      color: var(--mid);
+      margin-bottom: 40px;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    .cta-form input {
+      flex: 1;
+      padding: 16px 20px;
+      border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: white;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .cta-form input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(0,122,255,0.12);
+    }
+
+    .cta-form button {
+      padding: 16px 28px;
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .cta-form button:hover {
+      background: var(--blue-light);
+      transform: translateY(-2px);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .logo { font-size: 18px; }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--blue); }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--soft);
+    }
+
+    /* SUCCESS STATE */
+    .success-msg {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue-pale);
+      color: var(--blue);
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 0;
+    }
+
+    .success-msg.show { display: flex; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 24px 60px; }
+      .hero h1 { letter-spacing: -2px; }
+      .hero-form { flex-direction: column; }
+      .hero-stats { gap: 32px; }
+      .features, .pricing, .how, .testimonials, .cta { padding: 60px 24px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .pricing-cards { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; gap: 40px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-form { flex-direction: column; }
+      footer { flex-direction: column; gap: 24px; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+      .divider { margin: 0 24px; }
+    }
+
+    /* Pricing toggle JS */
+    .price-yearly { display: block; }
+    .price-monthly { display: none; }
+    body.monthly .price-yearly { display: none; }
+    body.monthly .price-monthly { display: block; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Keepy<span>Cash</span></div>
+    <div class="nav-links" style="display:flex;gap:32px;align-items:center;">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#how">How it works</a>
+      <a href="#cta" class="nav-cta">Get Early Access</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-bg-2"></div>
+    <div class="hero-tag">Zero Based Budgeting, simplified</div>
+    <h1>Every dollar has a <span class="underline"><em>job.</em></span></h1>
+    <p class="hero-sub">KeepyCash brings zero-based budgeting to your pocket — beautifully simple, synced across all your devices.</p>
+    <div class="hero-form" id="hero-form">
+      <input type="email" placeholder="your@email.com" id="hero-email" />
+      <button onclick="handleSignup('hero')">Notify me at launch</button>
+    </div>
+    <div class="success-msg" id="hero-success">💰 You're on the list! We'll be in touch soon.</div>
+    <p class="hero-note">iOS launch coming soon · No spam, ever</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">$0</div>
+        <div class="stat-label">to get started</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">14</div>
+        <div class="stat-label">day free trial</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">ZBB</div>
+        <div class="stat-label">methodology</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="section-label">Why KeepyCash</div>
+    <div class="section-title">Budgeting that actually sticks</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💸</div>
+        <h3>Zero Based Budgeting</h3>
+        <p>Give every dollar a purpose before you spend it. The most effective budgeting method, now beautifully simple on mobile.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>Cloud Sync</h3>
+        <p>Your budget follows you everywhere. Seamlessly synced across all your devices so you're always up to date.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Smart Reports</h3>
+        <p>Understand your spending patterns with clear, visual reports. See where your money actually goes each month.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Full Transaction History</h3>
+        <p>Every transaction, always accessible. Your complete financial picture from day one — never lose sight of your progress.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔀</div>
+        <h3>Multiple Budgets</h3>
+        <p>Managing personal and business finances? Run separate budgets effortlessly and switch between them instantly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Built for Focus</h3>
+        <p>No bloat, no distractions. Just a clean, intuitive app designed to help you stay on track and hit your financial goals.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-label">Simple pricing</div>
+    <div class="section-title">Pick your plan</div>
+    <div class="pricing-toggle">
+      <span class="toggle-label active" id="label-yearly">Annual</span>
+      <button class="toggle" id="toggle-btn" onclick="togglePricing()"></button>
+      <span class="toggle-label" id="label-monthly">Monthly</span>
+      <span class="save-badge">Save 40%</span>
+    </div>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <div class="plan-name">Starter</div>
+        <div class="price-amount price-yearly"><sup>$</sup>19<span style="font-size:28px">.99</span></div>
+        <div class="price-amount price-monthly"><sup>$</sup>2<span style="font-size:28px">.99</span></div>
+        <div class="price-period price-yearly">per year</div>
+        <div class="price-period price-monthly">per month</div>
+        <ul class="feature-list">
+          <li>Cloud sync across devices</li>
+          <li>1 budget</li>
+          <li>3 months transaction history</li>
+          <li>Basic spending reports</li>
+          <li>14-day free trial</li>
+        </ul>
+        <button class="pricing-btn">Get started</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="plan-name">Pro</div>
+        <div class="price-amount price-yearly"><sup>$</sup>39<span style="font-size:28px">.99</span></div>
+        <div class="price-amount price-monthly"><sup>$</sup>5<span style="font-size:28px">.99</span></div>
+        <div class="price-period price-yearly">per year</div>
+        <div class="price-period price-monthly">per month</div>
+        <ul class="feature-list">
+          <li>Everything in Starter</li>
+          <li>Unlimited budgets</li>
+          <li>Full transaction history</li>
+          <li>Advanced reports &amp; trends</li>
+          <li>14-day free trial</li>
+        </ul>
+        <button class="pricing-btn">Get Pro</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="section-label">How it works</div>
+    <div class="section-title">Up and running in minutes</div>
+    <div class="how-grid">
+      <div class="steps">
+        <div class="step" id="step1">
+          <div class="step-num">01</div>
+          <div class="step-content">
+            <h3>Set up your budget</h3>
+            <p>Enter your income and create spending categories. KeepyCash guides you through giving every dollar a job before the month begins.</p>
+          </div>
+        </div>
+        <div class="step" id="step2">
+          <div class="step-num">02</div>
+          <div class="step-content">
+            <h3>Track as you spend</h3>
+            <p>Log transactions as they happen. Your budget updates in real time so you always know exactly how much is left in each category.</p>
+          </div>
+        </div>
+        <div class="step" id="step3">
+          <div class="step-num">03</div>
+          <div class="step-content">
+            <h3>Review and improve</h3>
+            <p>Monthly reports show you exactly where your money went. Adjust your budget and watch your financial health improve over time.</p>
+          </div>
+        </div>
+      </div>
+      <div class="how-visual">
+        <div class="budget-row">
+          <div>
+            <div class="budget-row-label">🛒 Groceries</div>
+            <div class="budget-bar"><div class="budget-bar-fill" style="width:72%"></div></div>
+          </div>
+          <div class="budget-row-amount">$144</div>
+        </div>
+        <div class="budget-row">
+          <div>
+            <div class="budget-row-label">🚗 Transport</div>
+            <div class="budget-bar"><div class="budget-bar-fill" style="width:45%"></div></div>
+          </div>
+          <div class="budget-row-amount">$67</div>
+        </div>
+        <div class="budget-row">
+          <div>
+            <div class="budget-row-label">🍕 Dining Out</div>
+            <div class="budget-bar"><div class="budget-bar-fill warning" style="width:88%"></div></div>
+          </div>
+          <div class="budget-row-amount">$176</div>
+        </div>
+        <div class="budget-row">
+          <div>
+            <div class="budget-row-label">💪 Health</div>
+            <div class="budget-bar"><div class="budget-bar-fill" style="width:30%"></div></div>
+          </div>
+          <div class="budget-row-amount">$45</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-label">Early feedback</div>
+    <div class="section-title">People love it already</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Finally a ZBB app that isn't trying to be a bank. Clean, fast, and everything I need without the price tag of the big names."</p>
+        <div class="testimonial-author">Sarah M. — Beta tester</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"I've tried every budgeting app out there. KeepyCash is the first one that actually made me stick to my budget for more than a week."</p>
+        <div class="testimonial-author">James T. — Beta tester</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The cloud sync is seamless. My partner and I can see the budget from our own phones and it's always up to date. Game changer."</p>
+        <div class="testimonial-author">Priya K. — Beta tester</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="cta">
+    <div class="cta-bg"></div>
+    <h2>Ready to make your <em>money work?</em></h2>
+    <p>Join the waitlist and be first to know when we launch.</p>
+    <div class="cta-form" id="cta-form">
+      <input type="email" placeholder="your@email.com" id="cta-email" />
+      <button onclick="handleSignup('cta')">Get early access</button>
+    </div>
+    <div class="success-msg" id="cta-success">💰 You're on the list! We'll be in touch soon.</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="logo">Keepy<span>Cash</span></div>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 KeepyCash. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Supabase config
+    const SUPABASE_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_WctlTXMnpCSW_i0LuStx9g_fq4atrcG';
+
+    async function submitToWaitlist(email) {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email })
+      });
+      if (!res.ok && res.status !== 409) {
+        throw new Error('Signup failed');
+      }
+    }
+
+    // Pricing toggle
+    let isMonthly = false;
+    function togglePricing() {
+      isMonthly = !isMonthly;
+      const btn = document.getElementById('toggle-btn');
+      const labelY = document.getElementById('label-yearly');
+      const labelM = document.getElementById('label-monthly');
+      if (isMonthly) {
+        btn.classList.add('monthly');
+        document.body.classList.add('monthly');
+        labelY.classList.remove('active');
+        labelM.classList.add('active');
+      } else {
+        btn.classList.remove('monthly');
+        document.body.classList.remove('monthly');
+        labelY.classList.add('active');
+        labelM.classList.remove('active');
+      }
+    }
+
+    // Email signup
+    async function handleSignup(source) {
+      const emailInput = document.getElementById(source + '-email');
+      const email = emailInput.value.trim();
+      if (!email || !email.includes('@')) {
+        emailInput.focus();
+        return;
+      }
+
+      const btn = emailInput.nextElementSibling;
+      btn.textContent = 'Saving...';
+      btn.disabled = true;
+
+      try {
+        await submitToWaitlist(email);
+        document.getElementById(source + '-form').style.display = 'none';
+        document.getElementById(source + '-success').classList.add('show');
+      } catch (e) {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+        emailInput.style.borderColor = 'red';
+      }
+    }
+
+    // Enter key on email inputs
+    document.getElementById('hero-email').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup('hero'); });
+    document.getElementById('cta-email').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup('cta'); });
+
+    // Scroll animations for steps
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 150);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.step').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
