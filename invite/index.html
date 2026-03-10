@@ -120,7 +120,7 @@
     <p class="tagline">The no-nonsense budget app that actually keeps you on track.</p>
 
     <div class="gift-banner">
-      🎁 You both get 1 free month when you subscribe to Premium!
+      🎁 You both get 1 free month when you subscribe to Pro!
     </div>
 
     <div class="code-box">
@@ -149,11 +149,9 @@
   </div>
 
   <script>
-    // Extract invite code from URL path: /invite/ABC123 or /invite/?code=ABC123
-    const pathParts = window.location.pathname.split('/').filter(Boolean)
-    const lastSegment = pathParts[pathParts.length - 1]
+    // Extract invite code from query param: /invite/?code=ABC123
     const params = new URLSearchParams(window.location.search)
-    const code = (lastSegment !== 'invite' ? lastSegment : null) || params.get('code') || ''
+    const code = params.get('code') || ''
 
     if (code) {
       document.getElementById('invite-code').textContent = code
