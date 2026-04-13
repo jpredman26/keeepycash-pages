@@ -1,20 +1,61 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Money Leak Finder — Source
 
-# Run and deploy your AI Studio app
+Source code for the [Money Leak Finder](../money-leak-finder/) tool, built with Vite + React + TypeScript + Tailwind.
 
-This contains everything you need to run your app locally.
+The `money-leak-finder/` folder at the repo root contains the **built output** served by GitHub Pages. This folder contains the **source** you edit.
 
-View your app in AI Studio: https://ai.studio/apps/228d6811-87f5-4b47-b446-446f79d6f185
+---
 
-## Run Locally
+## Making changes
 
-**Prerequisites:**  Node.js
+### 1. Install dependencies
+```bash
+cd money-leak-finder-src
+npm install
+```
 
+### 2. Run locally
+```bash
+npm run dev
+```
+Opens at `http://localhost:3000`.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 3. Build
+```bash
+npx vite build --base='./'
+```
+The `--base='./'` flag ensures asset paths are relative, so the app works in the `/money-leak-finder/` subfolder on GitHub Pages.
+
+### 4. Deploy
+```bash
+cp -r dist/* ../money-leak-finder/
+```
+
+### 5. Commit both folders
+```bash
+cd ..
+git add money-leak-finder/ money-leak-finder-src/
+git commit -m "Update Money Leak Finder"
+git push
+```
+
+---
+
+## Project structure
+
+```
+src/
+  App.tsx        # Main app component
+  data/
+    leaks.ts     # The 17 money leak questions and data
+  index.css      # Global styles
+  main.tsx       # Entry point
+public/
+  logo.png       # KeepyCash logo (koala)
+```
+
+## Key files to edit
+
+- **Questions/data** → `src/data/leaks.ts`
+- **UI and logic** → `src/App.tsx`
+- **Logo** → replace `public/logo.png`
