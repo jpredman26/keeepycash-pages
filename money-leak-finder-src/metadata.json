@@ -1,0 +1,5 @@
+{
+  "name": "Money Leak Finder",
+  "description": "A quick and simple tool to help you find hidden money leaks in your personal finances, by KeepyCash.",
+  "requestFramePermissions": []
+}
