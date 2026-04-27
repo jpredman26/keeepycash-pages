@@ -431,7 +431,7 @@ export default function App() {
                     </p>
                     <div className="flex flex-col gap-4">
                       <a 
-                        href="https://apps.apple.com/redeem?ctx=offercodes&id=6760102114&code=FOUNDER" 
+                        href="https://apps.apple.com/redeem?ctx=offercodes&id=6760102114&code=LEADMAGNET"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-full bg-white text-emerald-600 font-bold py-4 px-8 rounded-2xl flex items-center justify-center gap-2 hover:bg-emerald-50 transition-all shadow-lg"
