@@ -1,11 +1,15 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "com.jpredman27.keepycash",
       "sha256_cert_fingerprints": [
-        "48:36:98:CD:93:D4:E2:AC:C6:F6:49:F5:90:AB:1E:4D:FA:14:E7:EF:E9:18:15:A2:A0:A3:82:AD:D4:E7:54:FB"
+        "48:36:98:CD:93:D4:E2:AC:C6:F6:49:F5:90:AB:1E:4D:FA:14:E7:EF:E9:18:15:A2:A0:A3:82:AD:D4:E7:54:FB",
+        "36:6C:23:10:A6:5D:2C:C9:6A:75:DA:27:C2:1E:98:E7:5E:CB:E4:FA:BF:71:02:82:0F:67:61:9E:14:FF:65:FA"
       ]
     }
   }
