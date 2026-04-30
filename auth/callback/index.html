@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>KeepyCash — Opening app…</title>
+    <script>
+        // Supabase sends tokens in the URL hash for implicit flow
+        // Redirect into the native app via custom scheme
+        var hash = window.location.hash;
+        var search = window.location.search;
+        var deepLink = 'keepycash://auth/callback' + (hash || search);
+        window.location.replace(deepLink);
+    </script>
+</head>
+<body>
+<p>Opening KeepyCash…</p>
+</body>
+</html>
