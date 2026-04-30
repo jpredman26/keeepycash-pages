@@ -8,7 +8,7 @@
         // Redirect into the native app via custom scheme
         var hash = window.location.hash;
         var search = window.location.search;
-        var deepLink = 'keepycash://auth/callback' + (hash || search);
+        var deepLink = 'keepycash://signin' + (hash || search);
         window.location.replace(deepLink);
     </script>
 </head>
