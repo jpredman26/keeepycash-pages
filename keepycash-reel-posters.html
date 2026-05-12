@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KeepyCash Reel Posters</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #e8e6e1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 40px 20px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .reel-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .slide-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .slide-title {
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .slide {
+    width: 405px;
+    height: 720px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide-label {
+    display:none;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    opacity: 0.4;
+    text-transform: uppercase;
+    align-self: flex-start;
+  }
+  .slide-num {
+    display: none;
+    position: absolute;
+    bottom: 28px;
+    right: 32px;
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 0.3;
+  }
+  .brand {
+    position: absolute;
+    bottom: 28px;
+    left: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .s1 { background: #1a1a1a; color: #f5f3ee; }
+  .s2 { background: #f5f3ee; color: #1a1a1a; }
+  .s3 { background: #1D9E75; color: #e1f5ee; }
+  .s5 { background: #1a1a1a; color: #f5f3ee; }
+
+  .big {
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    text-align: center;
+  }
+  .sub {
+    font-size: 17px;
+    line-height: 1.6;
+    text-align: center;
+    opacity: 0.7;
+    margin-top: 18px;
+    max-width: 300px;
+  }
+  .sms-sender {
+    font-size: 12px;
+    opacity: 0.45;
+    margin-bottom: 8px;
+    text-align: left;
+    align-self: flex-start;
+    margin-left: 20px;
+  }
+  .sms-bubble {
+    background: #e5e5ea;
+    color: #1a1a1a;
+    border-radius: 20px 20px 5px 20px;
+    padding: 16px 22px;
+    font-size: 16px;
+    line-height: 1.55;
+    max-width: 310px;
+    text-align: left;
+    margin-top: 4px;
+  }
+  .pill {
+    display: inline-block;
+    padding: 7px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+  .pill-light { background: rgba(0,0,0,0.08); color: #1a1a1a; }
+  .pill-green { background: rgba(255,255,255,0.2); color: #e1f5ee; }
+  .tagline {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .hint {
+    margin-top: 48px;
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    max-width: 360px;
+    line-height: 1.6;
+  }
+  .download-btn {
+    display: block;
+    margin: 0 auto 40px;
+    padding: 14px 32px;
+    background: #1D9E75;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .download-btn:hover { opacity: 0.85; }
+  .download-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .copy-table-wrap {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .copy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .copy-table thead th {
+    background: #f5f3ee;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #888;
+    border-bottom: 1px solid #e8e6e1;
+  }
+  .copy-table tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #f0eeea;
+  }
+  .copy-table td {
+    padding: 8px 14px;
+    vertical-align: middle;
+    color: #444;
+  }
+  .copy-table td:first-child {
+    font-size: 11px;
+    font-weight: 600;
+    color: #bbb;
+    white-space: nowrap;
+    width: 60px;
+  }
+  .copy-table td:nth-child(2) {
+    font-size: 11px;
+    color: #aaa;
+    white-space: nowrap;
+    width: 140px;
+  }
+  .copy-table input[type="text"],
+  .copy-table textarea {
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #1a1a1a;
+    background: transparent;
+    resize: none;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .copy-table input[type="text"]:focus,
+  .copy-table textarea:focus {
+    border-color: #1D9E75;
+    background: #f4fdf9;
+  }
+  .copy-table textarea { line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<h1>KeepyCash — Reel Posters &nbsp;·&nbsp; 9:16 &nbsp;·&nbsp; Screenshot each slide</h1>
+
+<div class="copy-table-wrap">
+  <table class="copy-table">
+    <thead>
+      <tr><th colspan="2" style="border-right:1px solid #e8e6e1;">Reel name</th><th><input type="text" id="reel-name" placeholder="e.g. no-new-phone" style="font-weight:600; color:#1a1a1a; font-size:13px; letter-spacing:0;"></th></tr>
+      <tr><th>Slide</th><th>Field</th><th>Copy</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Sound effect</td><td><input type="text" id="e-s1-ping" oninput="sync('s1-ping',this.value)"></td></tr>
+      <tr><td>1</td><td>Headline</td><td><input type="text" id="e-s1-headline" oninput="sync('s1-headline',this.value)"></td></tr>
+      <tr><td>1</td><td>Sub</td><td><input type="text" id="e-s1-sub" oninput="sync('s1-sub',this.value)"></td></tr>
+      <tr><td>2</td><td>SMS sender</td><td><input type="text" id="e-s2-sender" oninput="sync('s2-sender',this.value)"></td></tr>
+      <tr><td>2</td><td>SMS message</td><td><textarea id="e-s2-sms" rows="2" oninput="sync('s2-sms',this.value)"></textarea></td></tr>
+      <tr><td>2</td><td>Sub</td><td><input type="text" id="e-s2-sub" oninput="sync('s2-sub',this.value)"></td></tr>
+      <tr><td>3</td><td>Headline</td><td><input type="text" id="e-s3-headline" oninput="sync('s3-headline',this.value)"></td></tr>
+      <tr><td>4</td><td>Pill</td><td><input type="text" id="e-s4-pill" oninput="sync('s4-pill',this.value)"></td></tr>
+      <tr><td>4</td><td>Headline</td><td><input type="text" id="e-s4-headline" oninput="sync('s4-headline',this.value)"></td></tr>
+      <tr><td>4</td><td>Sub</td><td><input type="text" id="e-s4-sub" oninput="sync('s4-sub',this.value)"></td></tr>
+      <tr><td>5</td><td>Pill</td><td><input type="text" id="e-s5-pill" oninput="sync('s5-pill',this.value)"></td></tr>
+      <tr><td>5</td><td>Headline</td><td><textarea id="e-s5-headline" rows="2" oninput="sync('s5-headline',this.value)"></textarea></td></tr>
+      <tr><td>6</td><td>Line 1</td><td><input type="text" id="e-s6-line1" oninput="sync('s6-line1',this.value)"></td></tr>
+      <tr><td>6</td><td>Line 2</td><td><input type="text" id="e-s6-line2" oninput="sync('s6-line2',this.value)"></td></tr>
+      <tr><td>6</td><td>Line 3</td><td><input type="text" id="e-s6-line3" oninput="sync('s6-line3',this.value)"></td></tr>
+      <tr><td>6</td><td>Line 4</td><td><input type="text" id="e-s6-line4" oninput="sync('s6-line4',this.value)"></td></tr>
+      <tr><td>7</td><td>Headline 1</td><td><input type="text" id="e-s7-h1" oninput="sync('s7-h1',this.value)"></td></tr>
+      <tr><td>7</td><td>Headline 2</td><td><input type="text" id="e-s7-h2" oninput="sync('s7-h2',this.value)"></td></tr>
+      <tr><td>7</td><td>Sub</td><td><input type="text" id="e-s7-sub" oninput="sync('s7-sub',this.value)"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<button class="download-btn" id="downloadBtn" onclick="downloadAllSlides()">Download All Slides</button>
+
+<div class="reel-wrap">
+
+  <!-- Slide 1 -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 1</div>
+    <div class="slide s1">
+      <div class="slide-label" style="color:#f5f3ee">The hook</div>
+      <div id="s1-ping" style="font-size:64px; margin-bottom:0; line-height:1;">$1,200</div>
+      <div style="font-size:22px; opacity:0.35; letter-spacing:0.12em; margin-bottom:44px;">.</div>
+      <div id="s1-headline" class="big" style="font-size:32px;">Quick way to keep more of your cash.</div>
+      <div id="s1-sub" class="sub">Don't buy a new phone.</div>
+      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
+      <div class="slide-num" style="color:#f5f3ee">1 / 7</div>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 2</div>
+    <div class="slide s2">
+      <div class="slide-label">The pain</div>
+      <div id="s2-sender" class="sms-sender">Apple</div>
+      <div id="s2-sms" class="sms-bubble">
+        "Your new iPhone 16 Pro is ready. Trade in and upgrade from just $65/mo."
+      </div>
+      <div id="s2-sub" class="sub" style="margin-top:36px;">I used to fall for this every single year.</div>
+      <div class="brand">KeepyCash</div>
+      <div class="slide-num">2 / 7</div>
+    </div>
+  </div>
+
+  <!-- Slide 3 -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 3</div>
+    <div class="slide s5">
+      <div class="slide-label" style="color:#f5f3ee">The tension</div>
+      <div id="s3-headline" class="big" style="font-size:52px; line-height:1.08; color:#f5f3ee;">Here's my honest take:</div>
+      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
+      <div class="slide-num" style="color:#f5f3ee">3 / 7</div>
+    </div>
+  </div>
+
+  <!-- Slide 4 -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 4</div>
+    <div class="slide s2">
+      <div class="slide-label">The joke</div>
+      <div id="s4-pill" class="pill pill-light">Be honest</div>
+      <div id="s4-headline" class="big">Are the new ones really that different?</div>
+      <div id="s4-sub" class="sub">I'm not shooting a movie on my phone.</div>
+      <div class="brand">KeepyCash</div>
+      <div class="slide-num">4 / 7</div>
+    </div>
+  </div>
+
+  <!-- Slide 5 -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 5</div>
+    <div class="slide s3">
+      <div class="slide-label" style="opacity:0.5">The solution</div>
+      <div id="s5-pill" class="pill pill-green">What I do instead</div>
+      <div id="s5-headline" class="big" style="color:#fff; font-size:36px;">Buy outright. Second-hand. SIM-only plan. Job done.</div>
+      <div class="brand" style="color:rgba(255,255,255,0.6);">KeepyCash</div>
+      <div class="slide-num" style="color:rgba(255,255,255,0.4)">5 / 7</div>
+    </div>
+  </div>
+
+  <!-- Slide 6 -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 6</div>
+    <div class="slide s2">
+      <div class="slide-label">The outcome</div>
+      <div id="s6-line1" class="tagline" style="font-size:20px; opacity:0.4; margin-bottom:14px;">No upgrade fees.</div>
+      <div id="s6-line2" class="tagline" style="font-size:20px; opacity:0.4; margin-bottom:14px;">No 24-month contracts.</div>
+      <div id="s6-line3" class="tagline" style="font-size:20px; opacity:0.4; margin-bottom:36px;">No buyer's remorse.</div>
+      <div id="s6-line4" class="tagline" style="font-size:34px;">Just more money in your pocket.</div>
+      <div class="brand">KeepyCash</div>
+      <div class="slide-num">6 / 7</div>
+    </div>
+  </div>
+
+  <!-- Slide 7 -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 7</div>
+    <div class="slide s1">
+      <div class="slide-label" style="color:#f5f3ee">The CTA</div>
+      <div id="s7-h1" class="big" style="font-size:52px; color:#f5f3ee;">Spend less.</div>
+      <div style="font-size:44px; color:#1D9E75; margin: 10px 0; line-height:1;">&#x2193;</div>
+      <div id="s7-h2" class="big" style="font-size:52px; color:#1D9E75;">Keep more.</div>
+      <div id="s7-sub" class="sub" style="font-size:15px; color:#f5f3ee; margin-top:32px;">Download KeepyCash — free to start.</div>
+      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
+      <div class="slide-num" style="color:#f5f3ee">7 / 7</div>
+    </div>
+  </div>
+
+</div>
+
+<p class="hint">Click "Download All Slides" to save each slide as a PNG. Or in Chrome: right-click any slide &rarr; Inspect &rarr; find the .slide div &rarr; right-click it &rarr; "Capture node screenshot".</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+function sync(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+// Populate table inputs from current slide content on load
+document.addEventListener('DOMContentLoaded', function () {
+  const pairs = [
+    ['s1-ping','e-s1-ping'], ['s1-headline','e-s1-headline'], ['s1-sub','e-s1-sub'],
+    ['s2-sender','e-s2-sender'], ['s2-sms','e-s2-sms'], ['s2-sub','e-s2-sub'],
+    ['s3-headline','e-s3-headline'],
+    ['s4-pill','e-s4-pill'], ['s4-headline','e-s4-headline'], ['s4-sub','e-s4-sub'],
+    ['s5-pill','e-s5-pill'], ['s5-headline','e-s5-headline'],
+    ['s6-line1','e-s6-line1'], ['s6-line2','e-s6-line2'], ['s6-line3','e-s6-line3'], ['s6-line4','e-s6-line4'],
+    ['s7-h1','e-s7-h1'], ['s7-h2','e-s7-h2'], ['s7-sub','e-s7-sub'],
+  ];
+  pairs.forEach(([slideId, inputId]) => {
+    const slide = document.getElementById(slideId);
+    const input = document.getElementById(inputId);
+    if (slide && input) input.value = slide.textContent.trim();
+  });
+});
+
+async function downloadAllSlides() {
+  const btn = document.getElementById('downloadBtn');
+  const slides = document.querySelectorAll('.slide');
+  const reelName = (document.getElementById('reel-name').value.trim().replace(/\s+/g, '-') || 'reel');
+  btn.disabled = true;
+
+  for (let i = 0; i < slides.length; i++) {
+    btn.textContent = `Capturing slide ${i + 1} of ${slides.length}…`;
+    const canvas = await html2canvas(slides[i], {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: null,
+      width: slides[i].offsetWidth,
+      height: slides[i].offsetHeight,
+    });
+    const link = document.createElement('a');
+    link.download = `${reelName}-slide-${i + 1}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    await new Promise(r => setTimeout(r, 300));
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Download All Slides';
+}
+</script>
+</body>
+</html>
