@@ -91,6 +91,66 @@
     border-radius: 100px;
     margin-left: 4px;
   }
+  .android-waitlist {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+  .waitlist-link {
+    background: none;
+    border: none;
+    color: #1D9E75;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    opacity: 0.85;
+    padding: 0;
+    font-family: inherit;
+  }
+  .waitlist-link:hover { opacity: 1; }
+  .waitlist-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    width: 100%;
+  }
+  .waitlist-form input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    font-size: 14px;
+    background: rgba(255,255,255,0.07);
+    color: #f5f3ee;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .waitlist-form input::placeholder { color: rgba(245,243,238,0.35); }
+  .waitlist-form input:focus { border-color: #1D9E75; }
+  .waitlist-form button {
+    padding: 12px 16px;
+    background: #1D9E75;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+  .waitlist-form button:hover { opacity: 0.85; }
+  .waitlist-form button:disabled { opacity: 0.5; cursor: default; }
+  .waitlist-success {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #1D9E75;
+  }
   .redirect-note {
     margin-top: 36px;
     font-size: 12px;
@@ -129,6 +189,17 @@
   </div>
 </div>
 
+<div class="android-waitlist">
+  <button class="waitlist-link" id="waitlist-toggle" onclick="showAndroidWaitlist()">Join Android waitlist</button>
+  <div class="waitlist-form" id="android-form" style="display:none">
+    <input type="email" placeholder="your@email.com" id="android-email" />
+    <button onclick="handleAndroidSignup()">Notify me</button>
+  </div>
+  <div class="waitlist-success" id="android-success" style="display:none">
+    You're on the Android waitlist!
+  </div>
+</div>
+
 <p class="redirect-note" id="redirect-note"></p>
 
 <footer>keepycash.com</footer>
@@ -143,6 +214,51 @@
     document.getElementById('redirect-note').textContent = 'Redirecting you to the App Store…';
     setTimeout(() => { window.location.href = IOS_URL; }, 800);
   }
+
+  const SUPABASE_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_WctlTXMnpCSW_i0LuStx9g_fq4atrcG';
+
+  function showAndroidWaitlist() {
+    document.getElementById('waitlist-toggle').style.display = 'none';
+    document.getElementById('android-form').style.display = 'flex';
+    document.getElementById('android-email').focus();
+  }
+
+  async function handleAndroidSignup() {
+    const input = document.getElementById('android-email');
+    const btn = input.nextElementSibling;
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) { input.focus(); return; }
+
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email })
+      });
+      if (!res.ok && res.status !== 409) throw new Error('Signup failed');
+      document.getElementById('android-form').style.display = 'none';
+      document.getElementById('android-success').style.display = 'block';
+    } catch (e) {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+      input.style.borderColor = 'red';
+    }
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.getElementById('android-form').style.display !== 'none') {
+      handleAndroidSignup();
+    }
+  });
 </script>
 </body>
 </html>
