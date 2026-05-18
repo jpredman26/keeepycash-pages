@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KeepyCash Reel Posters v2</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #e8e6e1;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 40px 20px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #888;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .reel-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .slide-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .slide-title {
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .slide {
+    width: 405px;
+    height: 720px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .brand {
+    position: absolute;
+    bottom: 28px;
+    left: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  /* Themes */
+  .s-dark  { background: #1a1a1a; color: #f5f3ee; }
+  .s-light { background: #f5f3ee; color: #1a1a1a; }
+  .s-green { background: #1D9E75; color: #fff; }
+
+  /* Type */
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 20px;
+    align-self: flex-start;
+  }
+  .big {
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    text-align: left;
+    align-self: flex-start;
+  }
+  .sub {
+    font-size: 17px;
+    line-height: 1.55;
+    opacity: 0.55;
+    margin-top: 20px;
+    align-self: flex-start;
+  }
+  .giant {
+    font-size: 96px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+  .giant-unit {
+    font-size: 28px;
+    font-weight: 500;
+    opacity: 0.4;
+    letter-spacing: -0.01em;
+    margin-top: 4px;
+  }
+  .divider {
+    width: 32px;
+    height: 2px;
+    border-radius: 2px;
+    margin: 28px 0;
+    align-self: flex-start;
+  }
+  .stat-row {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .stat-num {
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 14px;
+    opacity: 0.5;
+  }
+  .cta-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-self: flex-start;
+  }
+  .cta-line {
+    font-size: 56px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+  }
+  .pill {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    align-self: flex-start;
+  }
+  .pill-white { background: rgba(255,255,255,0.18); color: #fff; }
+  .pill-dark  { background: rgba(0,0,0,0.08); color: #1a1a1a; }
+
+  /* Edit table */
+  .copy-table-wrap {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .copy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .copy-table thead th {
+    background: #f5f3ee;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #888;
+    border-bottom: 1px solid #e8e6e1;
+  }
+  .copy-table tbody tr:not(:last-child) td { border-bottom: 1px solid #f0eeea; }
+  .copy-table td {
+    padding: 8px 14px;
+    vertical-align: middle;
+    color: #444;
+  }
+  .copy-table td:first-child {
+    font-size: 11px;
+    font-weight: 600;
+    color: #bbb;
+    white-space: nowrap;
+    width: 60px;
+  }
+  .copy-table td:nth-child(2) {
+    font-size: 11px;
+    color: #aaa;
+    white-space: nowrap;
+    width: 140px;
+  }
+  .copy-table input[type="text"],
+  .copy-table textarea {
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #1a1a1a;
+    background: transparent;
+    resize: none;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .copy-table input[type="text"]:focus,
+  .copy-table textarea:focus {
+    border-color: #1D9E75;
+    background: #f4fdf9;
+  }
+  .copy-table textarea { line-height: 1.5; }
+
+  .download-btn {
+    display: block;
+    margin: 0 auto 40px;
+    padding: 14px 32px;
+    background: #1D9E75;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .download-btn:hover { opacity: 0.85; }
+  .download-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .hint {
+    margin-top: 48px;
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    max-width: 360px;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<h1>KeepyCash — Reel Posters v2 &nbsp;·&nbsp; 9:16 &nbsp;·&nbsp; Screenshot each slide</h1>
+
+<div class="copy-table-wrap">
+  <table class="copy-table">
+    <thead>
+      <tr><th colspan="2" style="border-right:1px solid #e8e6e1;">Reel name</th><th><input type="text" id="reel-name" placeholder="e.g. impulse-spending" style="font-weight:600;font-size:13px;letter-spacing:0;"></th></tr>
+      <tr><th>Slide</th><th>Field</th><th>Copy</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Number</td><td><input type="text" id="e-s1-num" oninput="sync('s1-num',this.value)"></td></tr>
+      <tr><td>1</td><td>Unit</td><td><input type="text" id="e-s1-unit" oninput="sync('s1-unit',this.value)"></td></tr>
+      <tr><td>1</td><td>Headline</td><td><input type="text" id="e-s1-head" oninput="sync('s1-head',this.value)"></td></tr>
+      <tr><td>1</td><td>Sub</td><td><input type="text" id="e-s1-sub" oninput="sync('s1-sub',this.value)"></td></tr>
+      <tr><td>2</td><td>Eyebrow</td><td><input type="text" id="e-s2-eye" oninput="sync('s2-eye',this.value)"></td></tr>
+      <tr><td>2</td><td>Headline</td><td><textarea id="e-s2-head" rows="2" oninput="sync('s2-head',this.value)"></textarea></td></tr>
+      <tr><td>2</td><td>Sub</td><td><input type="text" id="e-s2-sub" oninput="sync('s2-sub',this.value)"></td></tr>
+      <tr><td>3</td><td>Pill</td><td><input type="text" id="e-s3-pill" oninput="sync('s3-pill',this.value)"></td></tr>
+      <tr><td>3</td><td>Stat 1 — number</td><td><input type="text" id="e-s3-n1" oninput="sync('s3-n1',this.value)"></td></tr>
+      <tr><td>3</td><td>Stat 1 — label</td><td><input type="text" id="e-s3-l1" oninput="sync('s3-l1',this.value)"></td></tr>
+      <tr><td>3</td><td>Stat 2 — number</td><td><input type="text" id="e-s3-n2" oninput="sync('s3-n2',this.value)"></td></tr>
+      <tr><td>3</td><td>Stat 2 — label</td><td><input type="text" id="e-s3-l2" oninput="sync('s3-l2',this.value)"></td></tr>
+      <tr><td>3</td><td>Stat 3 — number</td><td><input type="text" id="e-s3-n3" oninput="sync('s3-n3',this.value)"></td></tr>
+      <tr><td>3</td><td>Stat 3 — label</td><td><input type="text" id="e-s3-l3" oninput="sync('s3-l3',this.value)"></td></tr>
+      <tr><td>4</td><td>Pill</td><td><input type="text" id="e-s4-pill" oninput="sync('s4-pill',this.value)"></td></tr>
+      <tr><td>4</td><td>Headline</td><td><textarea id="e-s4-head" rows="2" oninput="sync('s4-head',this.value)"></textarea></td></tr>
+      <tr><td>4</td><td>Sub</td><td><input type="text" id="e-s4-sub" oninput="sync('s4-sub',this.value)"></td></tr>
+      <tr><td>5</td><td>Line 1</td><td><input type="text" id="e-s5-l1" oninput="sync('s5-l1',this.value)"></td></tr>
+      <tr><td>5</td><td>Line 2</td><td><input type="text" id="e-s5-l2" oninput="sync('s5-l2',this.value)"></td></tr>
+      <tr><td>5</td><td>Download text</td><td><input type="text" id="e-s5-dl" oninput="sync('s5-dl',this.value)"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<button class="download-btn" id="downloadBtn" onclick="downloadAllSlides()">Download All Slides</button>
+
+<div class="reel-wrap">
+
+  <!-- Slide 1 — Hook: big number -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 1 — Hook</div>
+    <div class="slide s-dark">
+      <div id="s1-num" class="giant" style="color:#1D9E75;">$340</div>
+      <div id="s1-unit" class="giant-unit" style="color:#f5f3ee;">last month</div>
+      <div style="width:32px;height:2px;background:#1D9E75;border-radius:2px;margin:32px 0;align-self:flex-start;"></div>
+      <div id="s1-head" class="big" style="font-size:36px;">Gone on things I can't remember buying.</div>
+      <div id="s1-sub" class="sub" style="color:#f5f3ee;">I had no idea until I looked.</div>
+      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
+    </div>
+  </div>
+
+  <!-- Slide 2 — Pain -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 2 — Pain</div>
+    <div class="slide s-light">
+      <div id="s2-eye" class="eyebrow">The problem</div>
+      <div id="s2-head" class="big" style="font-size:44px;">Most people don't know where their money goes.</div>
+      <div style="width:32px;height:2px;background:#1a1a1a;border-radius:2px;margin:28px 0;opacity:0.15;"></div>
+      <div id="s2-sub" class="sub">Not because they don't care. Because they never checked.</div>
+      <div class="brand">KeepyCash</div>
+    </div>
+  </div>
+
+  <!-- Slide 3 — Stats -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 3 — Stats</div>
+    <div class="slide s-dark">
+      <div id="s3-pill" class="pill pill-white">What people find</div>
+      <div class="stat-row">
+        <div class="stat-item">
+          <div id="s3-n1" class="stat-num" style="color:#1D9E75;">$180</div>
+          <div id="s3-l1" class="stat-label" style="color:#f5f3ee;">avg. wasted on unused subscriptions</div>
+        </div>
+        <div class="stat-item">
+          <div id="s3-n2" class="stat-num" style="color:#1D9E75;">3.4x</div>
+          <div id="s3-l2" class="stat-label" style="color:#f5f3ee;">more saved after tracking for 30 days</div>
+        </div>
+        <div class="stat-item">
+          <div id="s3-n3" class="stat-num" style="color:#1D9E75;">< 2 min</div>
+          <div id="s3-l3" class="stat-label" style="color:#f5f3ee;">to see your full picture in KeepyCash</div>
+        </div>
+      </div>
+      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
+    </div>
+  </div>
+
+  <!-- Slide 4 — Solution -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 4 — Solution</div>
+    <div class="slide s-green">
+      <div id="s4-pill" class="pill pill-white">How it works</div>
+      <div id="s4-head" class="big" style="font-size:40px; color:#fff;">See every dollar. Cut what doesn't count.</div>
+      <div style="width:32px;height:2px;background:rgba(255,255,255,0.3);border-radius:2px;margin:28px 0;"></div>
+      <div id="s4-sub" class="sub" style="color:#fff;">No spreadsheets. No guesswork. Just clarity.</div>
+      <div class="brand" style="color:rgba(255,255,255,0.6);">KeepyCash</div>
+    </div>
+  </div>
+
+  <!-- Slide 5 — CTA -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 5 — CTA</div>
+    <div class="slide s-dark">
+      <div class="cta-stack">
+        <div id="s5-l1" class="cta-line" style="color:#f5f3ee;">Know it.</div>
+        <div id="s5-l2" class="cta-line" style="color:#1D9E75;">Fix it.</div>
+      </div>
+      <div style="width:32px;height:2px;background:#1D9E75;border-radius:2px;margin:36px 0;align-self:flex-start;"></div>
+      <div id="s5-dl" class="sub" style="color:#f5f3ee; opacity:0.6; font-size:15px;">Download KeepyCash — free to start.</div>
+      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
+    </div>
+  </div>
+
+</div>
+
+<p class="hint">Click "Download All Slides" to save each slide as a PNG. Or in Chrome: right-click any slide → Inspect → find the .slide div → right-click it → "Capture node screenshot".</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+function sync(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const pairs = [
+    ['s1-num','e-s1-num'], ['s1-unit','e-s1-unit'], ['s1-head','e-s1-head'], ['s1-sub','e-s1-sub'],
+    ['s2-eye','e-s2-eye'], ['s2-head','e-s2-head'], ['s2-sub','e-s2-sub'],
+    ['s3-pill','e-s3-pill'],
+    ['s3-n1','e-s3-n1'], ['s3-l1','e-s3-l1'],
+    ['s3-n2','e-s3-n2'], ['s3-l2','e-s3-l2'],
+    ['s3-n3','e-s3-n3'], ['s3-l3','e-s3-l3'],
+    ['s4-pill','e-s4-pill'], ['s4-head','e-s4-head'], ['s4-sub','e-s4-sub'],
+    ['s5-l1','e-s5-l1'], ['s5-l2','e-s5-l2'], ['s5-dl','e-s5-dl'],
+  ];
+  pairs.forEach(([slideId, inputId]) => {
+    const slide = document.getElementById(slideId);
+    const input = document.getElementById(inputId);
+    if (slide && input) input.value = slide.textContent.trim();
+  });
+});
+
+async function downloadAllSlides() {
+  const btn = document.getElementById('downloadBtn');
+  const slides = document.querySelectorAll('.slide');
+  const reelName = (document.getElementById('reel-name').value.trim().replace(/\s+/g, '-') || 'reel');
+  btn.disabled = true;
+
+  for (let i = 0; i < slides.length; i++) {
+    btn.textContent = `Capturing slide ${i + 1} of ${slides.length}…`;
+    const canvas = await html2canvas(slides[i], {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: null,
+      width: slides[i].offsetWidth,
+      height: slides[i].offsetHeight,
+    });
+    const link = document.createElement('a');
+    link.download = `${reelName}-slide-${i + 1}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    await new Promise(r => setTimeout(r, 300));
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Download All Slides';
+}
+</script>
+</body>
+</html>

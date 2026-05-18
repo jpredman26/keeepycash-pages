@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KeepyCash Reel Posters v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #E8E2D9;
+    font-family: 'Lora', Georgia, serif;
+    padding: 40px 20px;
+  }
+
+  h1 {
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: #9A9289;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .reel-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .slide-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .slide-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #9A9289;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .slide {
+    width: 405px;
+    height: 720px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 52px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Themes */
+  .s-cream { background: #F5F0E8; color: #1C1C1A; }
+  .s-ink   { background: #1C1C1A; color: #F5F0E8; }
+  .s-green { background: #1D9E75; color: #fff; }
+  .s-tan   { background: #EDE4D3; color: #1C1C1A; }
+
+  /* Brand mark */
+  .brand {
+    position: absolute;
+    bottom: 28px;
+    left: 44px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.35;
+  }
+  .brand-green { color: #1D9E75; opacity: 1 !important; }
+
+  /* Rule line */
+  .rule {
+    width: 40px;
+    height: 1.5px;
+    border-radius: 2px;
+    margin: 24px 0;
+  }
+  .rule-ink   { background: rgba(28,28,26,0.2); }
+  .rule-cream { background: rgba(245,240,232,0.25); }
+  .rule-white { background: rgba(255,255,255,0.3); }
+  .rule-green { background: #1D9E75; }
+
+  /* Type styles */
+  .hand {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .hand-amber { color: #B07540; }
+  .hand-cream { color: rgba(245,240,232,0.65); }
+  .hand-white { color: rgba(255,255,255,0.7); }
+
+  .headline {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+  .headline-sm {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.18;
+    letter-spacing: -0.015em;
+  }
+  .headline-italic {
+    font-style: italic;
+    font-weight: 400;
+  }
+  .sub {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    font-style: italic;
+    opacity: 0.55;
+  }
+  .mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Slide 1 specific */
+  .s1-note {
+    margin-top: auto;
+    padding: 20px 22px;
+    border-radius: 10px;
+    background: rgba(28,28,26,0.06);
+    border-left: 3px solid #B07540;
+  }
+
+  /* Slide 2 ledger */
+  .ledger {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    margin-top: 4px;
+  }
+  .ledger-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(245,240,232,0.1);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+  }
+  .ledger-row.positive .ledger-val { color: #1D9E75; }
+  .ledger-row.unknown  .ledger-val { color: rgba(245,240,232,0.3); }
+  .ledger-row.total {
+    border-bottom: none;
+    border-top: 1px solid rgba(245,240,232,0.25);
+    margin-top: 8px;
+    padding-top: 16px;
+  }
+  .ledger-label { opacity: 0.55; }
+  .ledger-val { font-weight: 500; }
+
+  /* Slide 3 line-items */
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+    margin-top: 6px;
+  }
+  .item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: rgba(28,28,26,0.05);
+  }
+  .item-name {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 15px;
+    font-style: italic;
+    opacity: 0.7;
+  }
+  .item-amt {
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: #B07540;
+  }
+  .item-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 16px 16px 0;
+  }
+  .item-total-label {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    font-weight: 600;
+    color: #B07540;
+  }
+  .item-total-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 22px;
+    font-weight: 500;
+    color: #1C1C1A;
+  }
+
+  /* Edit table */
+  .copy-table-wrap {
+    max-width: 720px;
+    margin: 0 auto 48px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .copy-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .copy-table thead th {
+    background: #F5F0E8;
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #9A9289;
+    border-bottom: 1px solid #E8E2D9;
+  }
+  .copy-table tbody tr:not(:last-child) td { border-bottom: 1px solid #F5F0EC; }
+  .copy-table td {
+    padding: 8px 14px;
+    vertical-align: middle;
+    color: #444;
+  }
+  .copy-table td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: #C8C0B4;
+    white-space: nowrap;
+    width: 55px;
+  }
+  .copy-table td:nth-child(2) {
+    font-size: 11px;
+    color: #aaa;
+    white-space: nowrap;
+    width: 150px;
+  }
+  .copy-table input[type="text"],
+  .copy-table textarea {
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 5px 8px;
+    font-size: 13px;
+    font-family: inherit;
+    color: #1a1a1a;
+    background: transparent;
+    resize: none;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .copy-table input[type="text"]:focus,
+  .copy-table textarea:focus {
+    border-color: #1D9E75;
+    background: #f4fdf9;
+  }
+  .copy-table textarea { line-height: 1.5; }
+
+  .download-btn {
+    display: block;
+    margin: 0 auto 40px;
+    padding: 14px 32px;
+    background: #1D9E75;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .download-btn:hover { opacity: 0.85; }
+  .download-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .hint {
+    margin-top: 48px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #B0A898;
+    text-align: center;
+    max-width: 360px;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<h1>KeepyCash — Reel Posters v3b &nbsp;·&nbsp; 9:16 &nbsp;·&nbsp; Screenshot each slide</h1>
+
+<div class="copy-table-wrap">
+  <table class="copy-table">
+    <thead>
+      <tr><th colspan="2" style="border-right:1px solid #E8E2D9;">Reel name</th><th><input type="text" id="reel-name" placeholder="e.g. lifestyle-creep" style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.03em;font-weight:500;"></th></tr>
+      <tr><th>Slide</th><th>Field</th><th>Copy</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Handwritten note</td><td><input type="text" id="e-s1-hand" oninput="sync('s1-hand',this.value)"></td></tr>
+      <tr><td>1</td><td>Headline</td><td><textarea id="e-s1-head" rows="2" oninput="sync('s1-head',this.value)"></textarea></td></tr>
+      <tr><td>1</td><td>Note body</td><td><input type="text" id="e-s1-note" oninput="sync('s1-note',this.value)"></td></tr>
+      <tr><td>2</td><td>Handwritten label</td><td><input type="text" id="e-s2-hand" oninput="sync('s2-hand',this.value)"></td></tr>
+      <tr><td>2</td><td>Income label</td><td><input type="text" id="e-s2-inc-label" oninput="sync('s2-inc-label',this.value)"></td></tr>
+      <tr><td>2</td><td>Income amount</td><td><input type="text" id="e-s2-inc-val" oninput="sync('s2-inc-val',this.value)"></td></tr>
+      <tr><td>2</td><td>Unknown label</td><td><input type="text" id="e-s2-unk-label" oninput="sync('s2-unk-label',this.value)"></td></tr>
+      <tr><td>2</td><td>Unknown amount</td><td><input type="text" id="e-s2-unk-val" oninput="sync('s2-unk-val',this.value)"></td></tr>
+      <tr><td>2</td><td>Saved label</td><td><input type="text" id="e-s2-sav-label" oninput="sync('s2-sav-label',this.value)"></td></tr>
+      <tr><td>2</td><td>Saved amount</td><td><input type="text" id="e-s2-sav-val" oninput="sync('s2-sav-val',this.value)"></td></tr>
+      <tr><td>2</td><td>Bottom note</td><td><input type="text" id="e-s2-sub" oninput="sync('s2-sub',this.value)"></td></tr>
+      <tr><td>3</td><td>Headline</td><td><input type="text" id="e-s3-head" oninput="sync('s3-head',this.value)"></td></tr>
+      <tr><td>3</td><td>Item 1 name</td><td><input type="text" id="e-s3-n1" oninput="sync('s3-n1',this.value)"></td></tr>
+      <tr><td>3</td><td>Item 1 amount</td><td><input type="text" id="e-s3-a1" oninput="sync('s3-a1',this.value)"></td></tr>
+      <tr><td>3</td><td>Item 2 name</td><td><input type="text" id="e-s3-n2" oninput="sync('s3-n2',this.value)"></td></tr>
+      <tr><td>3</td><td>Item 2 amount</td><td><input type="text" id="e-s3-a2" oninput="sync('s3-a2',this.value)"></td></tr>
+      <tr><td>3</td><td>Item 3 name</td><td><input type="text" id="e-s3-n3" oninput="sync('s3-n3',this.value)"></td></tr>
+      <tr><td>3</td><td>Item 3 amount</td><td><input type="text" id="e-s3-a3" oninput="sync('s3-a3',this.value)"></td></tr>
+      <tr><td>3</td><td>Total label</td><td><input type="text" id="e-s3-tlabel" oninput="sync('s3-tlabel',this.value)"></td></tr>
+      <tr><td>3</td><td>Total amount</td><td><input type="text" id="e-s3-total" oninput="sync('s3-total',this.value)"></td></tr>
+      <tr><td>4</td><td>Handwritten accent</td><td><input type="text" id="e-s4-hand" oninput="sync('s4-hand',this.value)"></td></tr>
+      <tr><td>4</td><td>Headline</td><td><textarea id="e-s4-head" rows="2" oninput="sync('s4-head',this.value)"></textarea></td></tr>
+      <tr><td>4</td><td>Sub</td><td><input type="text" id="e-s4-sub" oninput="sync('s4-sub',this.value)"></td></tr>
+      <tr><td>5</td><td>Line 1</td><td><input type="text" id="e-s5-l1" oninput="sync('s5-l1',this.value)"></td></tr>
+      <tr><td>5</td><td>Line 2 (italic)</td><td><input type="text" id="e-s5-l2" oninput="sync('s5-l2',this.value)"></td></tr>
+      <tr><td>5</td><td>Download text</td><td><input type="text" id="e-s5-dl" oninput="sync('s5-dl',this.value)"></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<button class="download-btn" id="downloadBtn" onclick="downloadAllSlides()">Download All Slides</button>
+
+<div class="reel-wrap">
+
+  <!-- Slide 1 — Hook -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 1 — Hook</div>
+    <div class="slide s-cream">
+      <div id="s1-hand" class="hand hand-amber" style="margin-bottom: 20px;">this year:</div>
+      <div id="s1-head" class="headline" style="font-size:38px;">I got a $12,000 pay rise. My savings barely moved.</div>
+      <div class="rule rule-ink"></div>
+      <div class="s1-note">
+        <div id="s1-note" class="sub" style="font-size:15px; opacity:0.6;">I spent months wondering where it all went. Turns out there's a name for it.</div>
+      </div>
+      <div class="brand">KeepyCash</div>
+    </div>
+  </div>
+
+  <!-- Slide 2 — Pain (ledger) -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 2 — Pain</div>
+    <div class="slide s-ink">
+      <div id="s2-hand" class="hand hand-cream" style="margin-bottom:24px;">year-on-year</div>
+      <div class="ledger">
+        <div class="ledger-row positive">
+          <span id="s2-inc-label" class="ledger-label">income increase</span>
+          <span id="s2-inc-val" class="ledger-val">+ $12,000</span>
+        </div>
+        <div class="ledger-row unknown">
+          <span id="s2-unk-label" class="ledger-label">lifestyle upgrades</span>
+          <span id="s2-unk-val" class="ledger-val">- $10,800</span>
+        </div>
+        <div class="ledger-row total">
+          <span id="s2-sav-label" class="ledger-label mono" style="font-size:12px; opacity:0.4; letter-spacing:0.04em;">extra saved per year</span>
+          <span id="s2-sav-val" class="ledger-val" style="font-size:22px; color:#F5F0E8;">$1,200</span>
+        </div>
+      </div>
+      <div class="rule rule-cream" style="margin-top: 28px;"></div>
+      <div id="s2-sub" class="hand hand-cream" style="font-size:18px; margin-top:0;">that's lifestyle creep.</div>
+      <div class="brand" style="color:#F5F0E8;">KeepyCash</div>
+    </div>
+  </div>
+
+  <!-- Slide 3 — The upgrades -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 3 — The Upgrades</div>
+    <div class="slide s-tan">
+      <div id="s3-head" class="headline-sm" style="margin-bottom:28px;">The raises go somewhere.</div>
+      <div class="items">
+        <div class="item-row">
+          <span id="s3-n1" class="item-name">nicer coffee, every day</span>
+          <span id="s3-a1" class="item-amt">$110/mo</span>
+        </div>
+        <div class="item-row">
+          <span id="s3-n2" class="item-name">Uber instead of bus</span>
+          <span id="s3-a2" class="item-amt">$180/mo</span>
+        </div>
+        <div class="item-row">
+          <span id="s3-n3" class="item-name">more eating out</span>
+          <span id="s3-a3" class="item-amt">$320/mo</span>
+        </div>
+        <div class="item-total-row">
+          <span id="s3-tlabel" class="item-total-label">quietly adds up to</span>
+          <span id="s3-total" class="item-total-num">$610 / month</span>
+        </div>
+      </div>
+      <div class="rule rule-ink" style="margin-top: auto; margin-bottom: 52px;"></div>
+      <div class="brand">KeepyCash</div>
+    </div>
+  </div>
+
+  <!-- Slide 4 — Solution -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 4 — Solution</div>
+    <div class="slide s-green">
+      <div id="s4-hand" class="hand hand-white" style="margin-bottom: 22px;">what changed for me</div>
+      <div id="s4-head" class="headline" style="color:#fff; font-size:42px;">I tracked every dollar. I stopped the creep.</div>
+      <div class="rule rule-white"></div>
+      <div id="s4-sub" class="sub" style="color:#fff; font-size:16px;">KeepyCash shows you exactly where the extra income is going — so you can actually keep some of it.</div>
+      <div class="brand" style="color:rgba(255,255,255,0.45);">KeepyCash</div>
+    </div>
+  </div>
+
+  <!-- Slide 5 — CTA -->
+  <div class="slide-container">
+    <div class="slide-title">Slide 5 — CTA</div>
+    <div class="slide s-ink">
+      <div style="margin-top: auto; margin-bottom: auto; display: flex; flex-direction: column;">
+        <div id="s5-l1" class="headline" style="font-size:52px; color:#F5F0E8; line-height:1.05;">Earn more.</div>
+        <div id="s5-l2" class="headline headline-italic" style="font-size:52px; color:#1D9E75; line-height:1.05;">Keep more.</div>
+        <div class="rule rule-cream" style="margin-top:32px;"></div>
+        <div id="s5-dl" class="mono" style="color:rgba(245,240,232,0.4); font-size:12px; margin-top:0; letter-spacing:0.04em;">Download KeepyCash — free to start.</div>
+      </div>
+      <div class="brand" style="color:#1D9E75; opacity:1;">KeepyCash</div>
+    </div>
+  </div>
+
+</div>
+
+<p class="hint">Click "Download All Slides" to save each slide as a PNG. Or in Chrome: right-click any slide → Inspect → find the .slide div → right-click → "Capture node screenshot".</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+function sync(id, value) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = value;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const pairs = [
+    ['s1-hand','e-s1-hand'], ['s1-head','e-s1-head'], ['s1-note','e-s1-note'],
+    ['s2-hand','e-s2-hand'],
+    ['s2-inc-label','e-s2-inc-label'], ['s2-inc-val','e-s2-inc-val'],
+    ['s2-unk-label','e-s2-unk-label'], ['s2-unk-val','e-s2-unk-val'],
+    ['s2-sav-label','e-s2-sav-label'], ['s2-sav-val','e-s2-sav-val'],
+    ['s2-sub','e-s2-sub'],
+    ['s3-head','e-s3-head'],
+    ['s3-n1','e-s3-n1'], ['s3-a1','e-s3-a1'],
+    ['s3-n2','e-s3-n2'], ['s3-a2','e-s3-a2'],
+    ['s3-n3','e-s3-n3'], ['s3-a3','e-s3-a3'],
+    ['s3-tlabel','e-s3-tlabel'], ['s3-total','e-s3-total'],
+    ['s4-hand','e-s4-hand'], ['s4-head','e-s4-head'], ['s4-sub','e-s4-sub'],
+    ['s5-l1','e-s5-l1'], ['s5-l2','e-s5-l2'], ['s5-dl','e-s5-dl'],
+  ];
+  pairs.forEach(([slideId, inputId]) => {
+    const slide = document.getElementById(slideId);
+    const input = document.getElementById(inputId);
+    if (slide && input) input.value = slide.textContent.trim();
+  });
+});
+
+async function downloadAllSlides() {
+  const btn = document.getElementById('downloadBtn');
+  const slides = document.querySelectorAll('.slide');
+  const reelName = (document.getElementById('reel-name').value.trim().replace(/\s+/g,'-') || 'reel');
+  btn.disabled = true;
+
+  for (let i = 0; i < slides.length; i++) {
+    btn.textContent = `Capturing slide ${i + 1} of ${slides.length}…`;
+    const canvas = await html2canvas(slides[i], {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: null,
+      width: slides[i].offsetWidth,
+      height: slides[i].offsetHeight,
+    });
+    const link = document.createElement('a');
+    link.download = `${reelName}-slide-${i + 1}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    await new Promise(r => setTimeout(r, 300));
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Download All Slides';
+}
+</script>
+</body>
+</html>

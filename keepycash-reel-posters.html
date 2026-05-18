@@ -265,11 +265,11 @@
 <div class="copy-table-wrap">
   <table class="copy-table">
     <thead>
-      <tr><th colspan="2" style="border-right:1px solid #e8e6e1;">Reel name</th><th><input type="text" id="reel-name" placeholder="e.g. no-new-phone" style="font-weight:600; color:#1a1a1a; font-size:13px; letter-spacing:0;"></th></tr>
+      <tr><th colspan="2" style="border-right:1px solid #e8e6e1;">Reel name</th><th><input type="text" id="reel-name" placeholder="e.g. savings-unlock" style="font-weight:600; color:#1a1a1a; font-size:13px; letter-spacing:0;"></th></tr>
       <tr><th>Slide</th><th>Field</th><th>Copy</th></tr>
     </thead>
     <tbody>
-      <tr><td>1</td><td>Sound effect</td><td><input type="text" id="e-s1-ping" oninput="sync('s1-ping',this.value)"></td></tr>
+      <tr><td>1</td><td>Hook number</td><td><input type="text" id="e-s1-ping" oninput="sync('s1-ping',this.value)"></td></tr>
       <tr><td>1</td><td>Headline</td><td><input type="text" id="e-s1-headline" oninput="sync('s1-headline',this.value)"></td></tr>
       <tr><td>1</td><td>Sub</td><td><input type="text" id="e-s1-sub" oninput="sync('s1-sub',this.value)"></td></tr>
       <tr><td>2</td><td>SMS sender</td><td><input type="text" id="e-s2-sender" oninput="sync('s2-sender',this.value)"></td></tr>
@@ -296,94 +296,87 @@
 
 <div class="reel-wrap" id="reel1">
 
-  <!-- Slide 1 -->
+  <!-- Slide 1 — Hook -->
   <div class="slide-container">
     <div class="slide-title">Slide 1</div>
     <div class="slide s1">
-      <div class="slide-label" style="color:#f5f3ee">The hook</div>
-      <div id="s1-ping" style="font-size:64px; margin-bottom:0; line-height:1;">$1,200</div>
-      <div style="font-size:22px; opacity:0.35; letter-spacing:0.12em; margin-bottom:44px;">.</div>
-      <div id="s1-headline" class="big" style="font-size:32px;">Quick way to keep more of your cash.</div>
-      <div id="s1-sub" class="sub">Don't buy a new phone.</div>
+      <div id="s1-ping" style="font-size:80px; font-weight:600; letter-spacing:-0.04em; line-height:1; color:#1D9E75;">$1,000</div>
+      <div style="font-size:18px; opacity:0.35; letter-spacing:0.1em; margin-bottom:40px; text-transform:uppercase;">saved in 6 weeks</div>
+      <div id="s1-headline" class="big" style="font-size:30px;">I didn't get a raise. I didn't cut my lifestyle.</div>
+      <div id="s1-sub" class="sub">I just started paying attention.</div>
       <div class="brand" style="color:#1D9E75;">KeepyCash</div>
       <div class="slide-num" style="color:#f5f3ee">1 / 7</div>
     </div>
   </div>
 
-  <!-- Slide 2 -->
+  <!-- Slide 2 — Pain -->
   <div class="slide-container">
     <div class="slide-title">Slide 2</div>
     <div class="slide s2">
-      <div class="slide-label">The pain</div>
-      <div id="s2-sender" class="sms-sender">Apple</div>
+      <div id="s2-sender" class="sms-sender">Commonwealth Bank</div>
       <div id="s2-sms" class="sms-bubble">
-        "Your new iPhone 16 Pro is ready. Trade in and upgrade from just $65/mo."
+        "Your account balance is $47.82."
       </div>
-      <div id="s2-sub" class="sub" style="margin-top:36px;">I used to fall for this every single year.</div>
+      <div id="s2-sub" class="sub" style="margin-top:36px;">This used to be normal for me. Five days before payday.</div>
       <div class="brand">KeepyCash</div>
       <div class="slide-num">2 / 7</div>
     </div>
   </div>
 
-  <!-- Slide 3 -->
+  <!-- Slide 3 — Tension -->
   <div class="slide-container">
     <div class="slide-title">Slide 3</div>
     <div class="slide s5">
-      <div class="slide-label" style="color:#f5f3ee">The tension</div>
-      <div id="s3-headline" class="big" style="font-size:52px; line-height:1.08; color:#f5f3ee;">Here's my honest take:</div>
+      <div id="s3-headline" class="big" style="font-size:48px; line-height:1.1; color:#f5f3ee;">So I finally asked: where does it actually go?</div>
       <div class="brand" style="color:#1D9E75;">KeepyCash</div>
       <div class="slide-num" style="color:#f5f3ee">3 / 7</div>
     </div>
   </div>
 
-  <!-- Slide 4 -->
+  <!-- Slide 4 — Reveal -->
   <div class="slide-container">
     <div class="slide-title">Slide 4</div>
     <div class="slide s2">
-      <div class="slide-label">The joke</div>
-      <div id="s4-pill" class="pill pill-light">Be honest</div>
-      <div id="s4-headline" class="big">Are the new ones really that different?</div>
-      <div id="s4-sub" class="sub">I'm not shooting a movie on my phone.</div>
+      <div id="s4-pill" class="pill pill-light">What I found</div>
+      <div id="s4-headline" class="big">$340 a month. Quietly disappearing.</div>
+      <div id="s4-sub" class="sub">Coffee. Subscriptions. Taps I didn't think twice about.</div>
       <div class="brand">KeepyCash</div>
       <div class="slide-num">4 / 7</div>
     </div>
   </div>
 
-  <!-- Slide 5 -->
+  <!-- Slide 5 — Solution -->
   <div class="slide-container">
     <div class="slide-title">Slide 5</div>
     <div class="slide s3">
-      <div class="slide-label" style="opacity:0.5">The solution</div>
-      <div id="s5-pill" class="pill pill-green">What I do instead</div>
-      <div id="s5-headline" class="big" style="color:#fff; font-size:36px;">Buy outright. Second-hand. SIM-only plan. Job done.</div>
+      <div id="s5-pill" class="pill pill-green">The shift</div>
+      <div id="s5-headline" class="big" style="color:#fff; font-size:36px;">I didn't spend less. I just stopped spending blind.</div>
       <div class="brand" style="color:rgba(255,255,255,0.6);">KeepyCash</div>
       <div class="slide-num" style="color:rgba(255,255,255,0.4)">5 / 7</div>
     </div>
   </div>
 
-  <!-- Slide 6 -->
+  <!-- Slide 6 — Outcome -->
   <div class="slide-container">
     <div class="slide-title">Slide 6</div>
     <div class="slide s2">
-      <div class="slide-label">The outcome</div>
-      <div id="s6-line1" class="tagline" style="font-size:20px; opacity:0.4; margin-bottom:14px;">No upgrade fees.</div>
-      <div id="s6-line2" class="tagline" style="font-size:20px; opacity:0.4; margin-bottom:14px;">No 24-month contracts.</div>
-      <div id="s6-line3" class="tagline" style="font-size:20px; opacity:0.4; margin-bottom:36px;">No buyer's remorse.</div>
-      <div id="s6-line4" class="tagline" style="font-size:34px;">Just more money in your pocket.</div>
+      <div id="s6-line1" class="tagline" style="font-size:19px; opacity:0.4; margin-bottom:14px;">Week 1: $80 back in my pocket.</div>
+      <div id="s6-line2" class="tagline" style="font-size:19px; opacity:0.4; margin-bottom:14px;">Week 3: First time I wasn't stressed before payday.</div>
+      <div id="s6-line3" class="tagline" style="font-size:19px; opacity:0.4; margin-bottom:36px;">Week 6: $1,000 saved. First time ever.</div>
+      <div id="s6-line4" class="tagline" style="font-size:32px;">Same money. Better decisions.</div>
       <div class="brand">KeepyCash</div>
       <div class="slide-num">6 / 7</div>
     </div>
   </div>
 
-  <!-- Slide 7 -->
+  <!-- Slide 7 — CTA -->
   <div class="slide-container">
     <div class="slide-title">Slide 7</div>
     <div class="slide s1">
-      <div class="slide-label" style="color:#f5f3ee">The CTA</div>
-      <div id="s7-h1" class="big" style="font-size:52px; color:#f5f3ee;">Spend less.</div>
+      <div id="s7-h1" class="big" style="font-size:52px; color:#f5f3ee;">Track it.</div>
       <div style="font-size:44px; color:#1D9E75; margin: 10px 0; line-height:1;">&#x2193;</div>
-      <div id="s7-h2" class="big" style="font-size:52px; color:#1D9E75;">Keep more.</div>
-      <div id="s7-sub" class="sub" style="font-size:15px; color:#f5f3ee; margin-top:32px;">Download KeepyCash — free to start.</div>
+      <div id="s7-h2" class="big" style="font-size:52px; color:#1D9E75;">Keep it.</div>
+      <div id="s7-sub" class="sub" style="font-size:15px; color:#f5f3ee; margin-top:32px;">Your $340 is still in there. Find it free.</div>
       <div class="brand" style="color:#1D9E75;">KeepyCash</div>
       <div class="slide-num" style="color:#f5f3ee">7 / 7</div>
     </div>
