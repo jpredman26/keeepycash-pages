@@ -20,35 +20,6 @@
     text-transform: uppercase;
     margin-bottom: 40px;
   }
-  .reel-section-title {
-    text-align: center;
-    font-size: 12px;
-    font-weight: 600;
-    color: #aaa;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .reel-divider {
-    max-width: 760px;
-    margin: 56px auto;
-    border: none;
-    border-top: 1px solid #d0ceca;
-    position: relative;
-  }
-  .reel-divider::after {
-    content: 'REEL 2';
-    position: absolute;
-    top: -9px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #e8e6e1;
-    padding: 0 16px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: #bbb;
-  }
   .reel-wrap {
     display: flex;
     flex-direction: column;
@@ -260,8 +231,6 @@
 
 <h1>KeepyCash — Reel Posters &nbsp;·&nbsp; 9:16 &nbsp;·&nbsp; Screenshot each slide</h1>
 
-<!-- ═══════════════════════════ REEL 1 ═══════════════════════════ -->
-
 <div class="copy-table-wrap">
   <table class="copy-table">
     <thead>
@@ -292,7 +261,7 @@
   </table>
 </div>
 
-<button class="download-btn" id="downloadBtn1" onclick="downloadAllSlides('reel1','downloadBtn1','reel-name')">Download All Slides</button>
+<button class="download-btn" id="downloadBtn" onclick="downloadAllSlides()">Download All Slides</button>
 
 <div class="reel-wrap" id="reel1">
 
@@ -384,125 +353,6 @@
 
 </div>
 
-<!-- ═══════════════════════════ REEL 2 ═══════════════════════════ -->
-
-<hr class="reel-divider">
-
-<div class="copy-table-wrap">
-  <table class="copy-table">
-    <thead>
-      <tr><th colspan="2" style="border-right:1px solid #e8e6e1;">Reel name</th><th><input type="text" id="r2-reel-name" placeholder="e.g. save-1000-6-weeks" style="font-weight:600; color:#1a1a1a; font-size:13px; letter-spacing:0;"></th></tr>
-      <tr><th>Slide</th><th>Field</th><th>Copy</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td>Big stat</td><td><input type="text" id="r2-e-s1-stat" oninput="sync('r2-s1-stat',this.value)"></td></tr>
-      <tr><td>1</td><td>Headline</td><td><input type="text" id="r2-e-s1-headline" oninput="sync('r2-s1-headline',this.value)"></td></tr>
-      <tr><td>1</td><td>Sub</td><td><input type="text" id="r2-e-s1-sub" oninput="sync('r2-s1-sub',this.value)"></td></tr>
-      <tr><td>2</td><td>SMS sender</td><td><input type="text" id="r2-e-s2-sender" oninput="sync('r2-s2-sender',this.value)"></td></tr>
-      <tr><td>2</td><td>SMS message</td><td><textarea id="r2-e-s2-sms" rows="2" oninput="sync('r2-s2-sms',this.value)"></textarea></td></tr>
-      <tr><td>2</td><td>Sub</td><td><input type="text" id="r2-e-s2-sub" oninput="sync('r2-s2-sub',this.value)"></td></tr>
-      <tr><td>3</td><td>Headline</td><td><input type="text" id="r2-e-s3-headline" oninput="sync('r2-s3-headline',this.value)"></td></tr>
-      <tr><td>4</td><td>Pill</td><td><input type="text" id="r2-e-s4-pill" oninput="sync('r2-s4-pill',this.value)"></td></tr>
-      <tr><td>4</td><td>Headline</td><td><input type="text" id="r2-e-s4-headline" oninput="sync('r2-s4-headline',this.value)"></td></tr>
-      <tr><td>4</td><td>Sub</td><td><input type="text" id="r2-e-s4-sub" oninput="sync('r2-s4-sub',this.value)"></td></tr>
-      <tr><td>5</td><td>Pill</td><td><input type="text" id="r2-e-s5-pill" oninput="sync('r2-s5-pill',this.value)"></td></tr>
-      <tr><td>5</td><td>Headline</td><td><textarea id="r2-e-s5-headline" rows="2" oninput="sync('r2-s5-headline',this.value)"></textarea></td></tr>
-      <tr><td>6</td><td>Line 1</td><td><input type="text" id="r2-e-s6-line1" oninput="sync('r2-s6-line1',this.value)"></td></tr>
-      <tr><td>6</td><td>Line 2</td><td><input type="text" id="r2-e-s6-line2" oninput="sync('r2-s6-line2',this.value)"></td></tr>
-      <tr><td>6</td><td>Line 3</td><td><input type="text" id="r2-e-s6-line3" oninput="sync('r2-s6-line3',this.value)"></td></tr>
-      <tr><td>6</td><td>Line 4</td><td><input type="text" id="r2-e-s6-line4" oninput="sync('r2-s6-line4',this.value)"></td></tr>
-      <tr><td>7</td><td>Headline 1</td><td><input type="text" id="r2-e-s7-h1" oninput="sync('r2-s7-h1',this.value)"></td></tr>
-      <tr><td>7</td><td>Headline 2</td><td><input type="text" id="r2-e-s7-h2" oninput="sync('r2-s7-h2',this.value)"></td></tr>
-      <tr><td>7</td><td>Sub</td><td><input type="text" id="r2-e-s7-sub" oninput="sync('r2-s7-sub',this.value)"></td></tr>
-    </tbody>
-  </table>
-</div>
-
-<button class="download-btn" id="downloadBtn2" onclick="downloadAllSlides('reel2','downloadBtn2','r2-reel-name')">Download All Slides</button>
-
-<div class="reel-wrap" id="reel2">
-
-  <!-- Slide 1 -->
-  <div class="slide-container">
-    <div class="slide-title">Slide 1</div>
-    <div class="slide s1">
-      <div id="r2-s1-stat" style="font-size:80px; font-weight:500; letter-spacing:-0.03em; line-height:1; color:#f5f3ee;">$1,000</div>
-      <div style="font-size:22px; opacity:0.25; letter-spacing:0.12em; margin: 12px 0 20px;">.</div>
-      <div id="r2-s1-headline" class="big" style="font-size:30px; color:#f5f3ee;">Saved in 6 weeks.</div>
-      <div id="r2-s1-sub" class="sub" style="color:#f5f3ee;">No side hustle. No spreadsheet.</div>
-      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
-    </div>
-  </div>
-
-  <!-- Slide 2 -->
-  <div class="slide-container">
-    <div class="slide-title">Slide 2</div>
-    <div class="slide s2">
-      <div id="r2-s2-sender" class="sms-sender">Bank</div>
-      <div id="r2-s2-sms" class="sms-bubble">
-        "Low balance alert. Your available balance is $12.44."
-      </div>
-      <div id="r2-s2-sub" class="sub" style="margin-top:36px;">That used to be me every single month.</div>
-      <div class="brand">KeepyCash</div>
-    </div>
-  </div>
-
-  <!-- Slide 3 -->
-  <div class="slide-container">
-    <div class="slide-title">Slide 3</div>
-    <div class="slide s5">
-      <div id="r2-s3-headline" class="big" style="font-size:46px; line-height:1.1; color:#f5f3ee;">Here's the only saving system that actually worked:</div>
-      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
-    </div>
-  </div>
-
-  <!-- Slide 4 -->
-  <div class="slide-container">
-    <div class="slide-title">Slide 4</div>
-    <div class="slide s2">
-      <div id="r2-s4-pill" class="pill pill-light">The maths</div>
-      <div id="r2-s4-headline" class="big">$1,000 is just $167 a week.</div>
-      <div id="r2-s4-sub" class="sub">One delivery app deleted. One night out swapped. That's it.</div>
-      <div class="brand">KeepyCash</div>
-    </div>
-  </div>
-
-  <!-- Slide 5 -->
-  <div class="slide-container">
-    <div class="slide-title">Slide 5</div>
-    <div class="slide s3">
-      <div id="r2-s5-pill" class="pill pill-green">6-week playbook</div>
-      <div id="r2-s5-headline" class="big" style="color:#fff; font-size:34px;">Delete delivery apps. Pause one sub. Cook on Sundays.</div>
-      <div class="brand" style="color:rgba(255,255,255,0.6);">KeepyCash</div>
-    </div>
-  </div>
-
-  <!-- Slide 6 -->
-  <div class="slide-container">
-    <div class="slide-title">Slide 6</div>
-    <div class="slide s2">
-      <div id="r2-s6-line1" class="tagline" style="font-size:22px; opacity:0.4; margin-bottom:16px;">Week 2 — $334 stashed.</div>
-      <div id="r2-s6-line2" class="tagline" style="font-size:22px; opacity:0.4; margin-bottom:16px;">Week 4 — $668 stashed.</div>
-      <div id="r2-s6-line3" class="tagline" style="font-size:22px; opacity:0.4; margin-bottom:40px;">Week 6 — $1,002 saved.</div>
-      <div id="r2-s6-line4" class="tagline" style="font-size:32px;">Boring plan. Real result.</div>
-      <div class="brand">KeepyCash</div>
-    </div>
-  </div>
-
-  <!-- Slide 7 -->
-  <div class="slide-container">
-    <div class="slide-title">Slide 7</div>
-    <div class="slide s1">
-      <div id="r2-s7-h1" class="big" style="font-size:52px; color:#f5f3ee;">Spend less.</div>
-      <div style="font-size:44px; color:#1D9E75; margin: 10px 0; line-height:1;">&#x2193;</div>
-      <div id="r2-s7-h2" class="big" style="font-size:52px; color:#1D9E75;">Keep more.</div>
-      <div id="r2-s7-sub" class="sub" style="font-size:15px; color:#f5f3ee; margin-top:32px;">Track every dollar with KeepyCash. Free to start.</div>
-      <div class="brand" style="color:#1D9E75;">KeepyCash</div>
-    </div>
-  </div>
-
-</div>
-
 <p class="hint">Click "Download All Slides" to save each slide as a PNG. Or in Chrome: right-click any slide &rarr; Inspect &rarr; find the .slide div &rarr; right-click it &rarr; "Capture node screenshot".</p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -521,13 +371,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ['s5-pill','e-s5-pill'], ['s5-headline','e-s5-headline'],
     ['s6-line1','e-s6-line1'], ['s6-line2','e-s6-line2'], ['s6-line3','e-s6-line3'], ['s6-line4','e-s6-line4'],
     ['s7-h1','e-s7-h1'], ['s7-h2','e-s7-h2'], ['s7-sub','e-s7-sub'],
-    ['r2-s1-stat','r2-e-s1-stat'], ['r2-s1-headline','r2-e-s1-headline'], ['r2-s1-sub','r2-e-s1-sub'],
-    ['r2-s2-sender','r2-e-s2-sender'], ['r2-s2-sms','r2-e-s2-sms'], ['r2-s2-sub','r2-e-s2-sub'],
-    ['r2-s3-headline','r2-e-s3-headline'],
-    ['r2-s4-pill','r2-e-s4-pill'], ['r2-s4-headline','r2-e-s4-headline'], ['r2-s4-sub','r2-e-s4-sub'],
-    ['r2-s5-pill','r2-e-s5-pill'], ['r2-s5-headline','r2-e-s5-headline'],
-    ['r2-s6-line1','r2-e-s6-line1'], ['r2-s6-line2','r2-e-s6-line2'], ['r2-s6-line3','r2-e-s6-line3'], ['r2-s6-line4','r2-e-s6-line4'],
-    ['r2-s7-h1','r2-e-s7-h1'], ['r2-s7-h2','r2-e-s7-h2'], ['r2-s7-sub','r2-e-s7-sub'],
   ];
   pairs.forEach(([slideId, inputId]) => {
     const slide = document.getElementById(slideId);
@@ -536,10 +379,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-async function downloadAllSlides(wrapId, btnId, nameInputId) {
-  const btn = document.getElementById(btnId);
-  const slides = document.getElementById(wrapId).querySelectorAll('.slide');
-  const reelName = (document.getElementById(nameInputId).value.trim().replace(/\s+/g, '-') || 'reel');
+async function downloadAllSlides() {
+  const btn = document.getElementById('downloadBtn');
+  const slides = document.querySelectorAll('.slide');
+  const reelName = (document.getElementById('reel-name').value.trim().replace(/\s+/g, '-') || 'reel');
   btn.disabled = true;
 
   for (let i = 0; i < slides.length; i++) {
