@@ -75,82 +75,11 @@
   .btn-apple:hover { opacity: 0.9; }
   .btn-android {
     background: rgba(255,255,255,0.07);
-    color: rgba(245,243,238,0.4);
-    cursor: default;
-    pointer-events: none;
-  }
-  .btn svg { flex-shrink: 0; }
-  .coming-soon {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: rgba(29,158,117,0.15);
-    color: #1D9E75;
-    padding: 3px 9px;
-    border-radius: 100px;
-    margin-left: 4px;
-  }
-  .android-waitlist {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 300px;
-    text-align: center;
-  }
-  .waitlist-link {
-    background: none;
-    border: none;
-    color: #1D9E75;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    opacity: 0.85;
-    padding: 0;
-    font-family: inherit;
-  }
-  .waitlist-link:hover { opacity: 1; }
-  .waitlist-form {
-    display: flex;
-    gap: 8px;
-    margin-top: 14px;
-    width: 100%;
-  }
-  .waitlist-form input {
-    flex: 1;
-    padding: 12px 16px;
-    border: 1.5px solid rgba(255,255,255,0.15);
-    border-radius: 10px;
-    font-size: 14px;
-    background: rgba(255,255,255,0.07);
     color: #f5f3ee;
-    outline: none;
-    font-family: inherit;
-    transition: border-color 0.2s;
+    border: 1.5px solid rgba(255,255,255,0.12);
   }
-  .waitlist-form input::placeholder { color: rgba(245,243,238,0.35); }
-  .waitlist-form input:focus { border-color: #1D9E75; }
-  .waitlist-form button {
-    padding: 12px 16px;
-    background: #1D9E75;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: inherit;
-    white-space: nowrap;
-    transition: opacity 0.15s;
-  }
-  .waitlist-form button:hover { opacity: 0.85; }
-  .waitlist-form button:disabled { opacity: 0.5; cursor: default; }
-  .waitlist-success {
-    margin-top: 12px;
-    font-size: 14px;
-    color: #1D9E75;
-  }
+  .btn-android:hover { opacity: 0.85; }
+  .btn svg { flex-shrink: 0; }
   .redirect-note {
     margin-top: 36px;
     font-size: 12px;
@@ -181,23 +110,12 @@
     Download on the App Store
   </a>
 
-  <div class="btn btn-android">
+  <a class="btn btn-android" href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
       <path d="M17.523 15.341l1.092 1.891a.5.5 0 0 1-.183.683.5.5 0 0 1-.683-.183l-1.108-1.918A6.97 6.97 0 0 1 12 17a6.97 6.97 0 0 1-4.641-1.186L6.251 17.732a.5.5 0 0 1-.866-.5l1.092-1.891A6.994 6.994 0 0 1 5 10h14a6.994 6.994 0 0 1-1.477 5.341zM8.5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM3.305 8.553l-1.86-3.22a.5.5 0 0 1 .866-.5l1.883 3.26A7.018 7.018 0 0 1 12 6a7.018 7.018 0 0 1 7.806 2.093l1.883-3.26a.5.5 0 1 1 .866.5l-1.86 3.22A6.973 6.973 0 0 1 22 10H2a6.973 6.973 0 0 1 1.305-1.447z"/>
     </svg>
-    Google Play &nbsp;<span class="coming-soon">Coming soon</span>
-  </div>
-</div>
-
-<div class="android-waitlist">
-  <button class="waitlist-link" id="waitlist-toggle" onclick="showAndroidWaitlist()">Join Android waitlist</button>
-  <div class="waitlist-form" id="android-form" style="display:none">
-    <input type="email" placeholder="your@email.com" id="android-email" />
-    <button onclick="handleAndroidSignup()">Notify me</button>
-  </div>
-  <div class="waitlist-success" id="android-success" style="display:none">
-    You're on the Android waitlist!
-  </div>
+    Get it on Google Play
+  </a>
 </div>
 
 <p class="redirect-note" id="redirect-note"></p>
@@ -206,6 +124,7 @@
 
 <script>
   const IOS_URL = 'https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114';
+  const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.jpredman27.keepycash';
   const ua = navigator.userAgent;
   const isIOS = /iPhone|iPad|iPod/i.test(ua);
   const isAndroid = /Android/i.test(ua);
@@ -213,52 +132,10 @@
   if (isIOS) {
     document.getElementById('redirect-note').textContent = 'Redirecting you to the App Store…';
     setTimeout(() => { window.location.href = IOS_URL; }, 800);
+  } else if (isAndroid) {
+    document.getElementById('redirect-note').textContent = 'Redirecting you to Google Play…';
+    setTimeout(() => { window.location.href = ANDROID_URL; }, 800);
   }
-
-  const SUPABASE_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_WctlTXMnpCSW_i0LuStx9g_fq4atrcG';
-
-  function showAndroidWaitlist() {
-    document.getElementById('waitlist-toggle').style.display = 'none';
-    document.getElementById('android-form').style.display = 'flex';
-    document.getElementById('android-email').focus();
-  }
-
-  async function handleAndroidSignup() {
-    const input = document.getElementById('android-email');
-    const btn = input.nextElementSibling;
-    const email = input.value.trim();
-    if (!email || !email.includes('@')) { input.focus(); return; }
-
-    btn.textContent = 'Saving...';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify({ email })
-      });
-      if (!res.ok && res.status !== 409) throw new Error('Signup failed');
-      document.getElementById('android-form').style.display = 'none';
-      document.getElementById('android-success').style.display = 'block';
-    } catch (e) {
-      btn.textContent = 'Try again';
-      btn.disabled = false;
-      input.style.borderColor = 'red';
-    }
-  }
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && document.getElementById('android-form').style.display !== 'none') {
-      handleAndroidSignup();
-    }
-  });
 </script>
 </body>
 </html>
