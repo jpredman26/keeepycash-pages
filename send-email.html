@@ -323,21 +323,27 @@
   <div id="toast"></div>
 
   <script>
-    // ─── CONFIG ───────────────────────────────────────────────────────────────
-    // Replace these values with your own before deploying.
+    // Values injected at build time by GitHub Actions — never stored in git.
+    // passwordHash is SHA-256(PAGE_PASSWORD); the plaintext never leaves GitHub Secrets.
     const CONFIG = {
-      password:         'changeme',                  // page password
-      loopsApiKey:      'YOUR_LOOPS_API_KEY',        // Loops API key (keep server-side if possible)
-      transactionalId:  'YOUR_LOOPS_TEMPLATE_ID',   // Loops transactional template ID
+      passwordHash:    '__PAGE_PASSWORD_HASH__',
+      loopsApiKey:     '__LOOPS_API_KEY__',
+      transactionalId: '__LOOPS_TEMPLATE_ID__',
     };
-    // ─────────────────────────────────────────────────────────────────────────
+
+    // ── SHA-256 helper (Web Crypto API — available in all modern browsers) ───
+    async function sha256hex(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
 
     // ── Gate ────────────────────────────────────────────────────────────────
     const SESSION_KEY = 'kc_send_email_auth';
 
-    function unlock() {
+    async function unlock() {
       const val = document.getElementById('gate-password').value;
-      if (val === CONFIG.password) {
+      const hash = await sha256hex(val);
+      if (hash === CONFIG.passwordHash) {
         sessionStorage.setItem(SESSION_KEY, '1');
         document.getElementById('gate').style.display = 'none';
         document.getElementById('app').style.display = 'block';
