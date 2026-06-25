@@ -292,6 +292,18 @@
 
         <!-- ── Dynamic variables passed to the Loops template ── -->
         <div class="field">
+          <label for="var-subject">Subject</label>
+          <input type="text" id="var-subject" placeholder="Your subject line…" />
+          <p class="field-hint">Available in template as <code>{{subject}}</code></p>
+        </div>
+
+        <div class="field">
+          <label for="var-preview">Preview text</label>
+          <input type="text" id="var-preview" placeholder="Short preview shown in inbox…" />
+          <p class="field-hint">Available in template as <code>{{preview}}</code></p>
+        </div>
+
+        <div class="field">
           <label for="var-first-name">First name</label>
           <input type="text" id="var-first-name" placeholder="Jane" />
           <p class="field-hint">Available in template as <code>{{firstName}}</code></p>
@@ -368,6 +380,8 @@
     // ── Send email via Loops ─────────────────────────────────────────────────
     async function sendEmail() {
       const email     = document.getElementById('to-email').value.trim();
+      const subject   = document.getElementById('var-subject').value.trim();
+      const preview   = document.getElementById('var-preview').value.trim();
       const firstName = document.getElementById('var-first-name').value.trim();
       const message   = document.getElementById('var-message').value.trim();
       const ctaUrl    = document.getElementById('var-cta-url').value.trim();
@@ -380,6 +394,8 @@
         transactionalId: CONFIG.transactionalId,
         email,
         dataVariables: {
+          subject,
+          preview,
           firstName,
           message,
           ctaUrl,
@@ -424,7 +440,7 @@
     }
 
     function clearForm() {
-      ['to-email', 'var-first-name', 'var-message', 'var-cta-url']
+      ['to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-url']
         .forEach(id => { document.getElementById(id).value = ''; });
     }
 
