@@ -315,9 +315,9 @@
 
         <div class="field">
           <div class="pill-group">
-            <button type="button" class="pill" data-name="Support at KeepyCash" data-email="support@send.keepycash.com" onclick="selectSender(this)">Support</button>
-            <button type="button" class="pill" data-name="James at KeepyCash" data-email="james@send.keepycash.com" onclick="selectSender(this)">James</button>
-            <button type="button" class="pill" data-name="Carl at KeepyCash" data-email="carl@send.keepycash.com" onclick="selectSender(this)">Carl</button>
+            <button type="button" class="pill" data-name="Support at KeepyCash" data-email="support@send.keepycash.com" data-reply="support@keepycash.com" onclick="selectSender(this)">Support</button>
+            <button type="button" class="pill" data-name="James at KeepyCash" data-email="james@send.keepycash.com" data-reply="james@keepycash.com" onclick="selectSender(this)">James</button>
+            <button type="button" class="pill" data-name="Carl at KeepyCash" data-email="carl@send.keepycash.com" data-reply="carl@keepycash.com" onclick="selectSender(this)">Carl</button>
           </div>
         </div>
 
@@ -431,12 +431,12 @@
     function selectSender(el) {
       document.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
-      selectedSender = { name: el.dataset.name, email: el.dataset.email };
+      selectedSender = { name: el.dataset.name, email: el.dataset.email, reply: el.dataset.reply };
     }
 
     // ── Send email via Loops ─────────────────────────────────────────────────
     async function sendEmail() {
-      const { name: fromName, email: fromEmail } = selectedSender;
+      const { name: fromName, email: fromEmail, reply: replyTo } = selectedSender;
       const email = document.getElementById('to-email').value.trim();
 
       if (!fromName) { showToast('Please select a sender.', 'error'); return; }
@@ -456,6 +456,7 @@
         email,
         ...(fromName  && { fromName }),
         ...(fromEmail && { from: fromEmail }),
+        ...(replyTo   && { replyTo }),
         dataVariables: {
           subject,
           preview,
