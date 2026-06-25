@@ -1,0 +1,56 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Inject secrets into send-email.html
+        run: |
+          # Hash the plaintext password with SHA-256 so it never appears in the artifact.
+          HASH=$(node -e "
+            const c = require('crypto');
+            process.stdout.write(c.createHash('sha256').update(process.env.PAGE_PASSWORD).digest('hex'));
+          ")
+
+          sed -i \
+            -e "s|__PAGE_PASSWORD_HASH__|${HASH}|g" \
+            -e "s|__LOOPS_API_KEY__|${LOOPS_API_KEY}|g" \
+            -e "s|__LOOPS_TEMPLATE_ID__|${LOOPS_TEMPLATE_ID}|g" \
+            send-email.html
+        env:
+          PAGE_PASSWORD:    ${{ secrets.PAGE_PASSWORD }}
+          LOOPS_API_KEY:    ${{ secrets.LOOPS_API_KEY }}
+          LOOPS_TEMPLATE_ID: ${{ secrets.LOOPS_TEMPLATE_ID }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

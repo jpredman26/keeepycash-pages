@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Send Email — KeepyCash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #007AFF;
+      --blue-dark: #005FCC;
+      --blue-pale: #E8F4FF;
+      --surface: #F5F5F7;
+      --white: #FFFFFF;
+      --dark: #1A1A2E;
+      --mid: #555555;
+      --soft: #888888;
+      --border: #E0E0E0;
+      --success: #27AE60;
+      --error: #E74C3C;
+    }
+
+    html, body {
+      min-height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--surface);
+      color: var(--dark);
+    }
+
+    /* ── Password Gate ── */
+    #gate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    #gate-card {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    #gate-card .lock-icon {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+    #gate-card h1 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    #gate-card p {
+      color: var(--soft);
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    #gate-error {
+      background: #FEF0EF;
+      color: var(--error);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      display: none;
+    }
+
+    /* ── Main App ── */
+    #app {
+      display: none;
+      min-height: 100vh;
+      padding: 40px 24px;
+    }
+
+    .app-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .app-header h1 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .app-header .logo {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--soft);
+      letter-spacing: 0.5px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      padding: 32px;
+    }
+
+    /* ── Form elements ── */
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mid);
+      margin-bottom: 6px;
+      letter-spacing: 0.2px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--dark);
+      background: var(--white);
+      transition: border-color 0.15s;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--blue);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .field-hint {
+      font-size: 12px;
+      color: var(--soft);
+      margin-top: 4px;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1.5px solid var(--border);
+      margin: 24px 0;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--soft);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* ── Button ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s, transform 0.1s, opacity 0.15s;
+    }
+
+    .btn:active { transform: scale(0.98); }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      width: 100%;
+    }
+
+    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    .btn-gate {
+      background: var(--dark);
+      color: #fff;
+      width: 100%;
+    }
+
+    .btn-gate:hover { background: #333; }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--dark);
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s;
+      opacity: 0;
+      white-space: nowrap;
+      z-index: 999;
+    }
+
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    #toast.success { background: var(--success); }
+    #toast.error   { background: var(--error); }
+
+    /* ── Spinner ── */
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+  <!-- ─── PASSWORD GATE ─── -->
+  <div id="gate">
+    <div id="gate-card">
+      <div class="lock-icon">🔐</div>
+      <h1>Internal Tool</h1>
+      <p>Enter the password to access the email sender.</p>
+      <div id="gate-error">Incorrect password — try again.</div>
+      <div class="field">
+        <input type="password" id="gate-password" placeholder="Password" autocomplete="current-password" />
+      </div>
+      <button class="btn btn-gate" onclick="unlock()">Unlock</button>
+    </div>
+  </div>
+
+  <!-- ─── MAIN APP ─── -->
+  <div id="app">
+    <div class="app-inner">
+      <div class="app-header">
+        <h1>Send Email</h1>
+        <span class="logo">KEEPYCASH</span>
+      </div>
+
+      <div class="card">
+        <div class="section-label">Sender</div>
+
+        <div class="field">
+          <label for="from-name">From name</label>
+          <input type="text" id="from-name" placeholder="KeepyCash" />
+        </div>
+
+        <div class="field">
+          <label for="from-email">From email</label>
+          <input type="email" id="from-email" placeholder="hello@keepycash.com" />
+        </div>
+
+        <hr class="divider" />
+        <div class="section-label">Recipient</div>
+
+        <div class="field">
+          <label for="to-email">Email address</label>
+          <input type="email" id="to-email" placeholder="user@example.com" />
+        </div>
+
+        <hr class="divider" />
+        <div class="section-label">Template Variables</div>
+
+        <!-- ── Dynamic variables passed to the Loops template ── -->
+        <div class="field">
+          <label for="var-subject">Subject</label>
+          <input type="text" id="var-subject" placeholder="Your subject line…" />
+          <p class="field-hint">Available in template as <code>{{subject}}</code></p>
+        </div>
+
+        <div class="field">
+          <label for="var-preview">Preview text</label>
+          <input type="text" id="var-preview" placeholder="Short preview shown in inbox…" />
+          <p class="field-hint">Available in template as <code>{{preview}}</code></p>
+        </div>
+
+        <div class="field">
+          <label for="var-first-name">First name</label>
+          <input type="text" id="var-first-name" placeholder="Jane" />
+          <p class="field-hint">Available in template as <code>{{firstName}}</code></p>
+        </div>
+
+        <div class="field">
+          <label for="var-message">Custom message</label>
+          <textarea id="var-message" placeholder="Write a short message…"></textarea>
+          <p class="field-hint">Available in template as <code>{{message}}</code></p>
+        </div>
+
+        <div class="field">
+          <label for="var-cta-url">CTA link (optional)</label>
+          <input type="text" id="var-cta-url" placeholder="https://…" />
+          <p class="field-hint">Available in template as <code>{{ctaUrl}}</code></p>
+        </div>
+
+        <hr class="divider" />
+
+        <button class="btn btn-primary" id="send-btn" onclick="sendEmail()">
+          <span id="btn-label">Send Email</span>
+          <div class="spinner" id="btn-spinner"></div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TOAST ─── -->
+  <div id="toast"></div>
+
+  <script>
+    // Values injected at build time by GitHub Actions — never stored in git.
+    // passwordHash is SHA-256(PAGE_PASSWORD); the plaintext never leaves GitHub Secrets.
+    const CONFIG = {
+      passwordHash:    '__PAGE_PASSWORD_HASH__',
+      loopsApiKey:     '__LOOPS_API_KEY__',
+      transactionalId: '__LOOPS_TEMPLATE_ID__',
+    };
+
+    // ── SHA-256 helper (Web Crypto API — available in all modern browsers) ───
+    async function sha256hex(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // ── Gate ────────────────────────────────────────────────────────────────
+    const SESSION_KEY = 'kc_send_email_auth';
+
+    async function unlock() {
+      const val = document.getElementById('gate-password').value;
+      const hash = await sha256hex(val);
+      if (hash === CONFIG.passwordHash) {
+        sessionStorage.setItem(SESSION_KEY, '1');
+        document.getElementById('gate').style.display = 'none';
+        document.getElementById('app').style.display = 'block';
+      } else {
+        document.getElementById('gate-error').style.display = 'block';
+        document.getElementById('gate-password').value = '';
+        document.getElementById('gate-password').focus();
+      }
+    }
+
+    // Allow Enter key on password field
+    document.getElementById('gate-password').addEventListener('keydown', e => {
+      if (e.key === 'Enter') unlock();
+    });
+
+    // Restore session so reload doesn't re-lock
+    if (sessionStorage.getItem(SESSION_KEY) === '1') {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+    }
+
+    // ── Send email via Loops ─────────────────────────────────────────────────
+    async function sendEmail() {
+      const fromName  = document.getElementById('from-name').value.trim();
+      const fromEmail = document.getElementById('from-email').value.trim();
+      const email     = document.getElementById('to-email').value.trim();
+      const subject   = document.getElementById('var-subject').value.trim();
+      const preview   = document.getElementById('var-preview').value.trim();
+      const firstName = document.getElementById('var-first-name').value.trim();
+      const message   = document.getElementById('var-message').value.trim();
+      const ctaUrl    = document.getElementById('var-cta-url').value.trim();
+
+      if (!email) { showToast('Please enter a recipient email.', 'error'); return; }
+
+      setLoading(true);
+
+      const body = {
+        transactionalId: CONFIG.transactionalId,
+        email,
+        ...(fromName  && { fromName }),
+        ...(fromEmail && { from: fromEmail }),
+        dataVariables: {
+          subject,
+          preview,
+          firstName,
+          message,
+          ctaUrl,
+          ...(fromName && { fromName }),
+        },
+      };
+
+      try {
+        const res = await fetch('https://app.loops.so/api/v1/transactional', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${CONFIG.loopsApiKey}`,
+          },
+          body: JSON.stringify(body),
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          showToast('Email sent!', 'success');
+          clearForm();
+        } else {
+          const msg = data.message || data.error || 'Something went wrong.';
+          showToast(msg, 'error');
+          console.error('Loops error:', data);
+        }
+      } catch (err) {
+        showToast('Network error — check console.', 'error');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function setLoading(on) {
+      const btn     = document.getElementById('send-btn');
+      const label   = document.getElementById('btn-label');
+      const spinner = document.getElementById('btn-spinner');
+      btn.disabled         = on;
+      label.textContent    = on ? 'Sending…' : 'Send Email';
+      spinner.style.display = on ? 'block' : 'none';
+    }
+
+    function clearForm() {
+      ['from-name', 'from-email', 'to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-url']
+        .forEach(id => { document.getElementById(id).value = ''; });
+    }
+
+    // ── Toast helper ─────────────────────────────────────────────────────────
+    let toastTimer;
+    function showToast(text, type = '') {
+      const el = document.getElementById('toast');
+      el.textContent = text;
+      el.className   = `show ${type}`;
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { el.className = ''; }, 3500);
+    }
+  </script>
+</body>
+</html>
