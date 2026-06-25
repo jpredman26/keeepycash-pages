@@ -35,13 +35,13 @@ jobs:
 
           sed -i \
             -e "s|__PAGE_PASSWORD_HASH__|${HASH}|g" \
-            -e "s|__LOOPS_API_KEY__|${LOOPS_API_KEY}|g" \
             -e "s|__LOOPS_TEMPLATE_ID__|${LOOPS_TEMPLATE_ID}|g" \
+            -e "s|__LOOPS_PROXY_URL__|${LOOPS_PROXY_URL}|g" \
             send-email.html
         env:
-          PAGE_PASSWORD:    ${{ secrets.PAGE_PASSWORD }}
-          LOOPS_API_KEY:    ${{ secrets.LOOPS_API_KEY }}
+          PAGE_PASSWORD:     ${{ secrets.PAGE_PASSWORD }}
           LOOPS_TEMPLATE_ID: ${{ secrets.LOOPS_TEMPLATE_ID }}
+          LOOPS_PROXY_URL:   ${{ secrets.LOOPS_PROXY_URL }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

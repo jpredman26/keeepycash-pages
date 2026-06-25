@@ -352,8 +352,8 @@
     // passwordHash is SHA-256(PAGE_PASSWORD); the plaintext never leaves GitHub Secrets.
     const CONFIG = {
       passwordHash:    '__PAGE_PASSWORD_HASH__',
-      loopsApiKey:     '__LOOPS_API_KEY__',
       transactionalId: '__LOOPS_TEMPLATE_ID__',
+      proxyUrl:        '__LOOPS_PROXY_URL__',
     };
 
     // ── SHA-256 helper (Web Crypto API — available in all modern browsers) ───
@@ -421,12 +421,9 @@
       };
 
       try {
-        const res = await fetch('https://app.loops.so/api/v1/transactional', {
+        const res = await fetch(CONFIG.proxyUrl, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${CONFIG.loopsApiKey}`,
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
         });
 
