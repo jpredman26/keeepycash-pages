@@ -358,6 +358,12 @@
         </div>
 
         <div class="field">
+          <label for="var-cta-text">CTA label</label>
+          <input type="text" id="var-cta-text" placeholder="Get KeepyCash" />
+          <p class="field-hint">Available in template as <code>{{ctaText}}</code></p>
+        </div>
+
+        <div class="field">
           <label for="var-cta-url">CTA link (optional)</label>
           <input type="text" id="var-cta-url" placeholder="https://…" />
           <p class="field-hint">Available in template as <code>{{ctaUrl}}</code></p>
@@ -438,6 +444,7 @@
       const preview   = document.getElementById('var-preview').value.trim();
       const firstName = document.getElementById('var-first-name').value.trim();
       const message   = document.getElementById('var-message').value.trim();
+      const ctaText   = document.getElementById('var-cta-text').value.trim();
       const ctaUrl    = document.getElementById('var-cta-url').value.trim();
 
       if (!email) { showToast('Please enter a recipient email.', 'error'); return; }
@@ -454,6 +461,7 @@
           preview,
           firstName,
           message,
+          ctaText,
           ctaUrl,
           ...(fromName && { fromName }),
         },
@@ -494,7 +502,7 @@
     }
 
     function clearForm() {
-      ['to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-url']
+      ['to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-text', 'var-cta-url']
         .forEach(id => { document.getElementById(id).value = ''; });
     }
 
