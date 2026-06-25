@@ -464,7 +464,8 @@
           message,
           ctaText,
           ctaUrl,
-          ...(fromName && { fromName }),
+          ...(fromName  && { fromName }),
+          ...(replyTo   && { replyTo }),
         },
       };
 
