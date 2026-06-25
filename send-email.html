@@ -280,6 +280,19 @@
       </div>
 
       <div class="card">
+        <div class="section-label">Sender</div>
+
+        <div class="field">
+          <label for="from-name">From name</label>
+          <input type="text" id="from-name" placeholder="KeepyCash" />
+        </div>
+
+        <div class="field">
+          <label for="from-email">From email</label>
+          <input type="email" id="from-email" placeholder="hello@keepycash.com" />
+        </div>
+
+        <hr class="divider" />
         <div class="section-label">Recipient</div>
 
         <div class="field">
@@ -379,6 +392,8 @@
 
     // ── Send email via Loops ─────────────────────────────────────────────────
     async function sendEmail() {
+      const fromName  = document.getElementById('from-name').value.trim();
+      const fromEmail = document.getElementById('from-email').value.trim();
       const email     = document.getElementById('to-email').value.trim();
       const subject   = document.getElementById('var-subject').value.trim();
       const preview   = document.getElementById('var-preview').value.trim();
@@ -393,6 +408,8 @@
       const body = {
         transactionalId: CONFIG.transactionalId,
         email,
+        ...(fromName  && { fromName }),
+        ...(fromEmail && { from: fromEmail }),
         dataVariables: {
           subject,
           preview,
@@ -440,7 +457,7 @@
     }
 
     function clearForm() {
-      ['to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-url']
+      ['from-name', 'from-email', 'to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-url']
         .forEach(id => { document.getElementById(id).value = ''; });
     }
 
