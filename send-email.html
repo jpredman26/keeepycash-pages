@@ -241,6 +241,37 @@
     #toast.success { background: var(--success); }
     #toast.error   { background: var(--error); }
 
+    /* ── Sender pills ── */
+    .pill-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pill {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--mid);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, color 0.15s;
+    }
+
+    .pill:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    .pill.selected {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
     /* ── Spinner ── */
     .spinner {
       width: 18px;
@@ -283,13 +314,11 @@
         <div class="section-label">Sender</div>
 
         <div class="field">
-          <label for="from-name">From name</label>
-          <input type="text" id="from-name" placeholder="KeepyCash" />
-        </div>
-
-        <div class="field">
-          <label for="from-email">From email</label>
-          <input type="email" id="from-email" placeholder="hello@keepycash.com" />
+          <div class="pill-group">
+            <button type="button" class="pill" data-name="Support at KeepyCash" data-email="support@keepycash.com" onclick="selectSender(this)">Support</button>
+            <button type="button" class="pill" data-name="James at KeepyCash" data-email="james@keepycash.com" onclick="selectSender(this)">James</button>
+            <button type="button" class="pill" data-name="Carl at KeepyCash" data-email="carl@keepycash.com" onclick="selectSender(this)">Carl</button>
+          </div>
         </div>
 
         <hr class="divider" />
@@ -390,11 +419,21 @@
       document.getElementById('app').style.display = 'block';
     }
 
+    // ── Sender pill ─────────────────────────────────────────────────────────
+    let selectedSender = { name: '', email: '' };
+
+    function selectSender(el) {
+      document.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedSender = { name: el.dataset.name, email: el.dataset.email };
+    }
+
     // ── Send email via Loops ─────────────────────────────────────────────────
     async function sendEmail() {
-      const fromName  = document.getElementById('from-name').value.trim();
-      const fromEmail = document.getElementById('from-email').value.trim();
-      const email     = document.getElementById('to-email').value.trim();
+      const { name: fromName, email: fromEmail } = selectedSender;
+      const email = document.getElementById('to-email').value.trim();
+
+      if (!fromName) { showToast('Please select a sender.', 'error'); return; }
       const subject   = document.getElementById('var-subject').value.trim();
       const preview   = document.getElementById('var-preview').value.trim();
       const firstName = document.getElementById('var-first-name').value.trim();
@@ -455,7 +494,7 @@
     }
 
     function clearForm() {
-      ['from-name', 'from-email', 'to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-url']
+      ['to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-url']
         .forEach(id => { document.getElementById(id).value = ''; });
     }
 
