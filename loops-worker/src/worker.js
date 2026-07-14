@@ -43,6 +43,8 @@ export default {
 
     const data = await loopsRes.json();
 
+    console.log('Loops response:', loopsRes.status, JSON.stringify(data));
+
     return new Response(JSON.stringify(data), {
       status: loopsRes.status,
       headers: { 'Content-Type': 'application/json', ...corsHeaders },
