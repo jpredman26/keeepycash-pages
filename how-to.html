@@ -224,7 +224,7 @@
     async function loadHowtos() {
       const root = document.getElementById('howto-root')
       const params = new URLSearchParams(window.location.search)
-      const slug = params.get('slug')
+      const slug = params.get('page')
 
       if (!slug) {
         root.innerHTML = `<div class="howto-state">Trouble loading this help article. Please check the link and try again.</div>`
