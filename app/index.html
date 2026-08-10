@@ -88,7 +88,7 @@
     // `screen` selects the in-app destination (custom-scheme "host");
     // every other query param, plus any hash fragment, is forwarded as-is.
     var params = new URLSearchParams(window.location.search);
-    var screen = params.get('screen') || 'open';
+    var screen = params.get('screen') || 'signin';
     params.delete('screen');
 
     var query = params.toString();
