@@ -11,24 +11,24 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue: #007AFF;
-      --blue-dark: #005FCC;
-      --blue-pale: #E8F4FF;
-      --surface: #F5F5F7;
-      --white: #FFFFFF;
-      --dark: #1A1A2E;
-      --mid: #555555;
-      --soft: #888888;
-      --border: #E0E0E0;
+      --background: #FFFFFF;
+      --surface: #F5F5F5;
+      --text: #333333;
+      --text-secondary: #666666;
+      --text-tertiary: #999999;
+      --primary: #007AFF;
+      --primary-variant: #0051D5;
       --success: #27AE60;
-      --error: #E74C3C;
+      --danger: #FF3B30;
+      --border: #E0E0E0;
+      --primary-bg: #E7F0FF;
     }
 
     html, body {
       min-height: 100vh;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--surface);
-      color: var(--dark);
+      color: var(--text);
     }
 
     /* ── Password Gate ── */
@@ -41,7 +41,7 @@
     }
 
     #gate-card {
-      background: var(--white);
+      background: var(--background);
       border-radius: 20px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
       padding: 48px 40px;
@@ -62,14 +62,14 @@
     }
 
     #gate-card p {
-      color: var(--soft);
+      color: var(--text-tertiary);
       font-size: 14px;
       margin-bottom: 28px;
     }
 
     #gate-error {
-      background: #FEF0EF;
-      color: var(--error);
+      background: #FFE7E7;
+      color: var(--danger);
       border-radius: 10px;
       padding: 10px 14px;
       font-size: 13px;
@@ -105,12 +105,12 @@
     .app-header .logo {
       font-size: 13px;
       font-weight: 600;
-      color: var(--soft);
+      color: var(--text-tertiary);
       letter-spacing: 0.5px;
     }
 
     .card {
-      background: var(--white);
+      background: var(--background);
       border-radius: 20px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.06);
       padding: 32px;
@@ -125,7 +125,7 @@
       display: block;
       font-size: 13px;
       font-weight: 600;
-      color: var(--mid);
+      color: var(--text-secondary);
       margin-bottom: 6px;
       letter-spacing: 0.2px;
     }
@@ -141,8 +141,8 @@
       border-radius: 10px;
       font-family: inherit;
       font-size: 15px;
-      color: var(--dark);
-      background: var(--white);
+      color: var(--text);
+      background: var(--background);
       transition: border-color 0.15s;
       outline: none;
     }
@@ -150,7 +150,7 @@
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: var(--blue);
+      border-color: var(--primary);
     }
 
     textarea {
@@ -160,7 +160,7 @@
 
     .field-hint {
       font-size: 12px;
-      color: var(--soft);
+      color: var(--text-tertiary);
       margin-top: 4px;
     }
 
@@ -173,7 +173,7 @@
     .section-label {
       font-size: 11px;
       font-weight: 700;
-      color: var(--soft);
+      color: var(--text-tertiary);
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 16px;
@@ -198,21 +198,21 @@
     .btn:active { transform: scale(0.98); }
 
     .btn-primary {
-      background: var(--blue);
+      background: var(--primary);
       color: #fff;
       width: 100%;
     }
 
-    .btn-primary:hover { background: var(--blue-dark); }
+    .btn-primary:hover { background: var(--primary-variant); }
     .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
 
     .btn-gate {
-      background: var(--dark);
+      background: var(--text);
       color: #fff;
       width: 100%;
     }
 
-    .btn-gate:hover { background: #333; }
+    .btn-gate:hover { background: var(--text-secondary); }
 
     /* ── Toast ── */
     #toast {
@@ -220,7 +220,7 @@
       bottom: 28px;
       left: 50%;
       transform: translateX(-50%) translateY(80px);
-      background: var(--dark);
+      background: var(--text);
       color: #fff;
       padding: 14px 22px;
       border-radius: 12px;
@@ -239,7 +239,7 @@
     }
 
     #toast.success { background: var(--success); }
-    #toast.error   { background: var(--error); }
+    #toast.error   { background: var(--danger); }
 
     /* ── Sender pills ── */
     .pill-group {
@@ -252,23 +252,23 @@
       padding: 10px 16px;
       border-radius: 999px;
       border: 1.5px solid var(--border);
-      background: var(--white);
+      background: var(--background);
       font-family: inherit;
       font-size: 14px;
       font-weight: 500;
-      color: var(--mid);
+      color: var(--text-secondary);
       cursor: pointer;
       transition: border-color 0.15s, background 0.15s, color 0.15s;
     }
 
     .pill:hover {
-      border-color: var(--blue);
-      color: var(--blue);
+      border-color: var(--primary);
+      color: var(--primary);
     }
 
     .pill.selected {
-      background: var(--blue);
-      border-color: var(--blue);
+      background: var(--primary);
+      border-color: var(--primary);
       color: #fff;
     }
 

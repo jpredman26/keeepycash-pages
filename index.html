@@ -21,24 +21,29 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue: #007AFF;
-      --blue-light: #4DA3FF;
-      --blue-pale: #E8F4FF;
-      --surface: #E8F5E9;
-      --cream: #FAFAFA;
-      --dark: #0F2027;
-      --dark-surface: #203A43;
-      --mid: #555555;
-      --soft: #888888;
-      --accent: #27AE60;
-      --accent-light: #34C759;
+      --background: #FFFFFF;
+      --surface: #F5F5F5;
+      --text: #333333;
+      --text-secondary: #666666;
+      --text-tertiary: #999999;
+      --primary: #007AFF;
+      --primary-variant: #0051D5;
+      --secondary: #5AC8FA;
+      --success: #27AE60;
+      --danger: #FF3B30;
+      --warning: #FF9500;
+      --border: #E0E0E0;
+      --divider: #F0F0F0;
+      --primary-bg: #E7F0FF;
+      --secondary-bg: #F0F0F0;
+      --danger-bg: #FFE7E7;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--cream);
-      color: #333333;
+      background: var(--background);
+      color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-weight: 400;
       overflow-x: hidden;
@@ -62,26 +67,26 @@
       font-family: 'Inter', sans-serif;
       font-size: 20px;
       font-weight: 700;
-      color: #333333;
+      color: var(--text);
       letter-spacing: -0.5px;
     }
 
     .logo span {
-      color: var(--blue);
+      color: var(--primary);
     }
 
     nav a {
       font-size: 14px;
       font-weight: 500;
-      color: var(--mid);
+      color: var(--text-secondary);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    nav a:hover { color: var(--blue); }
+    nav a:hover { color: var(--primary); }
 
     .nav-cta {
-      background: var(--blue);
+      background: var(--primary);
       color: white !important;
       padding: 10px 22px;
       border-radius: 100px;
@@ -89,7 +94,7 @@
     }
 
     .nav-cta:hover {
-      background: var(--blue-light) !important;
+      background: var(--primary-variant) !important;
       transform: translateY(-1px);
     }
 
@@ -108,7 +113,7 @@
       position: absolute;
       top: -200px; right: -200px;
       width: 700px; height: 700px;
-      background: radial-gradient(circle, var(--blue-pale) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--primary-bg) 0%, transparent 70%);
       pointer-events: none;
       animation: float 8s ease-in-out infinite;
     }
@@ -131,8 +136,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--blue-pale);
-      color: var(--blue);
+      background: var(--primary-bg);
+      color: var(--primary);
       font-size: 13px;
       font-weight: 600;
       padding: 6px 16px;
@@ -159,7 +164,7 @@
 
     .hero h1 em {
       font-style: italic;
-      color: var(--blue);
+      color: var(--primary);
     }
 
     .hero h1 .underline {
@@ -172,7 +177,7 @@
       position: absolute;
       bottom: 4px; left: 0; right: 0;
       height: 4px;
-      background: var(--accent);
+      background: var(--success);
       border-radius: 2px;
       animation: expandWidth 1s 0.6s ease both;
     }
@@ -185,7 +190,7 @@
     .hero-sub {
       font-size: 20px;
       font-weight: 300;
-      color: var(--mid);
+      color: var(--text-secondary);
       max-width: 480px;
       line-height: 1.6;
       margin-top: 28px;
@@ -213,13 +218,13 @@
     }
 
     .hero-form input:focus {
-      border-color: var(--blue);
+      border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(0,122,255,0.12);
     }
 
     .hero-form button {
       padding: 16px 28px;
-      background: var(--blue);
+      background: var(--primary);
       color: white;
       border: none;
       border-radius: 12px;
@@ -232,7 +237,7 @@
     }
 
     .hero-form button:hover {
-      background: var(--blue-light);
+      background: var(--primary-variant);
       transform: translateY(-2px);
     }
 
@@ -240,7 +245,7 @@
 
     .hero-note {
       font-size: 13px;
-      color: var(--soft);
+      color: var(--text-tertiary);
       margin-top: 12px;
       animation: fadeUp 0.8s 0.4s ease both;
     }
@@ -256,13 +261,13 @@
       font-family: 'Inter', sans-serif;
       font-size: 36px;
       font-weight: 800;
-      color: var(--blue);
+      color: var(--primary);
       line-height: 1;
       letter-spacing: -1px;
     }
     .stat-label {
       font-size: 13px;
-      color: var(--soft);
+      color: var(--text-tertiary);
       margin-top: 4px;
     }
 
@@ -288,7 +293,7 @@
       font-weight: 600;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--blue);
+      color: var(--primary);
       margin-bottom: 16px;
     }
 
@@ -323,7 +328,7 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 3px;
-      background: linear-gradient(90deg, var(--blue), var(--blue-light));
+      background: linear-gradient(90deg, var(--primary), var(--primary-variant));
       transform: scaleX(0);
       transition: transform 0.3s;
       transform-origin: left;
@@ -351,18 +356,18 @@
 
     .feature-card p {
       font-size: 15px;
-      color: var(--mid);
+      color: var(--text-secondary);
       line-height: 1.65;
     }
 
     /* PRICING */
     .pricing {
       padding: 100px 48px;
-      background: var(--dark);
+      background: var(--text);
       color: white;
     }
 
-    .pricing .section-label { color: var(--blue-light); }
+    .pricing .section-label { color: var(--primary-variant); }
     .pricing .section-title { color: white; }
 
     .pricing-toggle {
@@ -382,7 +387,7 @@
     .toggle {
       position: relative;
       width: 52px; height: 28px;
-      background: var(--blue);
+      background: var(--primary);
       border-radius: 100px;
       cursor: pointer;
       border: none;
@@ -402,7 +407,7 @@
     .toggle.monthly::after { transform: translateX(24px); }
 
     .save-badge {
-      background: var(--accent);
+      background: var(--success);
       color: white;
       font-size: 11px;
       font-weight: 600;
@@ -427,8 +432,8 @@
     }
 
     .pricing-card.featured {
-      background: var(--blue);
-      border-color: var(--blue);
+      background: var(--primary);
+      border-color: var(--primary);
     }
 
     .pricing-card.featured .price-period,
@@ -482,7 +487,7 @@
 
     .feature-list li::before {
       content: '✓';
-      color: var(--blue-light);
+      color: var(--primary-variant);
       font-weight: 700;
       flex-shrink: 0;
     }
@@ -511,14 +516,14 @@
 
     .pricing-card.featured .pricing-btn {
       background: white;
-      color: var(--blue);
+      color: var(--primary);
       border-color: white;
     }
 
     .pricing-card.featured .pricing-btn:hover {
-      background: var(--blue-pale);
-      border-color: var(--blue-pale);
-      color: var(--blue);
+      background: var(--primary-bg);
+      border-color: var(--primary-bg);
+      color: var(--primary);
     }
 
     /* HOW IT WORKS */
@@ -551,7 +556,7 @@
       font-family: 'Inter', sans-serif;
       font-size: 48px;
       font-weight: 900;
-      color: var(--blue-pale);
+      color: var(--primary-bg);
       line-height: 1;
       flex-shrink: 0;
       width: 48px;
@@ -567,12 +572,12 @@
 
     .step-content p {
       font-size: 15px;
-      color: var(--mid);
+      color: var(--text-secondary);
       line-height: 1.65;
     }
 
     .how-visual {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark-surface) 100%);
+      background: linear-gradient(135deg, var(--text) 0%, var(--primary-variant) 100%);
       border-radius: 32px;
       padding: 48px;
       aspect-ratio: 1;
@@ -626,17 +631,17 @@
     .budget-bar-fill {
       height: 100%;
       border-radius: 3px;
-      background: var(--blue-light);
+      background: var(--primary-variant);
     }
 
     .budget-bar-fill.warning {
-      background: #FF9500;
+      background: var(--warning);
     }
 
     /* TESTIMONIALS */
     .testimonials {
       padding: 100px 48px;
-      background: var(--blue-pale);
+      background: var(--primary-bg);
     }
 
     .testimonials-grid {
@@ -653,7 +658,7 @@
     }
 
     .testimonial-stars {
-      color: var(--blue);
+      color: var(--primary);
       font-size: 16px;
       margin-bottom: 16px;
       letter-spacing: 2px;
@@ -662,7 +667,7 @@
     .testimonial-text {
       font-size: 15px;
       line-height: 1.7;
-      color: #333;
+      color: var(--text);
       margin-bottom: 24px;
       font-style: italic;
     }
@@ -670,7 +675,7 @@
     .testimonial-author {
       font-size: 13px;
       font-weight: 500;
-      color: var(--mid);
+      color: var(--text-secondary);
     }
 
     /* CTA */
@@ -686,7 +691,7 @@
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       width: 600px; height: 600px;
-      background: radial-gradient(circle, var(--blue-pale) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--primary-bg) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -700,11 +705,11 @@
       line-height: 1.05;
     }
 
-    .cta h2 em { font-style: italic; color: var(--blue); }
+    .cta h2 em { font-style: italic; color: var(--primary); }
 
     .cta p {
       font-size: 18px;
-      color: var(--mid);
+      color: var(--text-secondary);
       margin-bottom: 40px;
     }
 
@@ -729,13 +734,13 @@
     }
 
     .cta-form input:focus {
-      border-color: var(--blue);
+      border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(0,122,255,0.12);
     }
 
     .cta-form button {
       padding: 16px 28px;
-      background: var(--blue);
+      background: var(--primary);
       color: white;
       border: none;
       border-radius: 12px;
@@ -748,7 +753,7 @@
     }
 
     .cta-form button:hover {
-      background: var(--blue-light);
+      background: var(--primary-variant);
       transform: translateY(-2px);
     }
 
@@ -770,16 +775,16 @@
 
     .footer-links a {
       font-size: 13px;
-      color: var(--soft);
+      color: var(--text-tertiary);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .footer-links a:hover { color: var(--blue); }
+    .footer-links a:hover { color: var(--primary); }
 
     .footer-copy {
       font-size: 13px;
-      color: var(--soft);
+      color: var(--text-tertiary);
     }
 
     /* SUCCESS STATE */
@@ -787,8 +792,8 @@
       display: none;
       align-items: center;
       gap: 10px;
-      background: var(--blue-pale);
-      color: var(--blue);
+      background: var(--primary-bg);
+      color: var(--primary);
       padding: 14px 20px;
       border-radius: 12px;
       font-size: 15px;
