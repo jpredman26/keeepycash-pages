@@ -301,6 +301,13 @@
       .fade { opacity: 1; transform: none; transition: none; }
       html { scroll-behavior: auto; }
     }
+    .cur-note {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      margin-top: 8px;
+    }
+    .price-now .cur-note { display: inline; margin: 0 0 0 6px; font-size: 14px; }
   </style>
 </head>
 <body>
@@ -356,7 +363,7 @@
 
       <div class="quote">
         <p>"I've tried every budgeting app out there. KeepyCash is the first one that actually made me stick to my budget for more than a week."</p>
-        <span class="who">James T., beta tester</span>
+        <span class="who">Stevie T.</span>
       </div>
     </div>
   </section>
@@ -423,16 +430,28 @@
     <div class="wrap fade">
       <h2>People are already keeping more.</h2>
       <div class="quote">
-        <p>"Finally a ZBB app that isn't trying to be a bank. Clean, fast, and everything I need without the price tag of the big names."</p>
-        <span class="who">Sarah M., beta tester</span>
+        <p>"Never thought I’d say that about a finance app. KeepyCash makes budgeting feel rewarding instead of painful."</p>
+        <span class="who">Nicole M.</span>
+      </div>
+      <div class="quote">
+        <p>"Downloaded as a referral from a friend and really does help. Simple tracking method no extra jargon just a simple way to keep track of your finances and stop you from spending all those little costs you don’t realise you have! Highly recommend"</p>
+        <span class="who">Luke Z.</span>
+      </div>
+      <div class="quote">
+        <p>"Exactly what a budgeting app should be. Simple, powerful, and it finally got me on top of my money. Love it!"</p>
+        <span class="who">Alex G.</span>
+      </div>
+      <div class="quote">
+        <p>"Finally an app that isn't trying to be a bank. Clean, fast, and everything I need without the price tag of the big names."</p>
+        <span class="who">Sarah M.</span>
       </div>
       <div class="quote">
         <p>"The cloud sync is seamless. My partner and I can see the budget from our own phones and it's always up to date. Game changer."</p>
-        <span class="who">Priya K., beta tester</span>
+        <span class="who">Priya K.</span>
       </div>
       <div class="quote">
         <p>"I've tried every budgeting app out there. KeepyCash is the first one that actually made me stick to my budget for more than a week."</p>
-        <span class="who">James T., beta tester</span>
+        <span class="who">Stevie T.</span>
       </div>
 
       <div class="cta-block">
@@ -501,6 +520,50 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade').forEach(function (el) { obs.observe(el); });
+  </script>
+
+  <script>
+    /* RevenueCat's checkout charges in the visitor's local currency but doesn't
+       label which dollars. If the locale tells us it's AU or CA, say so here. */
+    (function () {
+      var MAP = {
+        AU: { code: 'AUD', flag: '🇦🇺' },
+        CA: { code: 'CAD', flag: '🇨🇦' },
+        NZ: { code: 'NZD', flag: '🇳🇿' }
+      };
+      function region() {
+        var langs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < langs.length; i++) {
+          var m = /[-_]([A-Za-z]{2})$/.exec(langs[i] || '');
+          if (m && MAP[m[1].toUpperCase()]) return m[1].toUpperCase();
+        }
+        try {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+          if (/^Australia\//.test(tz)) return 'AU';
+          if (/^Pacific\/Auckland/.test(tz)) return 'NZ';
+          if (/^America\/(Toronto|Vancouver|Edmonton|Winnipeg|Halifax|St_Johns|Regina|Moncton|Montreal)$/.test(tz)) return 'CA';
+        } catch (e) {}
+        return '';
+      }
+      var r = region();
+      if (!r) return;
+      var info = MAP[r];
+      var msg = 'Billed in ' + info.code + ' ' + info.flag;
+
+      document.querySelectorAll('.btn-sub').forEach(function (el) {
+        var n = document.createElement('div');
+        n.className = 'cur-note';
+        n.textContent = msg;
+        el.parentNode.insertBefore(n, el.nextSibling);
+      });
+      var pn = document.querySelector('.price-now');
+      if (pn) {
+        var s = document.createElement('span');
+        s.className = 'cur-note';
+        s.textContent = info.code + ' ' + info.flag;
+        pn.appendChild(s);
+      }
+    })();
   </script>
 
 </body>
