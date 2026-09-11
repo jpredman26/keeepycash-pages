@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "4M2JW24MD2.com.jpredman27.keepycash",
-        "paths": ["/invite/*"]
+        "paths": ["/invite/*", "/c/*"]
       }
     ]
   }
