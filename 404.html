@@ -29,13 +29,23 @@
   gtag('config', 'G-VT8YBKWKXT');
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
 <style>
+  :root {
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-body);
     background: #FFFFFF;
-    color: #333333;
+    color: #15201A;
   }
   body {
     display: flex;
@@ -50,7 +60,7 @@
     font-size: 22px;
     font-weight: 600;
     letter-spacing: -0.02em;
-    color: #007AFF;
+    color: #1E5A3E;
     margin-bottom: 40px;
   }
   .headline {
@@ -64,13 +74,13 @@
   .sub {
     font-size: 16px;
     line-height: 1.6;
-    color: #666666;
+    color: #5D6A62;
     max-width: 320px;
     margin-bottom: 32px;
   }
   .code-box {
-    background: #F5F5F5;
-    border: 1.5px solid #E0E0E0;
+    background: #F1F3EE;
+    border: 1.5px solid #E2E6DE;
     border-radius: 16px;
     padding: 20px 28px;
     margin-bottom: 12px;
@@ -79,7 +89,7 @@
   }
   .code-label {
     font-size: 12px;
-    color: #999999;
+    color: #8C978F;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 8px;
@@ -88,7 +98,7 @@
     font-size: 36px;
     font-weight: 700;
     letter-spacing: 0.1em;
-    color: #333333;
+    color: #15201A;
   }
   .copy-btn {
     display: inline-flex;
@@ -97,9 +107,9 @@
     margin-bottom: 32px;
     padding: 10px 18px;
     border-radius: 10px;
-    border: 1.5px solid #E0E0E0;
+    border: 1.5px solid #E2E6DE;
     background: #FFFFFF;
-    color: #333333;
+    color: #15201A;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -137,33 +147,37 @@
   }
   .btn:active { transform: scale(0.97); }
   .btn-apple {
-    background: #333333;
+    background: #15201A;
     color: #FFFFFF;
   }
   .btn-android {
-    background: #F0F0F0;
-    color: #333333;
-    border: 1.5px solid #E0E0E0;
+    background: #ECEFE8;
+    color: #15201A;
+    border: 1.5px solid #E2E6DE;
   }
   .btn-open {
     background: #FFFFFF;
-    color: #007AFF;
-    border: 1.5px solid #007AFF;
+    color: #1E5A3E;
+    border: 1.5px solid #1E5A3E;
   }
   .btn-home {
-    background: #F0F0F0;
-    color: #333333;
-    border: 1.5px solid #E0E0E0;
+    background: #ECEFE8;
+    color: #15201A;
+    border: 1.5px solid #E2E6DE;
   }
   .btn svg { flex-shrink: 0; }
   footer {
     position: fixed;
     bottom: 24px;
     font-size: 12px;
-    color: #999999;
+    color: #8C978F;
     letter-spacing: 0.01em;
   }
-</style>
+
+    /* Figtree display face */
+    .wordmark, .headline, .code { font-family: var(--font-display); }
+    .code { font-variant-numeric: tabular-nums; }
+  </style>
 </head>
 <body>
 

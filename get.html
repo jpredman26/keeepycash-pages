@@ -16,7 +16,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
 
   <!--
     ============================================================
@@ -33,21 +33,25 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --background: #FFFFFF;
-      --surface: #F5F7FA;
-      --text: #1A1A1A;
-      --text-secondary: #555555;
-      --text-tertiary: #8A8A8A;
-      --primary: #007AFF;
-      --primary-variant: #0051D5;
-      --secondary: #5AC8FA;
-      --success: #27AE60;
-      --danger: #FF3B30;
-      --warning: #FF9500;
-      --border: #E4E7EC;
-      --primary-bg: #E7F0FF;
-      --danger-bg: #FFECEB;
-      --success-bg: #E7F7EE;
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --background: #FBFBF8;
+      --surface: #F1F3EE;
+      --text: #15201A;
+      --text-secondary: #5D6A62;
+      --text-tertiary: #8C978F;
+      --primary: #1E5A3E;
+      --primary-variant: #16452F;
+      --secondary: #4E8A68;
+      --success: #237A4B;
+      --danger: #B0442C;
+      --warning: #B7791F;
+      --border: #E2E6DE;
+      --primary-bg: #E6F1DF;
+      --danger-bg: #F8E6E0;
+      --success-bg: #E6F1DF;
     }
 
     html { scroll-behavior: smooth; }
@@ -55,7 +59,7 @@
     body {
       background: var(--background);
       color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-body);
       font-weight: 400;
       line-height: 1.65;
       overflow-x: hidden;
@@ -148,14 +152,14 @@
       text-decoration: none;
       padding: 18px 40px;
       border-radius: 100px;
-      box-shadow: 0 10px 28px rgba(0,122,255,0.32);
+      box-shadow: 0 10px 28px rgba(30,90,62,0.32);
       transition: background .2s, transform .15s, box-shadow .2s;
       letter-spacing: -0.2px;
     }
     .btn:hover {
       background: var(--primary-variant);
       transform: translateY(-2px);
-      box-shadow: 0 14px 34px rgba(0,122,255,0.4);
+      box-shadow: 0 14px 34px rgba(30,90,62,0.4);
     }
     .btn-sub { font-size: 14px; color: var(--text-tertiary); margin-top: 12px; }
 
@@ -231,7 +235,7 @@
       gap: 16px;
       align-items: flex-start;
       background: var(--success-bg);
-      border: 1px solid #BEE7CF;
+      border: 1px solid #A3C4AE;
       border-radius: 16px;
       padding: 22px;
       margin-top: 8px;
@@ -308,6 +312,10 @@
       margin-top: 8px;
     }
     .price-now .cur-note { display: inline; margin: 0 0 0 6px; font-size: 14px; }
+      .price-now, .price-old { font-variant-numeric: tabular-nums; }
+  
+    /* Figtree display face */
+    .logo, h1, h2, h3, .price-now { font-family: var(--font-display); }
   </style>
 </head>
 <body>

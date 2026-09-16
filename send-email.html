@@ -6,27 +6,31 @@
   <title>Send Email — KeepyCash</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --background: #FFFFFF;
-      --surface: #F5F5F5;
-      --text: #333333;
-      --text-secondary: #666666;
-      --text-tertiary: #999999;
-      --primary: #007AFF;
-      --primary-variant: #0051D5;
-      --success: #27AE60;
-      --danger: #FF3B30;
-      --border: #E0E0E0;
-      --primary-bg: #E7F0FF;
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --background: #FBFBF8;
+      --surface: #F1F3EE;
+      --text: #15201A;
+      --text-secondary: #5D6A62;
+      --text-tertiary: #8C978F;
+      --primary: #1E5A3E;
+      --primary-variant: #16452F;
+      --success: #237A4B;
+      --danger: #B0442C;
+      --border: #E2E6DE;
+      --primary-bg: #E6F1DF;
     }
 
     html, body {
       min-height: 100vh;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-body);
       background: var(--surface);
       color: var(--text);
     }
@@ -68,7 +72,7 @@
     }
 
     #gate-error {
-      background: #FFE7E7;
+      background: #F8E6E0;
       color: var(--danger);
       border-radius: 10px;
       padding: 10px 14px;
@@ -284,6 +288,9 @@
     }
 
     @keyframes spin { to { transform: rotate(360deg); } }
+  
+    /* Figtree display face */
+    .logo, h1 { font-family: var(--font-display); }
   </style>
 </head>
 <body>

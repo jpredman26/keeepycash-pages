@@ -4,13 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KeepyCash - Support</title>
-  <style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: var(--font-body);
       background: #FFFFFF;
-      color: #333333;
+      color: #15201A;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -19,7 +29,7 @@
     }
 
     .card {
-      background: #F5F5F5;
+      background: #F1F3EE;
       border-radius: 24px;
       padding: 40px 32px;
       max-width: 400px;
@@ -33,13 +43,13 @@
     h1 {
       font-size: 26px;
       font-weight: 800;
-      color: #333333;
+      color: #15201A;
       margin-bottom: 8px;
     }
 
     .description {
       font-size: 15px;
-      color: #666666;
+      color: #5D6A62;
       line-height: 1.6;
       margin-bottom: 28px;
     }
@@ -50,7 +60,7 @@
       justify-content: center;
       gap: 10px;
       padding: 16px 32px;
-      background: #007AFF;
+      background: #1E5A3E;
       color: #fff;
       border: none;
       border-radius: 14px;
@@ -68,12 +78,12 @@
 
     .email-text {
       font-size: 14px;
-      color: #666666;
+      color: #5D6A62;
       margin-bottom: 24px;
     }
 
     .email-link {
-      color: #007AFF;
+      color: #1E5A3E;
       text-decoration: none;
       font-weight: 600;
       transition: opacity 0.2s;
@@ -86,14 +96,14 @@
     .faq-section {
       margin-top: 28px;
       padding-top: 28px;
-      border-top: 1px solid #E0E0E0;
+      border-top: 1px solid #E2E6DE;
       text-align: left;
     }
 
     .faq-title {
       font-size: 14px;
       font-weight: 700;
-      color: #007AFF;
+      color: #1E5A3E;
       margin-bottom: 16px;
       text-align: center;
     }
@@ -105,15 +115,18 @@
     .faq-question {
       font-size: 13px;
       font-weight: 600;
-      color: #333333;
+      color: #15201A;
       margin-bottom: 6px;
     }
 
     .faq-answer {
       font-size: 12px;
-      color: #666666;
+      color: #5D6A62;
       line-height: 1.5;
     }
+  
+    /* Figtree display face */
+    .logo, h1, .faq-title, .faq-question { font-family: var(--font-display); }
   </style>
 </head>
 <body>

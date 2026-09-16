@@ -5,11 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service &mdash; KeepyCash</title>
   <meta name="robots" content="all" />
-  <style>
-    :root { --primary: #007AFF; --text: #1A1A1A; --muted: #555; --border: #E4E7EC; }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+    :root { --primary: #1E5A3E; --text: #15201A; --muted: #5D6A62; --border: #E2E6DE; }
     * { box-sizing: border-box; }
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: var(--font-body);
       color: var(--text);
       line-height: 1.65;
       max-width: 760px;
@@ -24,10 +34,13 @@
     ul { padding-left: 22px; }
     li { margin-bottom: 6px; }
     a { color: var(--primary); }
-    .updated { font-size: 14px; color: #8A8A8A; }
+    .updated { font-size: 14px; color: #8C978F; }
     hr { border: none; border-top: 1px solid var(--border); margin: 40px 0 20px; }
-    footer { font-size: 13px; color: #8A8A8A; }
-    footer a { color: #8A8A8A; }
+    footer { font-size: 13px; color: #8C978F; }
+    footer a { color: #8C978F; }
+  
+    /* Figtree display face */
+    .logo, h1, h2 { font-family: var(--font-display); }
   </style>
   <!--
     DEFAULT TEMPLATE - REVIEW BEFORE RELYING ON THIS.

@@ -4,13 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KeepyCash — Opening app…</title>
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body {
             height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: var(--font-body);
             background: #FFFFFF;
-            color: #333333;
+            color: #15201A;
         }
         body {
             display: flex;
@@ -25,12 +35,12 @@
             font-size: 22px;
             font-weight: 600;
             letter-spacing: -0.02em;
-            color: #007AFF;
+            color: #1E5A3E;
             margin-bottom: 24px;
         }
         p.status {
             font-size: 15px;
-            color: #666666;
+            color: #5D6A62;
             margin-bottom: 32px;
         }
         .download-prompt {
@@ -44,7 +54,7 @@
         .download-prompt.visible { display: flex; }
         .download-prompt .sub {
             font-size: 14px;
-            color: #666666;
+            color: #5D6A62;
             margin-bottom: 4px;
         }
         .btn {
@@ -62,12 +72,15 @@
             transition: opacity 0.15s, transform 0.1s;
             border: none;
             cursor: pointer;
-            background: #007AFF;
+            background: #1E5A3E;
             color: #FFFFFF;
         }
         .btn:hover { opacity: 0.9; }
         .btn:active { transform: scale(0.97); }
-    </style>
+    
+    /* Figtree display face */
+    .wordmark { font-family: var(--font-display); }
+  </style>
 </head>
 <body>
 

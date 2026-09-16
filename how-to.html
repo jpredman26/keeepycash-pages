@@ -4,13 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KeepyCash - How To</title>
-  <style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: var(--font-body);
       background: #FFFFFF;
-      color: #333333;
+      color: #15201A;
       min-height: 100vh;
       padding: 64px 24px;
     }
@@ -30,18 +40,18 @@
     h1 {
       font-size: 28px;
       font-weight: 800;
-      color: #333333;
+      color: #15201A;
       margin-bottom: 8px;
     }
 
     .page-sub {
       font-size: 15px;
-      color: #666666;
+      color: #5D6A62;
     }
 
     /* ---- Reusable "how-to" block: phone-framed gif + steps ---- */
     .howto {
-      background: #F5F5F5;
+      background: #F1F3EE;
       border-radius: 24px;
       padding: 40px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.1);
@@ -99,7 +109,7 @@
     .howto-eyebrow {
       font-size: 13px;
       font-weight: 700;
-      color: #007AFF;
+      color: #1E5A3E;
       text-transform: uppercase;
       letter-spacing: 0.04em;
       margin-bottom: 8px;
@@ -113,7 +123,7 @@
 
     .howto-desc {
       font-size: 14px;
-      color: #666666;
+      color: #5D6A62;
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -129,7 +139,7 @@
       display: flex;
       gap: 12px;
       font-size: 14px;
-      color: #333333;
+      color: #15201A;
       line-height: 1.5;
     }
 
@@ -138,7 +148,7 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: #007AFF;
+      background: #1E5A3E;
       color: #fff;
       font-size: 12px;
       font-weight: 700;
@@ -155,12 +165,12 @@
       height: 8px;
       margin-top: 7px;
       border-radius: 50%;
-      background: #007AFF;
+      background: #1E5A3E;
     }
 
     .howto-state {
       text-align: center;
-      color: #666666;
+      color: #5D6A62;
       font-size: 14px;
       padding: 40px 0;
     }
@@ -173,6 +183,9 @@
       .howto-content { text-align: center; }
       .howto-steps li { text-align: left; }
     }
+  
+    /* Figtree display face */
+    .logo, h1, .howto-title { font-family: var(--font-display); }
   </style>
 </head>
 <body>

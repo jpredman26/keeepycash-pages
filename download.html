@@ -13,13 +13,23 @@
 
   gtag('config', 'G-VT8YBKWKXT');
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
 <style>
+  :root {
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-body);
     background: #FFFFFF;
-    color: #333333;
+    color: #15201A;
   }
   body {
     display: flex;
@@ -34,7 +44,7 @@
     font-size: 22px;
     font-weight: 600;
     letter-spacing: -0.02em;
-    color: #007AFF;
+    color: #1E5A3E;
     margin-bottom: 48px;
   }
   .headline {
@@ -48,7 +58,7 @@
   .sub {
     font-size: 17px;
     line-height: 1.6;
-    color: #666666;
+    color: #5D6A62;
     max-width: 300px;
     margin-bottom: 52px;
   }
@@ -78,31 +88,34 @@
   }
   .btn:active { transform: scale(0.97); }
   .btn-apple {
-    background: #333333;
+    background: #15201A;
     color: #FFFFFF;
   }
   .btn-apple:hover { opacity: 0.9; }
   .btn-android {
-    background: #F0F0F0;
-    color: #333333;
-    border: 1.5px solid #E0E0E0;
+    background: #ECEFE8;
+    color: #15201A;
+    border: 1.5px solid #E2E6DE;
   }
   .btn-android:hover { opacity: 0.85; }
   .btn svg { flex-shrink: 0; }
   .redirect-note {
     margin-top: 36px;
     font-size: 12px;
-    color: #999999;
+    color: #8C978F;
     letter-spacing: 0.01em;
   }
   footer {
     position: fixed;
     bottom: 24px;
     font-size: 12px;
-    color: #999999;
+    color: #8C978F;
     letter-spacing: 0.01em;
   }
-</style>
+
+    /* Figtree display face */
+    .wordmark, .headline { font-family: var(--font-display); }
+  </style>
 </head>
 <body>
 

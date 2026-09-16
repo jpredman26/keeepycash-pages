@@ -16,27 +16,34 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --background: #FFFFFF;
-      --surface: #F5F5F5;
-      --text: #333333;
-      --text-secondary: #666666;
-      --text-tertiary: #999999;
-      --primary: #007AFF;
-      --primary-variant: #0051D5;
-      --secondary: #5AC8FA;
-      --success: #27AE60;
-      --danger: #FF3B30;
-      --warning: #FF9500;
-      --border: #E0E0E0;
-      --divider: #F0F0F0;
-      --primary-bg: #E7F0FF;
-      --secondary-bg: #F0F0F0;
-      --danger-bg: #FFE7E7;
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --background: #FBFBF8;
+      --surface: #F1F3EE;
+      --text: #15201A;
+      --text-secondary: #5D6A62;
+      --text-tertiary: #8C978F;
+      --primary: #1E5A3E;
+      --primary-variant: #16452F;
+      --secondary: #4E8A68;
+      --success: #237A4B;
+      --danger: #B0442C;
+      --warning: #B7791F;
+      --border: #E2E6DE;
+      --divider: #ECEFE8;
+      --primary-bg: #E6F1DF;
+      --secondary-bg: #ECEFE8;
+      --danger-bg: #F8E6E0;
+      /* Lifted variants for dark sections (matches the app's dark theme) */
+      --primary-lifted: #34936A;
+      --warning-lifted: #E0A94A;
     }
 
     html { scroll-behavior: smooth; }
@@ -44,7 +51,7 @@
     body {
       background: var(--background);
       color: var(--text);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: var(--font-body);
       font-weight: 400;
       overflow-x: hidden;
     }
@@ -58,13 +65,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(250,250,250,0.88);
+      background: rgba(251,251,248,0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
     .logo {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 20px;
       font-weight: 700;
       color: var(--text);
@@ -122,7 +129,7 @@
       position: absolute;
       bottom: -100px; left: -100px;
       width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(39,174,96,0.10) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(35,122,75,0.10) 0%, transparent 70%);
       pointer-events: none;
       animation: float 10s ease-in-out infinite reverse;
     }
@@ -153,7 +160,7 @@
     }
 
     .hero h1 {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: clamp(52px, 8vw, 92px);
       font-weight: 900;
       line-height: 1.0;
@@ -210,7 +217,7 @@
       padding: 16px 20px;
       border: 1.5px solid rgba(0,0,0,0.1);
       border-radius: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 15px;
       background: white;
       outline: none;
@@ -219,7 +226,7 @@
 
     .hero-form input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(0,122,255,0.12);
+      box-shadow: 0 0 0 3px rgba(30,90,62,0.12);
     }
 
     .hero-form button {
@@ -228,7 +235,7 @@
       color: white;
       border: none;
       border-radius: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
@@ -258,7 +265,7 @@
     }
 
     .stat-num {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 36px;
       font-weight: 800;
       color: var(--primary);
@@ -298,7 +305,7 @@
     }
 
     .section-title {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: clamp(32px, 5vw, 52px);
       font-weight: 800;
       letter-spacing: -2px;
@@ -336,7 +343,7 @@
 
     .feature-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 48px rgba(0,122,255,0.10);
+      box-shadow: 0 20px 48px rgba(30,90,62,0.10);
     }
 
     .feature-card:hover::before { transform: scaleX(1); }
@@ -347,7 +354,7 @@
     }
 
     .feature-card h3 {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 20px;
       font-weight: 700;
       margin-bottom: 12px;
@@ -367,7 +374,7 @@
       color: white;
     }
 
-    .pricing .section-label { color: var(--primary-variant); }
+    .pricing .section-label { color: var(--primary-lifted); }
     .pricing .section-title { color: white; }
 
     .pricing-toggle {
@@ -387,7 +394,7 @@
     .toggle {
       position: relative;
       width: 52px; height: 28px;
-      background: var(--primary);
+      background: var(--primary-lifted);
       border-radius: 100px;
       cursor: pointer;
       border: none;
@@ -433,7 +440,7 @@
 
     .pricing-card.featured {
       background: var(--primary);
-      border-color: var(--primary);
+      border-color: var(--primary-lifted);
     }
 
     .pricing-card.featured .price-period,
@@ -450,7 +457,7 @@
     }
 
     .price-amount {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 56px;
       font-weight: 900;
       line-height: 1;
@@ -499,7 +506,7 @@
       width: 100%;
       padding: 14px;
       border-radius: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
@@ -553,7 +560,7 @@
     .step.visible { opacity: 1; transform: translateX(0); }
 
     .step-num {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 48px;
       font-weight: 900;
       color: var(--primary-bg);
@@ -563,7 +570,7 @@
     }
 
     .step-content h3 {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 20px;
       font-weight: 700;
       margin-bottom: 8px;
@@ -577,7 +584,7 @@
     }
 
     .how-visual {
-      background: linear-gradient(135deg, var(--text) 0%, var(--primary-variant) 100%);
+      background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
       border-radius: 32px;
       padding: 48px;
       aspect-ratio: 1;
@@ -614,7 +621,7 @@
     }
 
     .budget-row-amount {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 18px;
       font-weight: 700;
       color: white;
@@ -631,11 +638,11 @@
     .budget-bar-fill {
       height: 100%;
       border-radius: 3px;
-      background: var(--primary-variant);
+      background: var(--primary-lifted);
     }
 
     .budget-bar-fill.warning {
-      background: var(--warning);
+      background: var(--warning-lifted);
     }
 
     /* TESTIMONIALS */
@@ -696,7 +703,7 @@
     }
 
     .cta h2 {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: clamp(40px, 6vw, 68px);
       font-weight: 900;
       letter-spacing: -2px;
@@ -726,7 +733,7 @@
       padding: 16px 20px;
       border: 1.5px solid rgba(0,0,0,0.1);
       border-radius: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 15px;
       background: white;
       outline: none;
@@ -735,7 +742,7 @@
 
     .cta-form input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(0,122,255,0.12);
+      box-shadow: 0 0 0 3px rgba(30,90,62,0.12);
     }
 
     .cta-form button {
@@ -744,7 +751,7 @@
       color: white;
       border: none;
       border-radius: 12px;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
       font-size: 15px;
       font-weight: 600;
       cursor: pointer;
@@ -827,6 +834,7 @@
     .price-monthly { display: none; }
     body.monthly .price-yearly { display: none; }
     body.monthly .price-monthly { display: block; }
+      .stat-num, .price-amount, .budget-row-amount { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
