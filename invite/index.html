@@ -4,23 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join me on KeepyCash</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
-<style>
-  :root {
-      /* Type: Figtree is the display face (titles, hero numbers, money);
-         body copy stays on the platform font, matching the app. */
-      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  }
+  <meta name="description" content="The no-nonsense budget app that actually keeps you on track. Use my invite to get started." />
 
+  <!-- Link previews. Without these an invite pastes into iMessage and
+       WhatsApp as a bare URL. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KeepyCash" />
+  <meta property="og:title" content="Join me on KeepyCash" />
+  <meta property="og:description" content="The no-nonsense budget app that actually keeps you on track. Use my invite to get started." />
+  <meta property="og:url" content="https://keepycash.com/invite/" />
+  <meta property="og:image" content="https://keepycash.com/invite/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="KeepyCash" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Join me on KeepyCash" />
+  <meta name="twitter:description" content="The no-nonsense budget app that actually keeps you on track. Use my invite to get started." />
+  <meta name="twitter:image" content="https://keepycash.com/invite/og-image.png" />
+  <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: var(--font-body);
-      background: #FFFFFF;
-      color: #15201A;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0F2027;
+      color: #EDEDED;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -29,13 +37,13 @@
     }
 
     .card {
-      background: #F1F3EE;
+      background: #203A43;
       border-radius: 24px;
       padding: 40px 32px;
       max-width: 400px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
 
     .logo { font-size: 56px; margin-bottom: 16px; }
@@ -43,30 +51,30 @@
     h1 {
       font-size: 26px;
       font-weight: 800;
-      color: #15201A;
+      color: #EDEDED;
       margin-bottom: 8px;
     }
 
     .tagline {
       font-size: 15px;
-      color: #5D6A62;
+      color: #ccc;
       line-height: 1.5;
       margin-bottom: 28px;
     }
 
     .gift-banner {
-      background: rgba(30,90,62, 0.15);
-      border: 1px solid rgba(30,90,62, 0.4);
+      background: rgba(10, 132, 255, 0.15);
+      border: 1px solid rgba(10, 132, 255, 0.4);
       border-radius: 14px;
       padding: 16px;
       margin-bottom: 28px;
       font-size: 15px;
       font-weight: 600;
-      color: #1E5A3E;
+      color: #0A84FF;
     }
 
     .code-box {
-      background: #ECEFE8;
+      background: rgba(255,255,255,0.06);
       border-radius: 12px;
       padding: 16px;
       margin-bottom: 28px;
@@ -74,7 +82,7 @@
 
     .code-label {
       font-size: 12px;
-      color: #5D6A62;
+      color: #aaa;
       margin-bottom: 6px;
     }
 
@@ -82,7 +90,7 @@
       font-size: 32px;
       font-weight: 800;
       letter-spacing: 8px;
-      color: #15201A;
+      color: #EDEDED;
     }
 
     .store-buttons {
@@ -107,88 +115,86 @@
     }
 
     .btn-ios {
-      background: #1E5A3E;
+      background: #0A84FF;
       color: #fff;
     }
 
     .btn-android {
-      background: #237A4B;
+      background: #30D158;
       color: #fff;
     }
 
     .redirect-note {
       font-size: 12px;
-      color: #8C978F;
+      color: #888;
       margin-top: 20px;
     }
-  
-    /* Figtree display face */
-    .logo, h1, .code { font-family: var(--font-display); }
-    .code { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="logo">💰</div>
-    <h1>Join KeepyCash</h1>
-    <p class="tagline">The no-nonsense budget app that actually keeps you on track.</p>
+<div class="card">
+  <div class="logo">💰</div>
+  <h1>Join KeepyCash</h1>
+  <p class="tagline">The no-nonsense budget app that actually keeps you on track.</p>
 
-    <div class="gift-banner">
-      🎁 You both get free months when you subscribe!
-    </div>
-
-    <div class="code-box">
-      <div class="code-label">Your invite code</div>
-      <div class="code" id="invite-code">–</div>
-    </div>
-
-    <div class="store-buttons" id="store-buttons">
-      <a
-        class="store-btn btn-ios"
-        href="https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114"
-        id="ios-btn"
-      >
-        🍎 Download on the App Store
-      </a>
-      <a
-        class="store-btn btn-android"
-        href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash"
-        id="android-btn"
-      >
-        ▶ Get it on Google Play
-      </a>
-    </div>
-
-    <p class="redirect-note" id="redirect-note"></p>
+  <div class="gift-banner">
+    🎁 You both get 1 free month when you subscribe!
   </div>
 
-  <script>
-    // Extract invite code from query param: /invite/?code=ABC123
-    const params = new URLSearchParams(window.location.search)
-    const code = params.get('code') || ''
+  <div class="code-box">
+    <div class="code-label">Your invite code</div>
+    <div class="code" id="invite-code">–</div>
+  </div>
 
-    if (code) {
-      document.getElementById('invite-code').textContent = code
-      // Persist so the app can retrieve it after install (best-effort)
-      try { localStorage.setItem('keepycash_pending_invite', code) } catch {}
+  <div class="store-buttons" id="store-buttons">
+    <a
+            class="store-btn btn-ios"
+            href="https://apps.apple.com/app/id6744829741"
+            id="ios-btn"
+    >
+      🍎 Download on the App Store
+    </a>
+    <a
+            class="store-btn btn-android"
+            href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash"
+            id="android-btn"
+    >
+      ▶ Get it on Google Play
+    </a>
+  </div>
 
-      // Try to open the app if installed (custom scheme fallback)
-      const appUrl = `keepycash://invite/${code}`
-      const note = document.getElementById('redirect-note')
-      note.textContent = 'Already have the app? Opening it now…'
+  <p class="redirect-note" id="redirect-note"></p>
+</div>
 
-      const iframe = document.createElement('iframe')
-      iframe.style.display = 'none'
-      iframe.src = appUrl
-      document.body.appendChild(iframe)
+<script>
+  // Extract invite code from URL path: /invite/ABC123 or /invite/?code=ABC123
+  const pathParts = window.location.pathname.split('/').filter(Boolean)
+  const lastSegment = pathParts[pathParts.length - 1]
+  const params = new URLSearchParams(window.location.search)
+  const code = (lastSegment !== 'invite' ? lastSegment : null) || params.get('code') || ''
 
-      // After 2s, if still here, they don't have the app — show store buttons
-      setTimeout(() => {
-        note.textContent = 'Download the app, then enter code ' + code + ' during sign-up.'
-      }, 2000)
-    } else {
-      document.getElementById('invite-code').textContent = '(no code)'
-    }
-  </script>
+  if (code) {
+    document.getElementById('invite-code').textContent = code
+    // Persist so the app can retrieve it after install (best-effort)
+    try { localStorage.setItem('keepycash_pending_invite', code) } catch {}
+
+    // Try to open the app if installed (custom scheme fallback)
+    const appUrl = `keepycash://invite/${code}`
+    const note = document.getElementById('redirect-note')
+    note.textContent = 'Already have the app? Opening it now…'
+
+    const iframe = document.createElement('iframe')
+    iframe.style.display = 'none'
+    iframe.src = appUrl
+    document.body.appendChild(iframe)
+
+    // After 2s, if still here, they don't have the app — show store buttons
+    setTimeout(() => {
+      note.textContent = 'Download the app, then enter code ' + code + ' during sign-up.'
+    }, 2000)
+  } else {
+    document.getElementById('invite-code').textContent = '(no code)'
+  }
+</script>
 </body>
 </html>
