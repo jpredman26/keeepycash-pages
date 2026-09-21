@@ -13,7 +13,7 @@
   <meta property="og:title" content="Join me on KeepyCash" />
   <meta property="og:description" content="The no-nonsense budget app that actually keeps you on track. Use my invite to get started." />
   <meta property="og:url" content="https://keepycash.com/invite/" />
-  <meta property="og:image" content="https://keepycash.com/invite/og-image.png" />
+  <meta property="og:image" content="https://keepycash.com/invite/img.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="KeepyCash" />
@@ -21,162 +21,258 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Join me on KeepyCash" />
   <meta name="twitter:description" content="The no-nonsense budget app that actually keeps you on track. Use my invite to get started." />
-  <meta name="twitter:image" content="https://keepycash.com/invite/og-image.png" />
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta name="twitter:image" content="https://keepycash.com/invite/img.png" />
 
+  <!-- iOS Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=6760102114" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Type: Figtree is the display face (titles, hero numbers, money);
+         body copy stays on the platform font, matching the app. */
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { height: 100%; }
+    /* min-height, not height: this page carries more than the other
+       one-screen pages, so the box has to be free to grow past the
+       viewport instead of overflowing its own padding. */
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0F2027;
-      color: #EDEDED;
+      font-family: var(--font-body);
+      background: #FFFFFF;
+      color: #15201A;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       min-height: 100vh;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .wordmark {
+      /* Auto margins here and on #content centre the column vertically
+         without clipping it when it's taller than the viewport. */
+      margin-top: auto;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #1E5A3E;
+      margin-bottom: 40px;
+    }
+    .headline {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      max-width: 360px;
+      margin-bottom: 12px;
+    }
+    .sub {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #5D6A62;
+      max-width: 320px;
+      margin-bottom: 28px;
+    }
+    .gift {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-    }
-
-    .card {
-      background: #203A43;
-      border-radius: 24px;
-      padding: 40px 32px;
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    .logo { font-size: 56px; margin-bottom: 16px; }
-
-    h1 {
-      font-size: 26px;
-      font-weight: 800;
-      color: #EDEDED;
-      margin-bottom: 8px;
-    }
-
-    .tagline {
-      font-size: 15px;
-      color: #ccc;
-      line-height: 1.5;
-      margin-bottom: 28px;
-    }
-
-    .gift-banner {
-      background: rgba(10, 132, 255, 0.15);
-      border: 1px solid rgba(10, 132, 255, 0.4);
+      gap: 8px;
+      background: #E6F1DF;
+      border: 1.5px solid rgba(30,90,62,0.18);
       border-radius: 14px;
-      padding: 16px;
+      padding: 14px 20px;
       margin-bottom: 28px;
+      width: 100%;
+      max-width: 320px;
       font-size: 15px;
-      font-weight: 600;
-      color: #0A84FF;
+      font-weight: 500;
+      line-height: 1.4;
+      color: #1E5A3E;
     }
-
     .code-box {
-      background: rgba(255,255,255,0.06);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 28px;
+      background: #F1F3EE;
+      border: 1.5px solid #E2E6DE;
+      border-radius: 16px;
+      padding: 20px 28px;
+      margin-bottom: 12px;
+      width: 100%;
+      max-width: 320px;
     }
-
     .code-label {
       font-size: 12px;
-      color: #aaa;
-      margin-bottom: 6px;
+      color: #8C978F;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
     }
-
     .code {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: 8px;
-      color: #EDEDED;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #15201A;
     }
-
-    .store-buttons {
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 32px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      border: 1.5px solid #E2E6DE;
+      background: #FFFFFF;
+      color: #15201A;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .copy-btn:active { transform: scale(0.97); }
+    #content {
+      margin-bottom: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      align-items: center;
+      width: 100%;
+      max-width: 360px;
     }
-
-    .store-btn {
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      max-width: 320px;
+    }
+    .btn {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 16px;
-      border-radius: 14px;
-      font-size: 16px;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      border: none;
       width: 100%;
+      padding: 16px 28px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+      border: none;
+      cursor: pointer;
     }
-
-    .btn-ios {
-      background: #0A84FF;
-      color: #fff;
+    .btn:hover { opacity: 0.9; }
+    .btn:active { transform: scale(0.97); }
+    .btn-apple {
+      background: #15201A;
+      color: #FFFFFF;
     }
-
     .btn-android {
-      background: #30D158;
-      color: #fff;
+      background: #ECEFE8;
+      color: #15201A;
+      border: 1.5px solid #E2E6DE;
+    }
+    .btn svg { flex-shrink: 0; }
+    .redirect-note {
+      margin-top: 28px;
+      font-size: 12px;
+      color: #8C978F;
+      letter-spacing: 0.01em;
+      max-width: 320px;
+      line-height: 1.5;
+    }
+    footer {
+      /* Sits at the bottom on tall screens (the auto margins above push it
+         there) and flows after the content when the page has to scroll,
+         rather than floating over the buttons like a fixed footer would. */
+      margin-top: 32px;
+      font-size: 12px;
+      color: #8C978F;
+      letter-spacing: 0.01em;
     }
 
-    .redirect-note {
-      font-size: 12px;
-      color: #888;
-      margin-top: 20px;
-    }
+    /* Figtree display face */
+    .wordmark, .headline, .code { font-family: var(--font-display); }
+    .code { font-variant-numeric: tabular-nums; }
   </style>
 </head>
 <body>
-<div class="card">
-  <div class="logo">💰</div>
-  <h1>Join KeepyCash</h1>
-  <p class="tagline">The no-nonsense budget app that actually keeps you on track.</p>
 
-  <div class="gift-banner">
-    🎁 You both get 1 free month when you subscribe!
-  </div>
+<div class="wordmark">KeepyCash</div>
 
-  <div class="code-box">
+<div id="content">
+  <h1 class="headline">Join KeepyCash</h1>
+  <p class="sub">The no-nonsense budget app that actually keeps you on track.</p>
+
+  <div class="gift">🎁 You both get 1 free month when you subscribe</div>
+
+  <div class="code-box" id="code-box">
     <div class="code-label">Your invite code</div>
     <div class="code" id="invite-code">–</div>
   </div>
 
-  <div class="store-buttons" id="store-buttons">
-    <a
-            class="store-btn btn-ios"
-            href="https://apps.apple.com/app/id6744829741"
-            id="ios-btn"
-    >
-      🍎 Download on the App Store
-    </a>
-    <a
-            class="store-btn btn-android"
-            href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash"
-            id="android-btn"
-    >
-      ▶ Get it on Google Play
-    </a>
-  </div>
+  <button class="copy-btn" id="copy-btn">Copy code</button>
+
+  <div class="buttons" id="store-buttons"></div>
 
   <p class="redirect-note" id="redirect-note"></p>
 </div>
 
+<footer>keepycash.com</footer>
+
 <script>
+  const IOS_URL = 'https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114';
+  const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.jpredman27.keepycash';
+
+  const APPLE_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>';
+  const ANDROID_SVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.341l1.092 1.891a.5.5 0 0 1-.183.683.5.5 0 0 1-.683-.183l-1.108-1.918A6.97 6.97 0 0 1 12 17a6.97 6.97 0 0 1-4.641-1.186L6.251 17.732a.5.5 0 0 1-.866-.5l1.092-1.891A6.994 6.994 0 0 1 5 10h14a6.994 6.994 0 0 1-1.477 5.341zM8.5 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM3.305 8.553l-1.86-3.22a.5.5 0 0 1 .866-.5l1.883 3.26A7.018 7.018 0 0 1 12 6a7.018 7.018 0 0 1 7.806 2.093l1.883-3.26a.5.5 0 1 1 .866.5l-1.86 3.22A6.973 6.973 0 0 1 22 10H2a6.973 6.973 0 0 1 1.305-1.447z"/></svg>';
+
+  function appleBtn() {
+    return '<a class="btn btn-apple" href="' + IOS_URL + '">' + APPLE_SVG + 'Download on the App Store</a>';
+  }
+  function androidBtn() {
+    return '<a class="btn btn-android" href="' + ANDROID_URL + '">' + ANDROID_SVG + 'Get it on Google Play</a>';
+  }
+
+  // Lead with the store the visitor can actually use.
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  document.getElementById('store-buttons').innerHTML =
+    isAndroid ? (androidBtn() + appleBtn()) : (appleBtn() + androidBtn());
+
   // Extract invite code from URL path: /invite/ABC123 or /invite/?code=ABC123
   const pathParts = window.location.pathname.split('/').filter(Boolean)
   const lastSegment = pathParts[pathParts.length - 1]
   const params = new URLSearchParams(window.location.search)
   const code = (lastSegment !== 'invite' ? lastSegment : null) || params.get('code') || ''
 
+  const copyBtn = document.getElementById('copy-btn')
+
   if (code) {
     document.getElementById('invite-code').textContent = code
     // Persist so the app can retrieve it after install (best-effort)
     try { localStorage.setItem('keepycash_pending_invite', code) } catch {}
+
+    copyBtn.addEventListener('click', function () {
+      const btn = this
+      const done = function () {
+        btn.textContent = 'Copied'
+        setTimeout(function () { btn.textContent = 'Copy code' }, 1500)
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code).then(done).catch(done)
+      } else {
+        const el = document.createElement('textarea')
+        el.value = code
+        document.body.appendChild(el)
+        el.select()
+        try { document.execCommand('copy') } catch (e) {}
+        document.body.removeChild(el)
+        done()
+      }
+    })
 
     // Try to open the app if installed (custom scheme fallback)
     const appUrl = `keepycash://invite/${code}`
@@ -193,7 +289,11 @@
       note.textContent = 'Download the app, then enter code ' + code + ' during sign-up.'
     }, 2000)
   } else {
-    document.getElementById('invite-code').textContent = '(no code)'
+    // No code in the link — don't show an empty code box.
+    document.getElementById('code-box').style.display = 'none'
+    copyBtn.style.display = 'none'
+    document.getElementById('redirect-note').textContent =
+      'This link is missing an invite code. Ask your friend for their code, or use the download links above.'
   }
 </script>
 </body>
