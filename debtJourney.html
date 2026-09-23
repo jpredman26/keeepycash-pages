@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KeepyCash: Crush Every Debt, Faster</title>
-  <meta name="description" content="Track every card and loan, watch the interest disappear with every payment, and let KeepyCash build your budget for you. Try it free for 30 days. No bank linking, no ads." />
+  <meta name="description" content="Track every card and loan, watch the interest disappear with every payment, and let KeepyCash build your budget for you. Get KeepyCash for $19.99/year with a 30-day money-back guarantee. No bank linking, no ads." />
   <meta property="og:title" content="KeepyCash: Crush Every Debt, Faster" />
-  <meta property="og:description" content="Watch the interest disappear with every dollar you pay off. Try KeepyCash free for 30 days." />
+  <meta property="og:description" content="Watch the interest disappear with every dollar you pay off. 30-day money-back guarantee." />
   <meta property="og:image" content="https://www.keepycash.com/assets/debt/02.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
@@ -468,6 +468,79 @@
     .price-now .cur-note { display: inline; margin: 0 0 0 6px; font-size: 14px; }
     .price-now, .price-old { font-variant-numeric: tabular-nums; }
 
+    /* GUARANTEE PROMISE */
+    .promise {
+      position: relative;
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      padding: 36px 28px 28px;
+      text-align: center;
+    }
+    .promise .seal {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 16px;
+      box-shadow: 0 0 0 6px var(--primary-bg);
+    }
+    .promise .seal small { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+    .promise p { color: var(--text); }
+    .promise a { color: var(--primary); font-weight: 700; }
+    .promise .sig { font-family: var(--font-display); font-weight: 700; color: var(--primary); margin-bottom: 0; }
+
+    /* AFTER YOU BUY */
+    .steps { list-style: none; margin: 8px 0 28px; }
+    .steps li { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px dashed var(--border); }
+    .steps li:last-child { border-bottom: none; }
+    .steps .n {
+      flex: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--primary-bg);
+      color: var(--primary);
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 34px;
+      text-align: center;
+    }
+    .steps p { margin-bottom: 0; font-size: 15.5px; }
+
+    /* STICKY MOBILE CTA */
+    .sticky-cta { display: none; }
+    @media (max-width: 560px) {
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 90;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border);
+        text-align: center;
+        transform: translateY(110%);
+        transition: transform .3s ease;
+      }
+      .sticky-cta.show { transform: none; }
+      .sticky-cta .btn { padding: 14px 20px; font-size: 16px; box-shadow: none; }
+      .sticky-cta span { display: block; font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+      footer { padding-bottom: 110px; }
+    }
+
     .logo, h1, h2, h3, .price-now { font-family: var(--font-display); }
   </style>
 </head>
@@ -475,7 +548,7 @@
 
   <nav>
     <div class="logo">Keepy<span>Cash</span></div>
-    <a class="nav-cta" data-cta="nav" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Try free for 30 days</a>
+    <a class="nav-cta" data-cta="nav" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash &middot; $19.99/yr</a>
   </nav>
 
   <!-- ===== HERO ===== -->
@@ -483,19 +556,19 @@
     <div class="wrap wide">
       <div class="hero-grid">
         <div class="fade">
-          <span class="eyebrow">For anyone carrying a balance</span>
+          <span class="eyebrow">Now live: the KeepyCash Debt Tracker</span>
           <h1>Crush every debt, <span class="hl">faster.</span><br />And watch the interest disappear.</h1>
           <p class="lead">The average credit card now charges around <strong>22% interest</strong>. Every month you carry a balance, the bank quietly takes its cut before a single dollar touches what you actually owe.</p>
           <p>KeepyCash puts every card and loan in one place, shows you exactly how much interest each payment saves, and turns the long road to debt-free into a path you can actually see yourself walking.</p>
 
           <div class="cta-block">
-            <a class="btn" data-cta="hero" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Start my free 30-day trial &rarr;</a>
-            <div class="btn-sub">Full access for 30 days, no ads. Then $19.99/year. Cancel anytime.</div>
+            <a class="btn" data-cta="hero" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash for $19.99/year &rarr;</a>
+            <div class="btn-sub">Instant access on iPhone &amp; Android. 30-day money-back guarantee.</div>
           </div>
           <div class="trust">
+            <span>30-day money-back guarantee</span>
             <span>No bank linking</span>
             <span>No ads, ever</span>
-            <span>iPhone &amp; Android</span>
           </div>
         </div>
         <div class="fade">
@@ -598,8 +671,8 @@
       </div>
 
       <div class="cta-block fade">
-        <a class="btn" data-cta="debt-showcase" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Start my debt journey, free &rarr;</a>
-        <div class="btn-sub">30 days free with full access. Then $19.99/year. Cancel anytime.</div>
+        <a class="btn" data-cta="debt-showcase" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Start my debt journey today &rarr;</a>
+        <div class="btn-sub">$19.99/year, less than two months of interest. 30-day money-back guarantee.</div>
       </div>
     </div>
   </section>
@@ -682,7 +755,8 @@
         <span class="ic">🤝</span>
         <div>
           <p><strong>KeepyCash is a paid app, because we're serious about helping.</strong></p>
-          <p>But you get a <strong>full 30 days free</strong>, with <strong>no ads</strong> and <strong>completely unrestricted access</strong>. Log payments on your debt journey for a whole month and see the interest you save before you pay a cent.</p>
+          <p>So instead of a "free" with a catch, here's a straight deal. One price gets you <strong>everything</strong>: <strong>no ads</strong>, <strong>no locked features</strong>, no "Premium" upsell later.</p>
+          <p>And if it's not for you, you've got <strong>30 full days to get every cent back</strong>. That's a month of logging payments on your debt journey and watching the interest drop, with nothing to lose.</p>
           <p>I thought you'd appreciate being told that upfront. I know I would.</p>
         </div>
       </div>
@@ -704,19 +778,34 @@
       </ul>
 
       <div class="price-card">
-        <div class="price-free">First 30 days free</div>
+        <div class="price-free">30-day money-back guarantee</div>
         <div class="price-old">Big-name budgeting app: ~$109/year</div>
         <div class="price-now">$19.99<small> / year</small></div>
-        <div class="price-perday">After your free month. About 5&frac12;&cent; a day, less than a fifth of the big names.</div>
-        <a class="btn" data-cta="pricing" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Start my free 30-day trial &rarr;</a>
-        <div class="btn-sub">Full access, no ads. Cancel before day 30 and you pay nothing.</div>
+        <div class="price-perday">About 5&frac12;&cent; a day. Less than a fifth of the big names.</div>
+        <a class="btn" data-cta="pricing" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash for $19.99/year &rarr;</a>
+        <div class="btn-sub">Everything included. No ads, no upsells. Instant access.</div>
       </div>
     </div>
   </section>
 
-  <!-- ===== PRIVACY / CONTROL ===== -->
-  <section class="surface tight">
+  <!-- ===== GUARANTEE ===== -->
+  <section class="surface">
     <div class="wrap fade">
+      <div class="promise">
+        <span class="seal">30<small>day</small></span>
+        <h2>My "it helps or it's free" promise</h2>
+        <p>Use KeepyCash for 30 days. Add your debts, log your payments, let it build your budget, and watch the interest you save add up.</p>
+        <p>If it doesn't help, email me at <a href="mailto:support@keepycash.com">support@keepycash.com</a> within 30 days and I'll refund every cent. No questions, no forms, no hard feelings.</p>
+        <p class="sig">James, founder of KeepyCash</p>
+      </div>
+
+      <h2 style="margin-top:48px;">What happens after you buy</h2>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3>Secure checkout</h3><p>Pay $19.99 for the year. Takes about a minute.</p></div></li>
+        <li><span class="n">2</span><div><h3>Check your email</h3><p>Your receipt and account details land in your inbox straight away.</p></div></li>
+        <li><span class="n">3</span><div><h3>Download &amp; add your first debt</h3><p>Get KeepyCash on iPhone or Android, sign in, and log your first payment tonight.</p></div></li>
+      </ol>
+
       <div class="guarantee">
         <span class="ic">🔒</span>
         <div>
@@ -749,8 +838,8 @@
       </div>
 
       <div class="cta-block">
-        <a class="btn" data-cta="social-proof" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Try KeepyCash free for 30 days &rarr;</a>
-        <div class="btn-sub">Then $19.99/year. Cancel anytime.</div>
+        <a class="btn" data-cta="social-proof" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash now &rarr;</a>
+        <div class="btn-sub">$19.99/year. 30-day money-back guarantee.</div>
       </div>
     </div>
   </section>
@@ -761,8 +850,16 @@
       <h2>Straight answers</h2>
       <div class="faq">
         <details>
-          <summary>Is it really free for 30 days?</summary>
-          <p>Yes. Full, unrestricted access to everything, including the Debt Tracker, with no ads. If KeepyCash isn't for you, cancel before the 30 days are up and you won't be charged. If you stay, it's $19.99 a year.</p>
+          <summary>What if it's not for me?</summary>
+          <p>Email <a href="mailto:support@keepycash.com">support@keepycash.com</a> within 30 days of buying and you'll get a full refund. No questions asked.</p>
+        </details>
+        <details>
+          <summary>Why pay upfront instead of a free trial?</summary>
+          <p>Most "free trials" are built around you forgetting to cancel. I'd rather be straight with you: pay $19.99, get everything, and if it isn't worth it, I'll give it back. Same zero risk, no countdown timer.</p>
+        </details>
+        <details>
+          <summary>How do I get the app after I buy?</summary>
+          <p>Check your email after checkout, then download KeepyCash from the App Store or Google Play and sign in. Your full access is waiting.</p>
         </details>
         <details>
           <summary>What kinds of debt can I track?</summary>
@@ -785,8 +882,8 @@
           <p>Yes. Native apps for both, with cloud sync so your numbers stay current across your devices.</p>
         </details>
         <details>
-          <summary>How do I cancel?</summary>
-          <p>Use the manage-subscription link in your confirmation email and cancel in a couple of clicks. No phone call, no maze.</p>
+          <summary>Does it renew?</summary>
+          <p>Yes, once a year at $19.99. Turn off renewal any time using the manage-subscription link in your confirmation email. A couple of clicks, no phone call, no maze.</p>
         </details>
       </div>
     </div>
@@ -799,16 +896,21 @@
       <p>You can keep paying the bank around $120 a month for the privilege of owing them money, and hoping the balance eventually moves. Or you can put every debt on a path, watch each payment eat into the interest, and actually see yourself walking toward the finish line.</p>
 
       <div class="cta-block">
-        <a class="btn" data-cta="close" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Start my free 30-day trial &rarr;</a>
-        <div class="btn-sub">Full access, no ads. Then $19.99/year. iPhone &amp; Android.</div>
+        <a class="btn" data-cta="close" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash for $19.99/year &rarr;</a>
+        <div class="btn-sub">30-day money-back guarantee. iPhone &amp; Android.</div>
       </div>
 
       <div class="ps">
-        <p><strong>P.S.</strong> If you skimmed to the bottom, here's the whole deal: <strong>30 days free</strong>, full access, no ads, no bank linking. Add your debts, log a payment, and see the interest you'll never have to pay. If it doesn't earn its place on your phone, cancel and you owe nothing. If it does, it's $19.99 a year, which is less than two months of interest on the average card.</p>
-        <p style="margin-bottom:0"><a data-cta="ps" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener"><strong>Start free now &rarr;</strong></a></p>
+        <p><strong>P.S.</strong> If you skimmed to the bottom, here's the whole deal: <strong>$19.99 for a full year</strong>. Full access, no ads, no bank linking. Add your debts, log a payment, and see the interest you'll never have to pay. That's less than two months of interest on the average card. And if it doesn't earn its place on your phone within 30 days, email me and I'll refund every cent. You can't lose.</p>
+        <p style="margin-bottom:0"><a data-cta="ps" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener"><strong>Get KeepyCash now &rarr;</strong></a></p>
       </div>
     </div>
   </section>
+
+  <div class="sticky-cta" id="sticky">
+    <a class="btn" data-cta="sticky" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash &middot; $19.99/yr</a>
+    <span>30-day money-back guarantee</span>
+  </div>
 
   <footer>
     &copy; 2026 KeepyCash. All rights reserved. &nbsp;&middot;&nbsp;
@@ -825,6 +927,13 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade').forEach(function (el) { obs.observe(el); });
+
+    /* Mobile sticky CTA: show once the hero button has scrolled away. */
+    var sticky = document.getElementById('sticky');
+    var heroBtn = document.querySelector('[data-cta="hero"]');
+    new IntersectionObserver(function (entries) {
+      sticky.classList.toggle('show', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
+    }).observe(heroBtn);
 
     /* Which section converts: every CTA reports its data-cta label to GA. */
     document.querySelectorAll('[data-cta]').forEach(function (a) {
