@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeepyCash: See Exactly Where Your Money Goes</title>
+  <meta name="description" content="Log any expense in seconds by typing, talking, scanning a receipt or snapping a statement, and see exactly where your money goes. Get KeepyCash for $19.99/year with a 30-day money-back guarantee. No bank linking, no ads." />
+  <meta property="og:title" content="KeepyCash: See Exactly Where Your Money Goes" />
+  <meta property="og:description" content="Track spending in seconds and find the money you didn't know you had. 30-day money-back guarantee." />
+  <meta property="og:image" content="https://www.keepycash.com/assets/debt/05.png" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VT8YBKWKXT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VT8YBKWKXT');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --background: #FBFBF8;
+      --surface: #F1F3EE;
+      --text: #15201A;
+      --text-secondary: #5D6A62;
+      --text-tertiary: #8C978F;
+      --primary: #1E5A3E;
+      --primary-variant: #16452F;
+      --secondary: #4E8A68;
+      --success: #237A4B;
+      --danger: #B0442C;
+      --warning: #B7791F;
+      --border: #E2E6DE;
+      --primary-bg: #E6F1DF;
+      --danger-bg: #F8E6E0;
+      --success-bg: #E6F1DF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .wrap.wide { max-width: 1040px; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .logo { font-size: 19px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); }
+    .logo span { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 100px;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--primary-variant); transform: translateY(-1px); }
+
+    /* SECTIONS */
+    section { padding: 56px 0; }
+    section.tight { padding: 32px 0; }
+    .surface { background: var(--surface); }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 50px);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      margin-bottom: 22px;
+    }
+    h1 .hl, h2 .hl { color: var(--primary); }
+
+    h2 {
+      font-size: clamp(24px, 4.5vw, 33px);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: 18px;
+    }
+
+    h3 { font-size: 19px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.3px; }
+
+    p { margin-bottom: 18px; color: var(--text-secondary); font-size: 17px; }
+    p.lead { font-size: 19px; color: var(--text); }
+    strong { color: var(--text); font-weight: 700; }
+
+    /* HERO */
+    .hero { padding-top: 56px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero .cta-block { text-align: left; }
+    .trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-top: 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .trust span::before { content: "\2713"; color: var(--success); margin-right: 6px; font-weight: 800; }
+
+    /* SCREENSHOTS: the PNGs already carry their own headline + phone frame */
+    .shot {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 28px;
+      background: #fff;
+      box-shadow: 0 24px 60px rgba(21,32,26,0.14), 0 2px 8px rgba(21,32,26,0.06);
+    }
+
+    /* CTA BUTTON */
+    .cta-block { text-align: center; margin: 30px 0 8px; }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 100px;
+      box-shadow: 0 10px 28px rgba(30,90,62,0.32);
+      transition: background .2s, transform .15s, box-shadow .2s;
+      letter-spacing: -0.2px;
+    }
+    .btn:hover {
+      background: var(--primary-variant);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(30,90,62,0.4);
+    }
+    .btn-sub { font-size: 14px; color: var(--text-tertiary); margin-top: 12px; }
+
+    /* STAT STRIP */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 26px 0 22px;
+    }
+    .stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .stat .num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      color: var(--danger);
+      font-variant-numeric: tabular-nums;
+    }
+    .stat .lbl { display: block; font-size: 14px; color: var(--text-secondary); margin-top: 6px; line-height: 1.4; }
+    .callout {
+      padding: 16px 18px;
+      background: var(--danger-bg);
+      border-radius: 12px;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .callout strong { color: var(--danger); }
+
+    /* FOUNDER */
+    .founder p { color: var(--text); }
+    .founder .aside { color: var(--text-secondary); font-style: italic; }
+    .founder .quoteline {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: -0.3px;
+    }
+
+    /* SHOWCASE: image + text rows that alternate sides */
+    .showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      padding: 28px 0;
+    }
+    .showcase + .showcase { border-top: 1px solid var(--border); }
+    .showcase.flip .show-img { order: 2; }
+    .show-text h3 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3.4vw, 28px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .show-text .tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-bg);
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .ticks { list-style: none; margin: 4px 0 0; }
+    .ticks li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .ticks li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--success);
+      font-weight: 800;
+    }
+    .win {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 12px 16px;
+      background: var(--success-bg);
+      border: 1px solid #A3C4AE;
+      border-radius: 12px;
+      font-size: 15.5px;
+      color: var(--text);
+    }
+    .win strong { color: var(--success); }
+
+    /* FEATURE GRID */
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+    .features.four { grid-template-columns: repeat(4, 1fr); }
+    .feature {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .feature .ic { font-size: 22px; margin-bottom: 10px; display: block; }
+    .feature p { font-size: 14.5px; margin-bottom: 0; }
+
+    /* THE CATCH */
+    .catches { list-style: none; margin: 22px 0; }
+    .catches li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px 18px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+    .catches .x {
+      flex: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--danger-bg);
+      color: var(--danger);
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 24px;
+      text-align: center;
+    }
+    .catches .free { text-decoration: line-through; text-decoration-color: var(--danger); color: var(--text); font-weight: 700; }
+    .nocatch {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--success-bg);
+      border: 2px solid var(--primary);
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .nocatch .ic { font-size: 26px; line-height: 1; }
+    .nocatch p { margin-bottom: 8px; color: var(--text); }
+    .nocatch p:last-child { margin-bottom: 0; }
+
+    /* VALUE STACK */
+    .stack { list-style: none; margin: 22px 0; }
+    .stack li {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 16px;
+      color: var(--text);
+    }
+    .stack li span:last-child { color: var(--success); font-weight: 700; white-space: nowrap; }
+    .price-card {
+      margin-top: 24px;
+      text-align: center;
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      padding: 32px 24px;
+    }
+    .price-free {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--primary);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .price-old { color: var(--text-tertiary); text-decoration: line-through; font-size: 18px; }
+    .price-now { font-size: 46px; font-weight: 800; letter-spacing: -1.5px; margin: 4px 0; }
+    .price-now small { font-size: 18px; font-weight: 600; color: var(--text-secondary); }
+    .price-perday { font-size: 15px; color: var(--text-tertiary); margin-bottom: 20px; }
+
+    /* GUARANTEE */
+    .guarantee {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--success-bg);
+      border: 1px solid #A3C4AE;
+      border-radius: 16px;
+      padding: 22px;
+      margin-top: 8px;
+    }
+    .guarantee .ic { font-size: 26px; line-height: 1; }
+    .guarantee p { margin-bottom: 0; font-size: 15.5px; }
+
+    /* TESTIMONIALS */
+    .quote {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--primary);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 16px;
+    }
+    .quote p { font-size: 16px; color: var(--text); margin-bottom: 10px; font-style: italic; }
+    .quote .who { font-size: 13.5px; color: var(--text-tertiary); font-style: normal; }
+
+    /* FAQ */
+    .faq { margin-top: 8px; }
+    .faq details {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .faq summary {
+      font-weight: 700;
+      font-size: 16.5px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--primary); font-weight: 700; }
+    .faq details[open] summary::after { content: "\2013"; }
+    .faq details p { margin: 12px 0 0; font-size: 15.5px; }
+
+    .ps {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 28px;
+      font-size: 16px;
+      color: var(--text);
+    }
+    .ps strong { color: var(--text); }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-tertiary);
+      font-size: 13px;
+    }
+    footer a { color: var(--text-tertiary); }
+    footer .fine { max-width: 560px; margin: 10px auto 0; line-height: 1.5; }
+
+    .fade { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fade.in { opacity: 1; transform: none; }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .hero .cta-block { text-align: center; }
+      .trust { justify-content: center; }
+      .showcase { grid-template-columns: 1fr; gap: 28px; }
+      .showcase.flip .show-img { order: 0; }
+      .features.four { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .features, .features.four { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: 1fr; }
+      .btn { width: 100%; padding: 17px 20px; font-size: 17px; }
+      .shot { max-width: 290px; }
+      .wrap { padding: 0 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fade { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+    .cur-note {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      margin-top: 8px;
+    }
+    .price-now .cur-note { display: inline; margin: 0 0 0 6px; font-size: 14px; }
+    .price-now, .price-old { font-variant-numeric: tabular-nums; }
+
+    /* GUARANTEE PROMISE */
+    .promise {
+      position: relative;
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      padding: 36px 28px 28px;
+      text-align: center;
+    }
+    .promise .seal {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 16px;
+      box-shadow: 0 0 0 6px var(--primary-bg);
+    }
+    .promise .seal small { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+    .promise p { color: var(--text); }
+    .promise a { color: var(--primary); font-weight: 700; }
+    .promise .sig { font-family: var(--font-display); font-weight: 700; color: var(--primary); margin-bottom: 0; }
+
+    /* AFTER YOU BUY */
+    .steps { list-style: none; margin: 8px 0 28px; }
+    .steps li { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px dashed var(--border); }
+    .steps li:last-child { border-bottom: none; }
+    .steps .n {
+      flex: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--primary-bg);
+      color: var(--primary);
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 34px;
+      text-align: center;
+    }
+    .steps p { margin-bottom: 0; font-size: 15.5px; }
+
+    /* STICKY MOBILE CTA */
+    .sticky-cta { display: none; }
+    @media (max-width: 560px) {
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 90;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border);
+        text-align: center;
+        transform: translateY(110%);
+        transition: transform .3s ease;
+      }
+      .sticky-cta.show { transform: none; }
+      .sticky-cta .btn { padding: 14px 20px; font-size: 16px; box-shadow: none; }
+      .sticky-cta span { display: block; font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+      footer { padding-bottom: 110px; }
+    }
+
+    .logo, h1, h2, h3, .price-now { font-family: var(--font-display); }
+  </style>
+  <style>
+    /* DEBT SIDE NOTE: a quieter "by the way" block near the end */
+    .sidenote {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 32px 16px;
+    }
+    .sidenote .intro { text-align: center; max-width: 620px; margin: 0 auto 8px; }
+    .sidenote .shot { max-width: 260px; }
+    .sidenote .showcase { padding: 20px 0; gap: 40px; }
+    @media (max-width: 560px) {
+      .sidenote { padding: 28px 18px 8px; border-radius: 18px; }
+      .sidenote .shot { max-width: 230px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Keepy<span>Cash</span></div>
+    <a class="nav-cta" data-cta="nav" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash &middot; $19.99/yr</a>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap wide">
+      <div class="hero-grid">
+        <div class="fade">
+          <span class="eyebrow">The KeepyCash Spend Tracker</span>
+          <h1>Know exactly where your money <span class="hl">goes.</span><br />Then keep more of it.</h1>
+          <p class="lead">Payday lands, and a couple of weeks later it's somehow gone. Not on anything big. Just <strong>$5 here, $12 there</strong>, and a subscription you forgot you had.</p>
+          <p>KeepyCash makes logging a purchase take seconds, then shows you in plain English where every dollar went, so you can spot the leaks and plug them.</p>
+
+          <div class="cta-block">
+            <a class="btn" data-cta="hero" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash for $19.99/year &rarr;</a>
+            <div class="btn-sub">Instant access on iPhone &amp; Android. 30-day money-back guarantee.</div>
+          </div>
+          <div class="trust">
+            <span>30-day money-back guarantee</span>
+            <span>No bank linking</span>
+            <span>No ads, ever</span>
+          </div>
+        </div>
+        <div class="fade">
+          <img class="shot" src="assets/debt/05.png" width="1284" height="2778" fetchpriority="high"
+               alt="KeepyCash Insights screen showing $6,418 in and $5,410 out, split into bills, everyday spending and $1,008 kept, with groceries, transport, kids, dining out and subscriptions totals" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE PROBLEM ===== -->
+  <section class="surface">
+    <div class="wrap fade">
+      <h2>It's not the big stuff. It's the little stuff, all month long.</h2>
+      <p>Groceries cost more. Bills keep creeping up. And most of the money that "disappears" doesn't go in one big hit. It trickles out in small amounts that each feel like nothing.</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">$5</span><span class="lbl">a coffee here, a snack there, most days of the week</span></div>
+        <div class="stat"><span class="num">$15</span><span class="lbl">a streaming or app subscription you stopped using months ago</span></div>
+        <div class="stat"><span class="num">$1,000+</span><span class="lbl">what tracking your spending can save you in a year, per multiple reports</span></div>
+      </div>
+
+      <p>None of those feel worth worrying about on the day. Added up over a year, they're a holiday, an emergency fund, or a serious dent in a credit card.</p>
+
+      <div class="callout">You can't cut spending you can't see. <strong>Tracking is what makes it visible.</strong> KeepyCash makes tracking easy enough that you'll actually keep doing it.</div>
+    </div>
+  </section>
+
+  <!-- ===== FOUNDER ===== -->
+  <section>
+    <div class="wrap fade founder">
+      <span class="eyebrow">Why I built this</span>
+      <h2>Hi, I'm James, and I built KeepyCash :)</h2>
+      <p>I've tracked my money for about a decade. Reports show that simply tracking your spending can save you <strong>over $1,000 a year</strong>, and I wanted every dollar of that.</p>
+      <p>For years I used a big-name budgeting app. Then they started charging <strong>$109 a year</strong>.</p>
+      <p>All I wanted was a clear way to see where my money was going, and to soothe that low-level anxiety of not knowing whether there was enough in the account to cover the (ever-rising) bills.</p>
+      <p class="aside">Thank you, cost of living.</p>
+      <p>I'm juggling a mortgage, two young kids, car payments and everything else that comes with a "full life". And I've been a software engineer for two decades. So I had an obvious idea:</p>
+      <p class="quoteline">"I'll just make my own. And make it better, and cheaper."</p>
+      <p>That's KeepyCash. Fast to log, simple to read, and built for people who've given up on budgeting apps before.</p>
+    </div>
+  </section>
+
+  <!-- ===== SPEND SHOWCASE ===== -->
+  <section class="surface">
+    <div class="wrap wide">
+      <div class="fade" style="text-align:center; max-width:680px; margin:0 auto 12px;">
+        <span class="eyebrow">The Spend Tracker</span>
+        <h2>Tracking that takes <span class="hl">seconds</span>, not a Sunday afternoon.</h2>
+        <p>Most people don't quit tracking because they don't care. They quit because it's a chore. So we made it as close to effortless as it gets.</p>
+      </div>
+
+      <div class="showcase fade">
+        <div class="show-img">
+          <img class="shot" src="assets/debt/04.png" width="1284" height="2778" loading="lazy"
+               alt="Add Transaction screen logging a $34.99 expense at KFC under Dining Out, with $120 left in that category" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Log it in seconds</span>
+          <h3>Amount, payee, done.</h3>
+          <p>Tap the big plus, punch in the amount and who you paid. KeepyCash remembers your payees and picks the category for you, so most purchases are logged before you've left the checkout.</p>
+          <ul class="ticks">
+            <li>See what's left in that category as you log it</li>
+            <li>Split one receipt across categories</li>
+            <li>Mark bills as recurring so they log themselves</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="fade" style="max-width:760px; margin:0 auto; padding-top:12px;">
+        <h2 style="text-align:center; margin-top:24px;">Pick the easiest way to log it. There are 4.</h2>
+        <div class="features four">
+          <div class="feature"><span class="ic">⌨️</span><h3>Type it</h3><p>Amount, payee, done. A few seconds, tops.</p></div>
+          <div class="feature"><span class="ic">🎙️</span><h3>Say it</h3><p>"Twelve dollars, coffee." Voice logging for when your hands are full.</p></div>
+          <div class="feature"><span class="ic">🧾</span><h3>Scan it</h3><p>Point your camera at a receipt and let KeepyCash read it.</p></div>
+          <div class="feature"><span class="ic">📱</span><h3>Screenshot it</h3><p>Snap your bank statement to log many at once. The image is <strong>never stored</strong>.</p></div>
+        </div>
+        <p style="text-align:center; margin-top:18px;">Just do what works for you :)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSIGHTS ===== -->
+  <section>
+    <div class="wrap wide">
+      <div class="showcase flip fade">
+        <div class="show-img">
+          <img class="shot" src="assets/debt/05.png" width="1284" height="2778" loading="lazy"
+               alt="Where Your Money Went chart flowing income into bills, everyday spending and money kept, with a Top Payees chart below" />
+        </div>
+        <div class="show-text">
+          <span class="tag">See where it goes</span>
+          <h3>Find the money you didn't know you had.</h3>
+          <p>You don't need to be an accountant to read these charts. See money in, money out, and what you kept, then drill into groceries, dining out, subscriptions and every other place your paycheck quietly disappears.</p>
+          <ul class="ticks">
+            <li>Money in vs. money out, in one picture</li>
+            <li>Your biggest categories and top payees at a glance</li>
+            <li>A clear "kept" number to beat next month</li>
+          </ul>
+          <div class="win">That $70 of subscriptions? <strong>Now you can see it</strong>, and cancel the ones you don't use.</div>
+        </div>
+      </div>
+
+      <div class="showcase fade">
+        <div class="show-img">
+          <img class="shot" src="assets/debt/04.png" width="1284" height="2778" loading="lazy"
+               alt="Logging a Dining Out expense with the category's remaining budget shown alongside" />
+        </div>
+        <div class="show-text">
+          <span class="tag">A budget that builds itself</span>
+          <h3>Just track your spending. KeepyCash builds the budget <em>for</em> you.</h3>
+          <p>Building a budget on your own can take hours, and plenty of people give up before they finish. Money gets messy.</p>
+          <p>With KeepyCash you can simply track what you spend. Or you can track it while KeepyCash builds a budget for you in the background. Yep. If you want a budget, we do it for you.</p>
+          <p>No spreadsheets, no guessing what your grocery bill "should" be. It learns from what you actually spend.</p>
+        </div>
+      </div>
+
+      <div class="cta-block fade">
+        <a class="btn" data-cta="spend-showcase" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Start tracking my spending &rarr;</a>
+        <div class="btn-sub">$19.99/year. 30-day money-back guarantee.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVERYTHING ELSE ===== -->
+  <section class="surface">
+    <div class="wrap fade">
+      <h2>And a whole lot more to help you keep your cash.</h2>
+      <div class="features">
+        <div class="feature"><span class="ic">🔥</span><h3>Tracking streaks</h3><p>A fun way to make keeping money addictive. Don't break the chain.</p></div>
+        <div class="feature"><span class="ic">🎯</span><h3>Give every dollar a job</h3><p>Dollars, Pounds or Euros. Every one gets a purpose before you spend it.</p></div>
+        <div class="feature"><span class="ic">🚨</span><h3>Overspend alerts</h3><p>A heads-up before a category runs dry, so you stay on track and in control.</p></div>
+        <div class="feature"><span class="ic">🛡️</span><h3>GuardianMode</h3><p>Protects your balance when you arrive somewhere that's cost you money in the past.</p></div>
+        <div class="feature"><span class="ic">📊</span><h3>Quick-glance insights</h3><p>Simple charts that show where your money is going. No jargon.</p></div>
+        <div class="feature"><span class="ic">🔒</span><h3>No bank linking</h3><p>Your finances stay private. We never ask for your bank login.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE CATCH ===== -->
+  <section>
+    <div class="wrap fade">
+      <h2>Every "free" budgeting app has a catch.</h2>
+      <p>I looked at a lot of them. They all come with one of these three:</p>
+      <ul class="catches">
+        <li><span class="x">&times;</span><span><span class="free">Free</span> &hellip;but you'll get slammed with ads.</span></li>
+        <li><span class="x">&times;</span><span><span class="free">Free</span> &hellip;but only for 3 days. Maybe 7. Never long enough to make a difference.</span></li>
+        <li><span class="x">&times;</span><span><span class="free">Free</span> &hellip;but you can use about 2% of the app. How can you tell if it's right for you?</span></li>
+      </ul>
+      <p>And the fix for each one? Pay for "Premium".</p>
+      <div class="nocatch">
+        <span class="ic">🤝</span>
+        <div>
+          <p><strong>KeepyCash is a paid app, because we're serious about helping.</strong></p>
+          <p>So instead of a "free" with a catch, here's a straight deal. One price gets you <strong>everything</strong>: <strong>no ads</strong>, <strong>no locked features</strong>, no "Premium" upsell later.</p>
+          <p>And if it's not for you, you've got <strong>30 full days to get every cent back</strong>. That's a whole month of tracking, long enough to see exactly where your money goes, with nothing to lose.</p>
+          <p>I thought you'd appreciate being told that upfront. I know I would.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE MATH ===== -->
+  <section class="surface">
+    <div class="wrap fade">
+      <h2>The math is simple.</h2>
+      <p>Multiple reports put the savings from simply tracking your spending at <strong>over $1,000 a year</strong>. Find just one forgotten subscription and one habit you didn't realise was costing you, and you're most of the way there.</p>
+      <p>KeepyCash costs $19.99 for the whole year. Catch one $20 leak and it's paid for itself.</p>
+
+      <ul class="stack">
+        <li><span>Tracking spending (per multiple reports)</span><span>$1,000+/yr</span></li>
+        <li><span>A budget built for you, no hours of setup</span><span>included</span></li>
+        <li><span>Debt tracker, if you need it</span><span>included</span></li>
+        <li><span>Knowing the bills are covered</span><span>priceless-ish</span></li>
+      </ul>
+
+      <div class="price-card">
+        <div class="price-free">30-day money-back guarantee</div>
+        <div class="price-old">Big-name budgeting app: ~$109/year</div>
+        <div class="price-now">$19.99<small> / year</small></div>
+        <div class="price-perday">About 5&frac12;&cent; a day. Less than a fifth of the big names.</div>
+        <a class="btn" data-cta="pricing" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash for $19.99/year &rarr;</a>
+        <div class="btn-sub">Everything included. No ads, no upsells. Instant access.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GUARANTEE ===== -->
+  <section>
+    <div class="wrap fade">
+      <div class="promise">
+        <span class="seal">30<small>day</small></span>
+        <h2>My "it helps or it's free" promise</h2>
+        <p>Use KeepyCash for 30 days. Log your spending, let it build your budget, and see where your money really goes.</p>
+        <p>If it doesn't help, email me at <a href="mailto:support@keepycash.com">support@keepycash.com</a> within 30 days and I'll refund every cent. No questions, no forms, no hard feelings.</p>
+        <p class="sig">James, founder of KeepyCash</p>
+      </div>
+
+      <h2 style="margin-top:48px;">What happens after you buy</h2>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3>Secure checkout</h3><p>Pay $19.99 for the year. Takes about a minute.</p></div></li>
+        <li><span class="n">2</span><div><h3>Check your email</h3><p>Your receipt and account details land in your inbox straight away.</p></div></li>
+        <li><span class="n">3</span><div><h3>Download &amp; log your first expense</h3><p>Get KeepyCash on iPhone or Android, sign in, and log today's spending in under a minute.</p></div></li>
+      </ol>
+
+      <div class="guarantee">
+        <span class="ic">🔒</span>
+        <div>
+          <h3>Private by design. You stay in control.</h3>
+          <p>Privacy matters when it comes to your finances, so we don't link to your bank account. Statement screenshots are read and thrown away, never stored. We never sell your data. And you can manage or cancel your subscription any time, no hoops.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL PROOF ===== -->
+  <section class="surface">
+    <div class="wrap fade">
+      <h2>People are already keeping more.</h2>
+      <div class="quote">
+        <p>"Downloaded as a referral from a friend and really does help. Simple tracking method no extra jargon just a simple way to keep track of your finances and stop you from spending all those little costs you don't realise you have! Highly recommend"</p>
+        <span class="who">Luke Z.</span>
+      </div>
+      <div class="quote">
+        <p>"I've tried every budgeting app out there. KeepyCash is the first one that actually made me stick to my budget for more than a week."</p>
+        <span class="who">Stevie T.</span>
+      </div>
+      <div class="quote">
+        <p>"Never thought I'd say that about a finance app. KeepyCash makes budgeting feel rewarding instead of painful."</p>
+        <span class="who">Nicole M.</span>
+      </div>
+      <div class="quote">
+        <p>"Exactly what a budgeting app should be. Simple, powerful, and it finally got me on top of my money. Love it!"</p>
+        <span class="who">Alex G.</span>
+      </div>
+
+      <div class="cta-block">
+        <a class="btn" data-cta="social-proof" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash now &rarr;</a>
+        <div class="btn-sub">$19.99/year. 30-day money-back guarantee.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section>
+    <div class="wrap fade">
+      <h2>Straight answers</h2>
+      <div class="faq">
+        <details>
+          <summary>What if it's not for me?</summary>
+          <p>Email <a href="mailto:support@keepycash.com">support@keepycash.com</a> within 30 days of buying and you'll get a full refund. No questions asked.</p>
+        </details>
+        <details>
+          <summary>Why pay upfront instead of a free trial?</summary>
+          <p>Most "free trials" are built around you forgetting to cancel. I'd rather be straight with you: pay $19.99, get everything, and if it isn't worth it, I'll give it back. Same zero risk, no countdown timer.</p>
+        </details>
+        <details>
+          <summary>How do I get the app after I buy?</summary>
+          <p>Check your email after checkout, then download KeepyCash from the App Store or Google Play and sign in. Your full access is waiting.</p>
+        </details>
+        <details>
+          <summary>Do I have to link my bank account?</summary>
+          <p>No. KeepyCash never asks for your bank login. You log spending yourself by typing, voice, receipt scan or statement screenshot. It takes seconds, and your data stays private.</p>
+        </details>
+        <details>
+          <summary>Isn't logging everything by hand a pain?</summary>
+          <p>It's quicker than you'd think. Most purchases take a few seconds, and you can snap a statement screenshot to log a whole batch at once. Plus, actually noticing each purchase as you log it is a big part of why tracking works.</p>
+        </details>
+        <details>
+          <summary>Is my bank statement screenshot stored?</summary>
+          <p>No. The image is read to pull out your transactions and then discarded. Nothing is kept.</p>
+        </details>
+        <details>
+          <summary>I've never managed to stick to a budget. Will this work for me?</summary>
+          <p>You don't have to build one. Just track your spending and KeepyCash builds the budget for you. Streaks and simple insights make it something you actually want to open.</p>
+        </details>
+        <details>
+          <summary>Does it work on iPhone and Android?</summary>
+          <p>Yes. Native apps for both, with cloud sync so your numbers stay current across your devices.</p>
+        </details>
+        <details>
+          <summary>Does it renew?</summary>
+          <p>Yes, once a year at $19.99. Turn off renewal any time using the manage-subscription link in your confirmation email. A couple of clicks, no phone call, no maze.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GOT DEBT? SIDE NOTE ===== -->
+  <section class="surface">
+    <div class="wrap wide">
+      <div class="sidenote fade">
+        <div class="intro">
+          <span class="eyebrow">Oh, and one more thing</span>
+          <h2>Got debt? <span class="hl">We can help with that too.</span></h2>
+          <p>Credit cards, car loans, personal loans. The same app has a built-in Debt Tracker that shows you exactly how much interest every payment saves, and turns paying it off into a path you can see yourself walking. Included in the same $19.99.</p>
+        </div>
+
+        <div class="showcase">
+          <div class="show-img">
+            <img class="shot" src="assets/debt/01.png" width="1284" height="2778" loading="lazy"
+                 alt="KeepyCash Debts screen showing $24,610 still owed, 48% paid off and $3,174 in interest saved across several cards and a paid-off car loan" />
+          </div>
+          <div class="show-text">
+            <span class="tag">Every card &amp; loan, one screen</span>
+            <h3>See what you owe. Then watch it shrink.</h3>
+            <p>Add every debt and see the whole picture: what's left, what's paid off, and a running "interest saved" number that only goes up.</p>
+          </div>
+        </div>
+
+        <div class="showcase flip">
+          <div class="show-img">
+            <img class="shot" src="assets/debt/02.png" width="1284" height="2778" loading="lazy"
+                 alt="Debt payoff journey: a winding path from a rain cloud to sunshine, 40.1% filled in for an Amex card" />
+          </div>
+          <div class="show-text">
+            <span class="tag">Your payoff journey</span>
+            <h3>Every payment is a step toward sunshine.</h3>
+            <p>Each debt gets its own path from rain cloud to sun. Every payment fills in more of the road, with your debt-free date right there.</p>
+          </div>
+        </div>
+
+        <div class="showcase">
+          <div class="show-img">
+            <img class="shot" src="assets/debt/03.png" width="1284" height="2778" loading="lazy"
+                 alt="Payment logged: $6.50 gone, saving $0.79 in interest you will never pay" />
+          </div>
+          <div class="show-text">
+            <span class="tag">Small payments, real wins</span>
+            <h3>"$6.50 gone. That's $0.79 in interest you'll never pay."</h3>
+            <p>Every payment shows the interest it just wiped out. And the money you free up by tracking your spending? Point it here and watch it work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSE + P.S. ===== -->
+  <section>
+    <div class="wrap fade">
+      <h2>Find out where your money's really going. Start tonight.</h2>
+      <p>You can keep wondering where payday went, or you can spend a few seconds logging each purchase and finally see it in black and white. The leaks show up fast. Plugging them is the easy part.</p>
+
+      <div class="cta-block">
+        <a class="btn" data-cta="close" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash for $19.99/year &rarr;</a>
+        <div class="btn-sub">30-day money-back guarantee. iPhone &amp; Android.</div>
+      </div>
+
+      <div class="ps">
+        <p><strong>P.S.</strong> If you skimmed to the bottom, here's the whole deal: <strong>$19.99 for a full year</strong>. Full access, no ads, no bank linking. Log your spending in seconds, see exactly where it goes, and let KeepyCash build your budget for you. Debt tracker included. And if it doesn't earn its place on your phone within 30 days, email me and I'll refund every cent. You can't lose.</p>
+        <p style="margin-bottom:0"><a data-cta="ps" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener"><strong>Get KeepyCash now &rarr;</strong></a></p>
+      </div>
+    </div>
+  </section>
+
+
+  <div class="sticky-cta" id="sticky">
+    <a class="btn" data-cta="sticky" href="https://pay.rev.cat/wueyvcfczvuvbanl/?package_id=%24rc_annual" target="_blank" rel="noopener">Get KeepyCash &middot; $19.99/yr</a>
+    <span>30-day money-back guarantee</span>
+  </div>
+
+  <footer>
+    &copy; 2026 KeepyCash. All rights reserved. &nbsp;&middot;&nbsp;
+    <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
+    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms</a> &nbsp;&middot;&nbsp;
+    <a href="support.html">Contact</a>
+    <div class="fine">Spending examples are illustrative. Your savings depend on your own income, spending and habits.</div>
+  </footer>
+
+  <script>
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade').forEach(function (el) { obs.observe(el); });
+
+    /* Mobile sticky CTA: show once the hero button has scrolled away. */
+    var sticky = document.getElementById('sticky');
+    var heroBtn = document.querySelector('[data-cta="hero"]');
+    new IntersectionObserver(function (entries) {
+      sticky.classList.toggle('show', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
+    }).observe(heroBtn);
+
+    /* Which section converts: every CTA reports its data-cta label to GA. */
+    document.querySelectorAll('[data-cta]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'cta_click', { location: a.getAttribute('data-cta'), page: 'spendTracker' });
+      });
+    });
+  </script>
+
+  <script>
+    /* RevenueCat's checkout charges in the visitor's local currency but doesn't
+       label which dollars. If the locale tells us it's AU or CA, say so here. */
+    (function () {
+      var MAP = {
+        AU: { code: 'AUD', flag: '🇦🇺' },
+        CA: { code: 'CAD', flag: '🇨🇦' },
+        NZ: { code: 'NZD', flag: '🇳🇿' }
+      };
+      function region() {
+        var langs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < langs.length; i++) {
+          var m = /[-_]([A-Za-z]{2})$/.exec(langs[i] || '');
+          if (m && MAP[m[1].toUpperCase()]) return m[1].toUpperCase();
+        }
+        try {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+          if (/^Australia\//.test(tz)) return 'AU';
+          if (/^Pacific\/Auckland/.test(tz)) return 'NZ';
+          if (/^America\/(Toronto|Vancouver|Edmonton|Winnipeg|Halifax|St_Johns|Regina|Moncton|Montreal)$/.test(tz)) return 'CA';
+        } catch (e) {}
+        return '';
+      }
+      var r = region();
+      if (!r) return;
+      var info = MAP[r];
+      var msg = 'Billed in ' + info.code + ' ' + info.flag;
+
+      document.querySelectorAll('.btn-sub').forEach(function (el) {
+        var n = document.createElement('div');
+        n.className = 'cur-note';
+        n.textContent = msg;
+        el.parentNode.insertBefore(n, el.nextSibling);
+      });
+      var pn = document.querySelector('.price-now');
+      if (pn) {
+        var s = document.createElement('span');
+        s.className = 'cur-note';
+        s.textContent = info.code + ' ' + info.flag;
+        pn.appendChild(s);
+      }
+    })();
+  </script>
+
+</body>
+</html>
