@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="msvalidate.01" content="008B8BD317EB8C511F0C55956E9FB546" />
 <title>Download KeepyCash</title>
+<meta name="description" content="Download KeepyCash, the budget planner, spending tracker and debt payoff tracker for iPhone and Android. No bank linking, no ads.">
+<link rel="canonical" href="https://keepycash.com/download.html">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VT8YBKWKXT"></script>
 <script>
@@ -112,6 +115,7 @@
     color: #8C978F;
     letter-spacing: 0.01em;
   }
+  footer a { color: inherit; }
 
     /* Figtree display face */
     .wordmark, .headline { font-family: var(--font-display); }
@@ -142,16 +146,19 @@
 
 <p class="redirect-note" id="redirect-note"></p>
 
-<footer>keepycash.com</footer>
+<footer>keepycash.com &nbsp;&middot;&nbsp; <a href="spendTracker">Spending tracker</a> &nbsp;&middot;&nbsp; <a href="debtJourney">Debt payoff tracker</a></footer>
 
 <script>
   const IOS_URL = 'https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114';
   const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.jpredman27.keepycash';
   const ua = navigator.userAgent;
+  const isBot = /bot|crawl|spider|slurp|lighthouse/i.test(ua);
   const isIOS = /iPhone|iPad|iPod/i.test(ua);
   const isAndroid = /Android/i.test(ua);
 
-  if (isIOS) {
+  if (isBot) {
+    // Let crawlers stay and follow the links on this page.
+  } else if (isIOS) {
     document.getElementById('redirect-note').textContent = 'Redirecting you to the App Store…';
     setTimeout(() => { window.location.href = IOS_URL; }, 800);
   } else if (isAndroid) {
