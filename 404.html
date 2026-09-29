@@ -270,7 +270,21 @@
     });
   }
 
-  render();
+  // /c/CODE has no file of its own, so GitHub Pages lands here. Load the creator
+  // buy page (c/index.html) in place so the URL stays /c/CODE; it reads the code
+  // from the path itself. Falls back to the simple code card if the fetch fails.
+  if (/^\/c\/[^\/]+\/?$/i.test(window.location.pathname)) {
+    fetch('/c/').then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.text();
+    }).then(function (html) {
+      document.open();
+      document.write(html);
+      document.close();
+    }).catch(render);
+  } else {
+    render();
+  }
 </script>
 </body>
 </html>
