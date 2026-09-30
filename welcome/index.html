@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to KeepyCash: Create Your Account</title>
+  <meta name="description" content="Your KeepyCash purchase is confirmed. Create your account, download the app and start keeping more of your cash tonight." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="apple-itunes-app" content="app-id=6760102114" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KeepyCash" />
+  <meta property="og:title" content="Welcome to KeepyCash" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VT8YBKWKXT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VT8YBKWKXT');
+    gtag('event', 'purchase_success_view');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --background: #FBFBF8;
+      --surface: #F1F3EE;
+      --text: #15201A;
+      --text-secondary: #5D6A62;
+      --text-tertiary: #8C978F;
+      --primary: #1E5A3E;
+      --primary-variant: #16452F;
+      --danger: #B0442C;
+      --border: #E2E6DE;
+      --primary-bg: #E6F1DF;
+      --danger-bg: #F8E6E0;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.9);
+    }
+    .logo { font-family: var(--font-display); font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--primary); }
+
+    .hero {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 56px 24px 64px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-bg);
+      padding: 6px 12px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 6vw, 60px);
+      line-height: 1.04;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 22px;
+    }
+    h1 em { font-style: normal; color: var(--primary); }
+
+    .lead { font-size: 19px; color: var(--text-secondary); margin-bottom: 14px; max-width: 480px; }
+    .lead strong { color: var(--text); }
+
+    .steps { list-style: none; counter-reset: step; display: grid; gap: 14px; margin: 28px 0 28px; }
+    .steps li { counter-increment: step; display: flex; gap: 14px; font-size: 16px; align-items: flex-start; }
+    .steps li::before {
+      content: counter(step);
+      flex: none;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .steps strong { display: block; font-family: var(--font-display); font-size: 17px; line-height: 1.3; margin-top: 3px; }
+    .steps span { color: var(--text-secondary); font-size: 15px; }
+
+    .trust { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--text-secondary); }
+    .trust span::before { content: '✓ '; color: var(--primary); font-weight: 800; }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 8px 30px rgba(21,32,26,0.06);
+    }
+    .card h2 { font-family: var(--font-display); font-size: 24px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 4px; }
+    .card .sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 22px; }
+
+    .field { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    input {
+      width: 100%;
+      font: inherit;
+      font-size: 16px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--background);
+      color: var(--text);
+      transition: border-color .15s, box-shadow .15s;
+    }
+    input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-bg); }
+    input.invalid { border-color: var(--danger); }
+    .hint { font-size: 12px; color: var(--text-tertiary); margin-top: 5px; }
+
+    button {
+      width: 100%;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--primary);
+      border: 0;
+      border-radius: 100px;
+      padding: 14px 24px;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background .2s, transform .15s;
+    }
+    button:hover { background: var(--primary-variant); transform: translateY(-1px); }
+    button:disabled { opacity: .6; cursor: default; transform: none; }
+
+    .fine { font-size: 12px; color: var(--text-tertiary); text-align: center; margin-top: 12px; }
+    .fine a { color: var(--text-secondary); }
+
+    .error {
+      display: none;
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--danger-bg);
+      color: var(--danger);
+      font-size: 14px;
+    }
+    .error.show { display: block; }
+
+    .success { display: none; text-align: center; padding: 8px 0; }
+    .success.show { display: block; }
+    .success .tick {
+      width: 64px; height: 64px; margin: 0 auto 16px;
+      border-radius: 50%;
+      background: var(--primary-bg); color: var(--primary);
+      font-size: 32px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .success h2 { margin-bottom: 8px; }
+    .success p { color: var(--text-secondary); }
+    .success p strong { color: var(--text); word-break: break-all; }
+    .success .note {
+      margin-top: 14px; padding: 10px 14px; border-radius: 10px;
+      background: var(--primary-bg); color: var(--primary-variant); font-size: 14px;
+    }
+    .success .note:empty { display: none; }
+    .success .badges { margin: 22px 0 4px; }
+
+    .redeem { display: none; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--border); }
+    .redeem.show { display: block; }
+    .redeem a {
+      display: block; font-weight: 700; text-decoration: none; color: var(--primary);
+      border: 1.5px solid var(--primary); border-radius: 100px; padding: 12px 20px;
+      transition: background .2s;
+    }
+    .redeem a:hover { background: var(--primary-bg); }
+    .redeem .hint { margin-top: 8px; }
+
+    /* Official store badges. Google's PNG has built-in padding, so it runs taller
+       and is pulled in with negative margin to line its artwork up with Apple's. */
+    .badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; }
+    .badges a { display: inline-block; line-height: 0; transition: transform .15s; }
+    .badges a:hover { transform: translateY(-2px); }
+    .badges .apple img { height: 48px; width: auto; }
+    .badges .google img { height: 71px; width: auto; margin: -11.5px -9px; }
+
+    /* DOWNLOAD BAND */
+    .download { background: var(--surface); border-top: 1px solid var(--border); padding: 64px 24px 72px; text-align: center; }
+    .download h2 {
+      font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 38px); line-height: 1.12;
+      font-weight: 800; letter-spacing: -0.8px; margin: 0 auto 12px; max-width: 640px;
+    }
+    .download h2 em { font-style: normal; color: var(--primary); }
+    .download p { color: var(--text-secondary); font-size: 17px; max-width: 520px; margin: 0 auto 28px; }
+
+    footer { text-align: center; padding: 32px 24px 48px; font-size: 13px; color: var(--text-tertiary); }
+    footer a { color: var(--text-secondary); }
+
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 32px; padding: 36px 20px 48px; }
+      .card { padding: 24px 20px; }
+      .download { padding: 48px 20px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <nav><div class="logo">Keepy<span>Cash</span></div></nav>
+
+  <main class="hero">
+    <div>
+      <span class="eyebrow">✓ Payment confirmed</span>
+      <h1>You're in.<br />Now let's <em>find your money.</em></h1>
+      <p class="lead">That $19.99 is about to pay for itself. Most people find more than that in <strong>forgotten subscriptions and $5 leaks</strong> in their first week.</p>
+      <p class="lead">Three quick steps and you'll be logging your first spend tonight.</p>
+
+      <ol class="steps">
+        <li><div><strong>Create your account</strong><span>Takes 30 seconds. Your subscription will be waiting for you.</span></div></li>
+        <li><div><strong>Download KeepyCash</strong><span>Free on the App Store and Google Play.</span></div></li>
+        <li><div><strong>Log in and start keeping more</strong><span>Use the same email and password you set here.</span></div></li>
+      </ol>
+
+      <div class="trust">
+        <span>30-day money-back guarantee</span>
+        <span>No bank linking</span>
+        <span>No ads, ever</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <form id="form" novalidate>
+        <h2>Create your account</h2>
+        <p class="sub">So everything's ready the moment you open the app.</p>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required />
+          <div class="hint">Use the same email you paid with.</div>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required />
+          <div class="hint">At least 8 characters.</div>
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <input id="confirm" name="confirm" type="password" autocomplete="new-password" minlength="8" required />
+        </div>
+
+        <button type="submit" id="submit">Create my account &rarr;</button>
+        <div class="error" id="error" role="alert"></div>
+        <p class="fine">By creating an account you agree to our <a href="/terms.html">Terms</a> and <a href="/privacy.html">Privacy Policy</a>.</p>
+      </form>
+
+      <div class="success" id="success" aria-live="polite">
+        <div class="tick">✓</div>
+        <h2 id="success-title">Your account is ready</h2>
+        <p>Download KeepyCash and log in with <strong id="success-email"></strong>.</p>
+        <div class="note" id="success-note"></div>
+        <div class="badges">
+          <a class="apple" data-store="apple" href="https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114" target="_blank" rel="noopener">
+            <img src="/assets/badges/app-store.svg" alt="Download on the App Store" width="144" height="48" />
+          </a>
+          <a class="google" data-store="google" href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash" target="_blank" rel="noopener">
+            <img src="/assets/badges/google-play.png" alt="Get it on Google Play" width="184" height="71" />
+          </a>
+        </div>
+        <div class="redeem" id="redeem">
+          <a id="redeem-link" href="#">Already installed? Activate your purchase &rarr;</a>
+          <div class="hint">Open this on the phone where KeepyCash is installed.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="download">
+    <h2>Every dollar you log is a dollar <em>you're in charge of.</em></h2>
+    <p>Grab the app now. Your account and subscription will be there when you log in.</p>
+    <div class="badges">
+      <a class="apple" data-store="apple" href="https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114" target="_blank" rel="noopener">
+        <img src="/assets/badges/app-store.svg" alt="Download on the App Store" width="144" height="48" loading="lazy" />
+      </a>
+      <a class="google" data-store="google" href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash" target="_blank" rel="noopener">
+        <img src="/assets/badges/google-play.png" alt="Get it on Google Play" width="184" height="71" loading="lazy" />
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 KeepyCash · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/support.html">Support</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    var SUPABASE_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co';
+    var SUPABASE_KEY = 'sb_publishable_WctlTXMnpCSW_i0LuStx9g_fq4atrcG';
+    var supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+      auth: { persistSession: false, autoRefreshToken: false }
+    });
+
+    // RevenueCat's custom success redirect appends app_user_id, plus redeem_url when Redemption Links are on.
+    var params = new URLSearchParams(location.search);
+    var rcAppUserId = (params.get('app_user_id') || '').slice(0, 200);
+    var redeemUrl = params.get('redeem_url') || '';
+    if (/^\s*(javascript|data|vbscript):/i.test(redeemUrl)) redeemUrl = '';
+
+    var form = document.getElementById('form');
+    var submitBtn = document.getElementById('submit');
+    var errorBox = document.getElementById('error');
+
+    if (params.get('email')) form.email.value = params.get('email').slice(0, 254);
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.classList.add('show');
+    }
+
+    function showSuccess(email, title, note) {
+      form.style.display = 'none';
+      document.getElementById('success-title').textContent = title;
+      document.getElementById('success-email').textContent = email;
+      document.getElementById('success-note').textContent = note || '';
+      if (redeemUrl) {
+        document.getElementById('redeem-link').href = redeemUrl;
+        document.getElementById('redeem').classList.add('show');
+      }
+      document.getElementById('success').classList.add('show');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorBox.classList.remove('show');
+      ['email', 'password', 'confirm'].forEach(function (id) {
+        document.getElementById(id).classList.remove('invalid');
+      });
+
+      var email = form.email.value.trim();
+      var password = form.password.value;
+      var confirm = form.confirm.value;
+
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        form.email.classList.add('invalid'); form.email.focus();
+        return showError('Please enter a valid email address.');
+      }
+      if (password.length < 8) {
+        form.password.classList.add('invalid'); form.password.focus();
+        return showError('Your password needs at least 8 characters.');
+      }
+      if (password !== confirm) {
+        form.confirm.classList.add('invalid'); form.confirm.focus();
+        return showError("Those passwords don't match.");
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating your account...';
+
+      supabaseClient.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+          emailRedirectTo: 'https://keepycash.com/auth/callback',
+          data: { rc_app_user_id: rcAppUserId || null, rc_redeem_url: redeemUrl || null, source: 'web_billing' }
+        }
+      }).then(function (res) {
+        var err = res.error;
+        var user = res.data && res.data.user;
+        // With email confirmation on, an existing address comes back as a user with no identities.
+        var exists = (err && (err.code === 'user_already_exists' || /already registered/i.test(err.message)))
+          || (!err && user && user.identities && user.identities.length === 0);
+
+        if (exists) {
+          showSuccess(email, 'You already have an account', 'Just log in with your existing password in the app.');
+          if (window.gtag) gtag('event', 'web_purchase_signup_existing');
+          return;
+        }
+        if (err) throw err;
+
+        showSuccess(email, 'Your account is ready',
+          res.data.session ? '' : 'One last thing: check your inbox and tap the link to confirm your email.');
+        if (window.gtag) gtag('event', 'web_purchase_signup');
+      }).catch(function (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Create my account →';
+        showError(err && err.code === 'weak_password'
+          ? 'That password is too weak. Try a longer one.'
+          : (err && err.status === 429)
+            ? 'Too many attempts. Please wait a minute and try again.'
+            : 'Something went wrong. Please try again.');
+      });
+    });
+
+    document.querySelectorAll('[data-store]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (window.gtag) gtag('event', 'store_click', { store: a.getAttribute('data-store'), page: 'welcome' });
+      });
+    });
+  </script>
+</body>
+</html>

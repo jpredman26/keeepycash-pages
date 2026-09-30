@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KeepyCash: Spend Tracker &amp; Debt Tracker, Referred by a Creator</title>
-  <meta name="description" content="KeepyCash is a spend tracker with a debt tracker built in. Log spending in seconds and track every card and loan in one app. Verify your creator code to get KeepyCash." />
+  <title>KeepyCash: Debt Payoff Tracker, Referred by a Creator</title>
+  <meta name="description" content="Track every credit card and loan in one place and watch the interest disappear. Verify your creator code to get KeepyCash." />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="apple-itunes-app" content="app-id=6760102114" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="KeepyCash" />
-  <meta property="og:title" content="KeepyCash: Spend Tracker &amp; Debt Tracker in One App" />
-  <meta property="og:description" content="Track what you spend. Track what you owe. One simple app." />
-  <meta property="og:image" content="https://keepycash.com/assets/debt/05.png" />
+  <meta property="og:title" content="KeepyCash: Crush Every Debt, Faster" />
+  <meta property="og:description" content="Watch the interest disappear with every dollar you pay off." />
+  <meta property="og:image" content="https://keepycash.com/assets/debt/02.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="KeepyCash: Spend Tracker &amp; Debt Tracker in One App" />
-  <meta name="twitter:description" content="Track what you spend. Track what you owe. One simple app." />
-  <meta name="twitter:image" content="https://keepycash.com/assets/debt/05.png" />
+  <meta name="twitter:title" content="KeepyCash: Crush Every Debt, Faster" />
+  <meta name="twitter:description" content="Watch the interest disappear with every dollar you pay off." />
+  <meta name="twitter:image" content="https://keepycash.com/assets/debt/02.png" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VT8YBKWKXT"></script>
   <script>
@@ -25,7 +25,7 @@
     gtag('config', 'G-VT8YBKWKXT');
   </script>
 
-  <link rel="preload" as="image" href="/assets/debt/05.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/assets/debt/01.webp" fetchpriority="high" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
@@ -599,25 +599,6 @@
       footer { padding-bottom: 110px; }
     }
 
-
-    /* HERO: spend + debt screens side by side */
-    .duo-shots { display: flex; justify-content: center; align-items: flex-start; }
-    .duo-shots .shot { max-width: 230px; margin: 0; }
-    .duo-shots .shot + .shot { margin-top: 44px; margin-left: -26px; }
-    @media (max-width: 560px) { .duo-shots .shot { max-width: 165px; } }
-
-    /* TWO TRACKERS, ONE APP */
-    .two-up { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
-    .panel { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: 26px; }
-    .panel h3 { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 8px; }
-    .panel .tag {
-      display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
-      color: var(--primary); background: var(--primary-bg); padding: 4px 10px; border-radius: 100px; margin-bottom: 14px;
-    }
-    .panel a { color: var(--primary); text-decoration: none; }
-    @media (max-width: 700px) { .two-up { grid-template-columns: 1fr; } }
-    [id="spend"], [id="debt"] { scroll-margin-top: 56px; }
-
     .logo, h1, h2, h3, .price-now { font-family: var(--font-display); }
   </style>
 </head>
@@ -634,29 +615,24 @@
       <div class="hero-grid">
         <div class="fade">
           <p class="welcome" id="welcome" hidden></p>
-          <span class="eyebrow">The spend tracker that tracks your debt too</span>
-          <h1>Track what you spend. <span class="hl">Track what you owe.</span></h1>
-          <p class="lead">One simple app for both. Log everyday spending in seconds, and put every card and loan on a path you can actually watch shrink.</p>
-          <p>KeepyCash is a spend tracker with a debt tracker built in. Same app, same login, nothing extra to buy.</p>
+          <span class="eyebrow">the KeepyCash debt payoff tracker</span>
+          <h1>Crush every debt, <span class="hl">faster.</span><br />And watch the interest disappear.</h1>
+          <p class="lead">The average credit card now charges around <strong>22% interest</strong>. Every month you carry a balance, the bank quietly takes its cut before a single dollar touches what you actually owe.</p>
+          <p>KeepyCash is a debt payoff tracker that puts every card and loan in one place, shows you exactly how much interest each payment saves, and turns the long road to debt-free into a path you can actually see yourself walking.</p>
 
           <div class="cta-block">
             <a class="btn" data-cta="hero" href="#code-box" data-locked="1">Get KeepyCash &rarr;</a>
             <div class="btn-sub">Instant access on iPhone &amp; Android.</div>
           </div>
           <div class="trust">
-            <span>Spend tracker</span>
-            <span>Debt tracker</span>
             <span>No bank linking</span>
             <span>No ads, ever</span>
+            <span>iPhone &amp; Android</span>
           </div>
         </div>
         <div class="fade">
-          <div class="duo-shots">
-            <img class="shot" src="/assets/debt/05.webp" width="720" height="1558" fetchpriority="high"
-                 alt="KeepyCash Insights screen showing money in, bills, everyday spending and money kept, with category totals" />
-            <img class="shot" src="/assets/debt/01.webp" width="720" height="1558"
-                 alt="KeepyCash Debts screen showing $24,610 still owed, 48% paid off and $3,174 in interest saved across Amex, Visa, Mastercard and a paid-off car loan" />
-          </div>
+          <img class="shot" src="/assets/debt/01.webp" width="720" height="1558" fetchpriority="high"
+               alt="KeepyCash Debts screen showing $24,610 still owed, 48% paid off and $3,174 in interest saved across Amex, Visa, Mastercard and a paid-off car loan" />
         </div>
       </div>
     </div>
@@ -679,39 +655,21 @@
     </div>
   </section>
 
-  <!-- ===== TWO TRACKERS, ONE APP ===== -->
+  <!-- ===== THE PROBLEM ===== -->
   <section class="surface">
-    <div class="wrap wide fade">
-      <div style="text-align:center; max-width:700px; margin:0 auto;">
-        <span class="eyebrow">Looking for a spend tracker or a debt tracker?</span>
-        <h2>You're in the right place. It's <span class="hl">one app</span>.</h2>
-        <p>KeepyCash is listed on the App Store and Google Play as a spend tracker. The debt tracker is built right into the same app, so you get both.</p>
+    <div class="wrap fade">
+      <h2>Life's getting harder. Debt is getting more expensive.</h2>
+      <p>Groceries cost more. Bills keep creeping up. And the cards that were meant to smooth things over are now some of the most expensive money you can borrow.</p>
+
+      <div class="stats">
+        <div class="stat"><span class="num">~22%</span><span class="lbl">average interest on cards that carry a balance</span></div>
+        <div class="stat"><span class="num">$6,600</span><span class="lbl">average credit card balance per person in the US</span></div>
+        <div class="stat"><span class="num">$120</span><span class="lbl">roughly what that balance costs you in interest, every month</span></div>
       </div>
 
-      <div class="two-up">
-        <div class="panel">
-          <span class="tag">Spend Tracker</span>
-          <h3>See where every dollar goes.</h3>
-          <p>Log a purchase in seconds, then see plain-English charts of money in, money out and where it all went.</p>
-          <ul class="ticks">
-            <li>Type it, say it, scan it or screenshot it</li>
-            <li>Categories, payees and recurring bills</li>
-            <li>Simple insights with no jargon</li>
-          </ul>
-          <p style="margin:14px 0 0;"><a href="#spend"><strong>See the spend tracker &darr;</strong></a></p>
-        </div>
-        <div class="panel">
-          <span class="tag">Debt Tracker</span>
-          <h3>See what you owe. Watch it shrink.</h3>
-          <p>Put every credit card and loan in one place and see your progress with every payment you log.</p>
-          <ul class="ticks">
-            <li>A payoff path for each debt</li>
-            <li>Percent paid off and your debt-free date</li>
-            <li>Interest saved, shown on every payment</li>
-          </ul>
-          <p style="margin:14px 0 0;"><a href="#debt"><strong>See the debt tracker &darr;</strong></a></p>
-        </div>
-      </div>
+      <p>That's the part nobody talks about. When you make the minimum payment, a big chunk of it never touches your balance. It just pays the bank for another month of borrowing. You feel like you're paying and paying, and the number barely moves.</p>
+
+      <div class="callout">Most people don't quit paying off debt because they can't afford it. They quit because <strong>they can't see it working.</strong> KeepyCash fixes that.</div>
     </div>
   </section>
 
@@ -720,80 +678,53 @@
     <div class="wrap fade founder">
       <span class="eyebrow">Why KeepyCash</span>
       <h2>Made for people who just want to see where the money goes.</h2>
-      <p>Most tracking apps are expensive, complicated, or both. KeepyCash was built to soothe that low-level anxiety of not knowing whether there's enough in the account to cover the (ever-rising) bills.</p>
+      <p>Reports show that simply tracking your spending can save you <strong>over $1,000 a year</strong>. But most budgeting apps are expensive, complicated, or both.</p>
+      <p>KeepyCash was built to soothe that low-level anxiety of not knowing whether there's enough in the account to cover the (ever-rising) bills.</p>
       <p class="aside">Thank you, cost of living.</p>
       <p class="quoteline">"Make it simple. Make it better, and make it affordable."</p>
-      <p>Then we added a Debt Tracker, because what you owe is just as important as what you spend.</p>
-    </div>
-  </section>
-
-  <!-- ===== SPEND SHOWCASE ===== -->
-  <section class="surface" id="spend">
-    <div class="wrap wide">
-      <div class="fade" style="text-align:center; max-width:680px; margin:0 auto 12px;">
-        <span class="eyebrow">The Spend Tracker</span>
-        <h2>Tracking that takes <span class="hl">seconds</span>, not a Sunday afternoon.</h2>
-        <p>Most people don't quit tracking because they don't care. They quit because it's a chore. So we made it as close to effortless as it gets.</p>
-      </div>
-
-      <div class="showcase fade">
-        <div class="show-img">
-          <img class="shot" src="/assets/debt/04.webp" width="720" height="1558" loading="lazy"
-               alt="Add Transaction screen logging a $34.99 expense at KFC under Dining Out" />
-        </div>
-        <div class="show-text">
-          <span class="tag">Log it in seconds</span>
-          <h3>Amount, payee, done.</h3>
-          <p>Tap the big plus, punch in the amount and who you paid. KeepyCash remembers your payees and picks the category for you, so most purchases are logged before you've left the checkout.</p>
-          <ul class="ticks">
-            <li>Split one receipt across categories</li>
-            <li>Mark bills as recurring so they log themselves</li>
-            <li>Cash counts just like card</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="fade" style="max-width:760px; margin:0 auto; padding-top:12px;">
-        <h2 style="text-align:center; margin-top:24px;">Pick the easiest way to log it. There are 4.</h2>
-        <div class="features four">
-          <div class="feature"><span class="ic">⌨️</span><h3>Type it</h3><p>Amount, payee, done. A few seconds, tops.</p></div>
-          <div class="feature"><span class="ic">🎙️</span><h3>Say it</h3><p>"Twelve dollars, coffee." Voice logging for when your hands are full.</p></div>
-          <div class="feature"><span class="ic">🧾</span><h3>Scan it</h3><p>Point your camera at a receipt and let KeepyCash read it.</p></div>
-          <div class="feature"><span class="ic">📱</span><h3>Screenshot it</h3><p>Snap your bank statement to log many at once. The image is <strong>never stored</strong>.</p></div>
-        </div>
-        <p style="text-align:center; margin-top:18px;">Just do what works for you :)</p>
-      </div>
-
-      <div class="showcase flip fade" style="margin-top:28px;">
-        <div class="show-img">
-          <img class="shot" src="/assets/debt/05.webp" width="720" height="1558" loading="lazy"
-               alt="Insights screen showing money in, bills, everyday spending and money kept, with category totals" />
-        </div>
-        <div class="show-text">
-          <span class="tag">See where it goes</span>
-          <h3>Spot the small spends that add up.</h3>
-          <p>You don't need to be an accountant to read these charts. See money in, money out and what's left, then drill into groceries, dining out, subscriptions and every other place your paycheck quietly disappears.</p>
-          <ul class="ticks">
-            <li>Money in vs. money out, in one picture</li>
-            <li>Your biggest categories and top payees at a glance</li>
-            <li>Overspend alerts before a category runs dry</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="cta-block fade">
-        <a class="btn" data-cta="spend-showcase" href="#code-box" data-locked="1">Start tracking my spending &rarr;</a>
-      </div>
+      <p>And the part we're proudest of is the new Debt Tracker, because paying off debt is where money stress hits hardest.</p>
     </div>
   </section>
 
   <!-- ===== DEBT SHOWCASE ===== -->
-  <section id="debt">
+  <section class="surface">
     <div class="wrap wide">
       <div class="fade" style="text-align:center; max-width:680px; margin:0 auto 12px;">
         <span class="eyebrow">The Debt Tracker</span>
-        <h2>Built into the same app: pay off debt like you're <span class="hl">winning</span>, not drowning.</h2>
-        <p>Seeing progress is what keeps you going. So the Debt Tracker makes progress impossible to miss, with no separate app and no extra cost.</p>
+        <h2>Pay off debt like you're <span class="hl">winning</span>, not drowning.</h2>
+        <p>Research from Northwestern's Kellogg School found that people who knock out their debts one at a time are more likely to clear <em>all</em> of them. Seeing progress is what keeps you going. So we made progress impossible to miss.</p>
+      </div>
+
+      <div class="showcase fade">
+        <div class="show-img">
+          <img class="shot" src="/assets/debt/02.webp" width="720" height="1558" loading="lazy"
+               alt="Debt payoff journey: a winding path from a rain cloud at the start to sunshine at the finish, 40.1% filled in for an Amex card" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Your payoff journey</span>
+          <h3>Every payment is a step toward sunshine.</h3>
+          <p>Each debt gets its own path, from the rain cloud where you started to the sun at the finish line. Every payment you log fills in more of the road.</p>
+          <p>A Harvard Business Review study found that what makes people feel like they're getting somewhere isn't the dollar amount. It's <strong>how much of the balance is gone</strong>. That's exactly what the path shows you.</p>
+          <ul class="ticks">
+            <li>See your recent payments light up in gold</li>
+            <li>Know your debt-free date</li>
+            <li>Watch the finish line get closer every week</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="showcase flip fade">
+        <div class="show-img">
+          <img class="shot" src="/assets/debt/03.webp" width="720" height="1558" loading="lazy"
+               alt="Payment logged: $6.50 gone, saving $0.79 in interest you will never pay, with a Share this win button" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Small payments, real wins</span>
+          <h3>"$6.50 gone. That's $0.79 in interest you'll never pay."</h3>
+          <p>Most apps make you feel bad about debt. KeepyCash celebrates every dollar you throw at it, and shows you precisely how much interest that payment just wiped out.</p>
+          <p>Suddenly an extra $10 isn't "nothing". It's money you're taking back from the bank, and you get to see the receipt.</p>
+          <div class="win">Every payment shows <strong>the interest you'll never pay</strong>, plus your running total saved on that debt.</div>
+        </div>
       </div>
 
       <div class="showcase fade">
@@ -813,62 +744,87 @@
         </div>
       </div>
 
+      <div class="cta-block fade">
+        <a class="btn" data-cta="debt-showcase" href="#code-box" data-locked="1">Start my debt journey today &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUDGET BUILT FOR YOU + 4 WAYS ===== -->
+  <section>
+    <div class="wrap wide">
+      <div class="fade" style="text-align:center; max-width:680px; margin:0 auto 12px;">
+        <span class="eyebrow">Also built in: the Spend Tracker</span>
+        <h2>Spend tracking and budgeting <span class="hl">too.</span></h2>
+        <p>Same app, nothing extra to buy. Log what you spend, see where it all goes, and free up more money for your debts.</p>
+      </div>
+
       <div class="showcase flip fade">
         <div class="show-img">
-          <img class="shot" src="/assets/debt/02.webp" width="720" height="1558" loading="lazy"
-               alt="Debt payoff journey: a winding path from a rain cloud at the start to sunshine at the finish, 40.1% filled in for an Amex card" />
+          <img class="shot" src="/assets/debt/04.webp" width="720" height="1558" loading="lazy"
+               alt="Add Transaction screen logging a $34.99 expense at KFC under Dining Out" />
         </div>
         <div class="show-text">
-          <span class="tag">Your payoff journey</span>
-          <h3>Every payment is a step toward sunshine.</h3>
-          <p>Each debt gets its own path, from the rain cloud where you started to the sun at the finish line. Every payment you log fills in more of the road.</p>
-          <ul class="ticks">
-            <li>See your recent payments light up in gold</li>
-            <li>Know your debt-free date</li>
-            <li>Watch the finish line get closer every week</li>
-          </ul>
+          <span class="tag">A budget that builds itself</span>
+          <h3>Just track your spending. KeepyCash builds the budget <em>for</em> you.</h3>
+          <p>Building a budget on your own can take hours, and plenty of people give up before they finish. Money gets messy.</p>
+          <p>With KeepyCash you can simply track what you spend. Or you can track it while KeepyCash builds a budget for you in the background. Yep. If you want a budget, we do it for you.</p>
+          <p>A simple budget you actually stick to is how the extra money for your debts appears in the first place.</p>
         </div>
       </div>
 
+      <div class="fade" style="max-width:760px; margin:0 auto;">
+        <h2 style="text-align:center; margin-top:24px;">Pick the easiest way to log it. There are 4.</h2>
+        <div class="features four">
+          <div class="feature"><span class="ic">⌨️</span><h3>Type it</h3><p>Amount, payee, done. A few seconds, tops.</p></div>
+          <div class="feature"><span class="ic">🎙️</span><h3>Say it</h3><p>"Twelve dollars, coffee." Voice logging for when your hands are full.</p></div>
+          <div class="feature"><span class="ic">🧾</span><h3>Scan it</h3><p>Point your camera at a receipt and let KeepyCash read it.</p></div>
+          <div class="feature"><span class="ic">📱</span><h3>Screenshot it</h3><p>Snap your bank statement to log many at once. The image is <strong>never stored</strong>.</p></div>
+        </div>
+        <p style="text-align:center; margin-top:18px;">Just do what works for you :)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSIGHTS ===== -->
+  <section class="surface">
+    <div class="wrap wide">
       <div class="showcase fade">
         <div class="show-img">
-          <img class="shot" src="/assets/debt/03.webp" width="720" height="1558" loading="lazy"
-               alt="Payment logged: $6.50 gone, saving $0.79 in interest you will never pay, with a Share this win button" />
+          <img class="shot" src="/assets/debt/05.webp" width="720" height="1558" loading="lazy"
+               alt="Insights screen showing money in, bills, everyday spending and money kept, with category totals" />
         </div>
         <div class="show-text">
-          <span class="tag">Small payments, real wins</span>
-          <h3>"$6.50 gone. That's $0.79 in interest you'll never pay."</h3>
-          <p>Most apps make you feel bad about debt. KeepyCash celebrates every payment, and shows you how much interest it just wiped out.</p>
-          <div class="win">Every payment shows <strong>the interest you'll never pay</strong>, plus your running total saved on that debt.</div>
+          <span class="tag">See where it goes</span>
+          <h3>Find the money you didn't know you had.</h3>
+          <p>You don't need to be an accountant to read these charts. See money in, money out, and what you kept, then drill into groceries, dining out, subscriptions and every other place your paycheck quietly disappears.</p>
+          <p>Every leak you plug is extra cash you can point at your debt. And now you'll see exactly how much interest it saves you.</p>
         </div>
-      </div>
-
-      <div class="cta-block fade">
-        <a class="btn" data-cta="debt-showcase" href="#code-box" data-locked="1">Start my debt journey &rarr;</a>
       </div>
     </div>
   </section>
 
   <!-- ===== EVERYTHING ELSE ===== -->
-  <section class="surface">
+  <section>
     <div class="wrap fade">
-      <h2>Two trackers, plus a whole lot more.</h2>
+      <h2>And a whole lot more to help you keep your cash.</h2>
       <div class="features">
-        <div class="feature"><span class="ic">🔥</span><h3>Tracking streaks</h3><p>A fun way to make tracking a habit. Don't break the chain.</p></div>
+        <div class="feature"><span class="ic">🔥</span><h3>Tracking streaks</h3><p>A fun way to make keeping money addictive. Don't break the chain.</p></div>
         <div class="feature"><span class="ic">🎯</span><h3>Give every dollar a job</h3><p>Dollars, Pounds or Euros. Every one gets a purpose before you spend it.</p></div>
         <div class="feature"><span class="ic">🚨</span><h3>Overspend alerts</h3><p>A heads-up before a category runs dry, so you stay on track and in control.</p></div>
         <div class="feature"><span class="ic">🛡️</span><h3>GuardianMode</h3><p>Protects your balance when you arrive somewhere that's cost you money in the past.</p></div>
-        <div class="feature"><span class="ic">☁️</span><h3>Cloud sync</h3><p>iPhone and Android, with your numbers up to date across your devices.</p></div>
+        <div class="feature"><span class="ic">📊</span><h3>Quick-glance insights</h3><p>Simple charts that show where your money is going. No jargon.</p></div>
         <div class="feature"><span class="ic">🔒</span><h3>No bank linking</h3><p>Your finances stay private. We never ask for your bank login.</p></div>
       </div>
+      <p style="margin-top:28px;">Want to free up more money for your debts? The same app includes a <a href="/spendTracker">spending tracker</a> that shows exactly where every dollar goes.</p>
     </div>
   </section>
 
   <!-- ===== THE CATCH ===== -->
-  <section>
+  <section class="surface">
     <div class="wrap fade">
-      <h2>Every "free" tracker app has a catch.</h2>
-      <p>We looked at a lot of spend tracker and debt tracker apps. They all come with one of these three:</p>
+      <h2>Every "free" budgeting app has a catch.</h2>
+      <p>We looked at a lot of debt payoff and budgeting apps. They all come with one of these three:</p>
       <ul class="catches">
         <li><span class="x">&times;</span><span><span class="free">Free</span> &hellip;but you'll get slammed with ads.</span></li>
         <li><span class="x">&times;</span><span><span class="free">Free</span> &hellip;but only for 3 days. Maybe 7. Never long enough to make a difference.</span></li>
@@ -879,23 +835,25 @@
         <span class="ic">🤝</span>
         <div>
           <p><strong>KeepyCash is a paid app, because we're serious about helping.</strong></p>
-          <p>So instead of a "free" with a catch, here's a straight deal. One payment gets you <strong>everything</strong>: the spend tracker, the debt tracker, <strong>no ads</strong>, <strong>no locked features</strong>, no "Premium" upsell later.</p>
+          <p>So instead of a "free" with a catch, here's a straight deal. One payment gets you <strong>everything</strong>: <strong>no ads</strong>, <strong>no locked features</strong>, no "Premium" upsell later.</p>
           <p>We thought you'd appreciate being told that upfront.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== WHAT YOU GET ===== -->
-  <section class="surface">
+  <!-- ===== THE MATH ===== -->
+  <section>
     <div class="wrap fade">
-      <h2>Everything in one place.</h2>
+      <h2>The math is simple.</h2>
+      <p>On the average card balance of around $6,600 at 22%, you're paying roughly <strong>$120 a month</strong> just in interest. That's <strong>about $1,450 a year</strong> handed to the bank for nothing.</p>
+      <p>Speed up your payoff even a little, and KeepyCash can pay for itself many times over.</p>
 
       <ul class="stack">
-        <li><span>Spend tracker: type, voice, receipt scan or screenshot</span><span>included</span></li>
-        <li><span>Debt tracker: every card and loan, with interest saved</span><span>included</span></li>
-        <li><span>Insights, streaks and overspend alerts</span><span>included</span></li>
-        <li><span>iPhone, Android and cloud sync</span><span>included</span></li>
+        <li><span>Interest saved by paying debts off faster</span><span>shown in the app, per payment</span></li>
+        <li><span>Tracking spending (per multiple reports)</span><span>$1,000+/yr</span></li>
+        <li><span>A budget built for you, no hours of setup</span><span>included</span></li>
+        <li><span>Knowing the bills are covered</span><span>priceless-ish</span></li>
       </ul>
 
       <div class="price-card">
@@ -908,14 +866,14 @@
     </div>
   </section>
 
-  <!-- ===== AFTER YOU BUY ===== -->
-  <section>
+  <!-- ===== GUARANTEE ===== -->
+  <section class="surface">
     <div class="wrap fade">
       <h2>What happens after you buy</h2>
       <ol class="steps">
         <li><span class="n">1</span><div><h3>Secure checkout</h3><p>Takes about a minute.</p></div></li>
         <li><span class="n">2</span><div><h3>Check your email</h3><p>Your receipt and account details land in your inbox straight away.</p></div></li>
-        <li><span class="n">3</span><div><h3>Download &amp; log your first entry</h3><p>Get KeepyCash on iPhone or Android, sign in, then log today's spending or add your first debt.</p></div></li>
+        <li><span class="n">3</span><div><h3>Download &amp; add your first debt</h3><p>Get KeepyCash on iPhone or Android, sign in, and log your first payment tonight.</p></div></li>
       </ol>
 
       <div class="guarantee">
@@ -929,13 +887,9 @@
   </section>
 
   <!-- ===== SOCIAL PROOF ===== -->
-  <section class="surface">
+  <section>
     <div class="wrap fade">
-      <h2>What people are saying.</h2>
-      <div class="quote">
-        <p>"Downloaded as a referral from a friend and really does help. Simple tracking method no extra jargon just a simple way to keep track of your finances and stop you from spending all those little costs you don't realise you have! Highly recommend"</p>
-        <span class="who">Luke Z.</span>
-      </div>
+      <h2>People are already keeping more.</h2>
       <div class="quote">
         <p>"Never thought I'd say that about a finance app. KeepyCash makes budgeting feel rewarding instead of painful."</p>
         <span class="who">Nicole M.</span>
@@ -943,6 +897,10 @@
       <div class="quote">
         <p>"I've tried every budgeting app out there. KeepyCash is the first one that actually made me stick to my budget for more than a week."</p>
         <span class="who">Stevie T.</span>
+      </div>
+      <div class="quote">
+        <p>"Downloaded as a referral from a friend and really does help. Simple tracking method no extra jargon just a simple way to keep track of your finances and stop you from spending all those little costs you don't realise you have! Highly recommend"</p>
+        <span class="who">Luke Z.</span>
       </div>
       <div class="quote">
         <p>"Exactly what a budgeting app should be. Simple, powerful, and it finally got me on top of my money. Love it!"</p>
@@ -956,14 +914,10 @@
   </section>
 
   <!-- ===== FAQ ===== -->
-  <section>
+  <section class="surface">
     <div class="wrap fade">
       <h2>Straight answers</h2>
       <div class="faq">
-        <details>
-          <summary>Is KeepyCash a spend tracker or a debt tracker?</summary>
-          <p>Both, in one app. The App Store and Google Play list it as a spend tracker, and the Debt Tracker is built in. You don't need a second app or a second purchase.</p>
-        </details>
         <details>
           <summary>Why pay upfront instead of a free trial?</summary>
           <p>Most "free trials" are built around you forgetting to cancel. We'd rather be straight with you: pay once, get everything, no countdown timer and no surprise charge after a trial.</p>
@@ -973,28 +927,28 @@
           <p>Check your email after checkout, then download KeepyCash from the App Store or Google Play and sign in. Your full access is waiting.</p>
         </details>
         <details>
-          <summary>Do I have to link my bank account?</summary>
-          <p>No. KeepyCash never asks for your bank login. You log spending and payments yourself by typing, voice, receipt scan or statement screenshot. It takes seconds, and your data stays private.</p>
-        </details>
-        <details>
-          <summary>Can I track cash spending too?</summary>
-          <p>Yes. Because you log spending yourself instead of linking a bank, cash counts exactly like card. Type it or say it and it's in.</p>
-        </details>
-        <details>
           <summary>What kinds of debt can I track?</summary>
           <p>Any debt with a balance: credit cards, car loans, personal loans, store cards and more. Add the balance and interest rate, and KeepyCash tracks your progress and the interest each payment saves.</p>
         </details>
         <details>
-          <summary>Is the debt tracker a payoff calculator?</summary>
-          <p>It's a tracker. Instead of a one-off calculation you forget about, you add each balance and interest rate once, then log payments as you make them. KeepyCash keeps your balance, percent paid off and interest saved up to date.</p>
+          <summary>Does KeepyCash use the debt snowball or debt avalanche method?</summary>
+          <p>Either one. Pick the debt you want to attack first, whether that's the smallest balance (snowball) or the highest interest rate (avalanche), and log your payments against it. Every debt shows its own progress and the interest each payment saves, so you can see your plan working whichever method you choose.</p>
         </details>
         <details>
-          <summary>Isn't logging everything by hand a pain?</summary>
-          <p>It's quicker than you'd think. Most purchases take a few seconds, and you can snap a statement screenshot to log a whole batch at once.</p>
+          <summary>Is this a debt payoff calculator or a tracker?</summary>
+          <p>A tracker. Instead of a one-off calculation you forget about, you add each balance and interest rate once, then log payments as you make them. KeepyCash keeps your balance, percent paid off and interest saved up to date, so you always know where you stand.</p>
+        </details>
+        <details>
+          <summary>Do I have to link my bank account?</summary>
+          <p>No. KeepyCash never asks for your bank login. You log spending and payments yourself by typing, voice, receipt scan or statement screenshot. It takes seconds, and your data stays private.</p>
         </details>
         <details>
           <summary>Is my bank statement screenshot stored?</summary>
           <p>No. The image is read to pull out your transactions and then discarded. Nothing is kept.</p>
+        </details>
+        <details>
+          <summary>I've never managed to stick to a budget. Will this work for me?</summary>
+          <p>You don't have to build one. Just track your spending and KeepyCash builds the budget for you. Streaks and payoff wins make it something you actually want to open.</p>
         </details>
         <details>
           <summary>Does it work on iPhone and Android?</summary>
@@ -1009,10 +963,10 @@
   </section>
 
   <!-- ===== CLOSE + P.S. ===== -->
-  <section class="surface">
+  <section>
     <div class="wrap fade">
-      <h2>See where it goes. See what you owe. Start tonight.</h2>
-      <p>Log today's spending in a few seconds, add your cards and loans, and finally see the whole picture in one app.</p>
+      <h2>Every payment is a step. Take the first one tonight.</h2>
+      <p>You can keep paying the bank around $120 a month for the privilege of owing them money, and hoping the balance eventually moves. Or you can put every debt on a path, watch each payment eat into the interest, and actually see yourself walking toward the finish line.</p>
 
       <div class="cta-block">
         <a class="btn" data-cta="close" href="#code-box" data-locked="1">Get KeepyCash &rarr;</a>
@@ -1020,7 +974,7 @@
       </div>
 
       <div class="ps">
-        <p><strong>P.S.</strong> If you skimmed to the bottom, here's the whole deal: a spend tracker and a debt tracker in one app. Full access, no ads, no bank linking.</p>
+        <p><strong>P.S.</strong> If you skimmed to the bottom, here's the whole deal: full access, no ads, no bank linking. Add your debts, log a payment, and see the interest you'll never have to pay.</p>
         <p style="margin-bottom:0"><a data-cta="ps" href="#code-box" data-locked="1"><strong>Get KeepyCash now &rarr;</strong></a></p>
       </div>
     </div>
@@ -1035,7 +989,7 @@
     <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
     <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms</a> &nbsp;&middot;&nbsp;
     <a href="/support.html">Contact</a>
-    <div class="fine">Screenshots and figures shown are illustrative examples.</div>
+    <div class="fine">Stats: average APR from Federal Reserve G.19 (Q2 2026); average balance from TransUnion/Experian (2026). Interest example is illustrative. Your savings depend on your balances, rates and payments.</div>
   </footer>
 
   <script>
