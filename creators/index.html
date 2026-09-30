@@ -181,6 +181,50 @@
       .hero { grid-template-columns: 1fr; gap: 36px; padding: 40px 20px 56px; }
       .card { padding: 24px 20px; }
     }
+
+    /* WHAT'S KEEPYCASH */
+    .about { background: var(--surface); padding: 72px 24px; }
+    .about-inner { max-width: 1000px; margin: 0 auto; }
+    .about-head { text-align: center; max-width: 660px; margin: 0 auto 8px; }
+    .about h2 { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 36px); line-height: 1.15; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 14px; }
+    .about h2 em { font-style: normal; color: var(--primary); }
+    .about p { color: var(--text-secondary); font-size: 17px; margin-bottom: 16px; }
+    .about-head p { font-size: 18px; }
+
+    .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 36px 0; }
+    .showcase + .showcase { border-top: 1px solid var(--border); }
+    .showcase.flip .show-img { order: 2; }
+    .shot {
+      display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto;
+      border-radius: 28px; background: #fff;
+      box-shadow: 0 24px 60px rgba(21,32,26,0.14), 0 2px 8px rgba(21,32,26,0.06);
+    }
+    .tag {
+      display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--primary); background: var(--primary-bg); padding: 4px 10px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .show-text h3 { font-family: var(--font-display); font-size: clamp(22px, 3.4vw, 28px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 14px; }
+    .ticks { list-style: none; margin-top: 4px; }
+    .ticks li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; }
+    .ticks li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--primary); font-weight: 800; }
+
+    .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 8px 0 12px; }
+    .feature { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+    .feature .ic { font-size: 22px; display: block; margin-bottom: 8px; }
+    .feature h3 { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+    .feature p { font-size: 14px; margin-bottom: 0; }
+    .about-cta { text-align: center; margin-top: 28px; }
+    .about-cta a { display: inline-block; width: auto; background: var(--primary); color: #fff; font-weight: 700; text-decoration: none; padding: 14px 32px; border-radius: 100px; }
+    .about-cta a:hover { background: var(--primary-variant); }
+
+    @media (max-width: 800px) {
+      .about { padding: 48px 20px; }
+      .showcase { grid-template-columns: 1fr; gap: 24px; padding: 28px 0; }
+      .showcase.flip .show-img { order: 0; }
+      .features { grid-template-columns: 1fr 1fr; }
+      .shot { max-width: 260px; }
+    }
+    @media (max-width: 480px) { .features { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -234,6 +278,101 @@
       </div>
     </div>
   </main>
+
+  <!-- ===== WHAT'S KEEPYCASH ===== -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-head">
+        <span class="eyebrow">What's KeepyCash?</span>
+        <h2>The spend tracker that tracks your <em>debt too.</em></h2>
+        <p>KeepyCash is a simple iPhone and Android app for tracking what you spend and what you owe. No bank linking, no ads, and everything is included in one app.</p>
+      </div>
+
+      <div class="showcase">
+        <div class="show-img">
+          <img class="shot" src="/assets/debt/04.webp" width="720" height="1558" loading="lazy"
+               alt="Add Transaction screen logging a $34.99 expense at KFC under Dining Out" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Spend tracker</span>
+          <h3>Log a spend in seconds.</h3>
+          <p>Tap the big plus, punch in the amount and who you paid. KeepyCash remembers your payees and picks the category for you, so most purchases are logged before you've left the checkout.</p>
+          <ul class="ticks">
+            <li>Split one receipt across categories</li>
+            <li>Mark bills as recurring so they log themselves</li>
+            <li>Cash counts just like card</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="showcase flip">
+        <div class="show-img">
+          <img class="shot" src="/assets/debt/05.webp" width="720" height="1558" loading="lazy"
+               alt="Insights screen showing money in, bills, everyday spending and money kept, with category totals" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Insights</span>
+          <h3>See where it all goes.</h3>
+          <p>Plain-English charts show money in, money out and what's left, with your biggest categories and top payees at a glance. No accounting degree needed.</p>
+          <ul class="ticks">
+            <li>Money in vs. money out, in one picture</li>
+            <li>Overspend alerts before a category runs dry</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="showcase">
+        <div class="show-img">
+          <img class="shot" src="/assets/debt/01.webp" width="720" height="1558" loading="lazy"
+               alt="KeepyCash Debts screen showing all debts in one view with paid-off percentages and interest saved on each" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Debt tracker</span>
+          <h3>Every card and loan, one screen.</h3>
+          <p>Credit cards, car loans, personal loans, store cards. Add them all and see what you still owe, what you've paid off, and the interest you've saved so far.</p>
+          <ul class="ticks">
+            <li>Progress bar and interest rate on every debt</li>
+            <li>A running "interest saved" number</li>
+            <li>A big green <strong>Paid off</strong> moment when you clear one</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="showcase flip">
+        <div class="show-img">
+          <img class="shot" src="/assets/debt/02.webp" width="720" height="1558" loading="lazy"
+               alt="Debt payoff journey: a winding path from a rain cloud at the start to sunshine at the finish, 40.1% filled in for an Amex card" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Payoff journey</span>
+          <h3>Every payment is a step toward sunshine.</h3>
+          <p>Each debt gets its own path, from the rain cloud where you started to the sun at the finish line. Every payment you log fills in more of the road, and you can see your debt-free date.</p>
+        </div>
+      </div>
+
+      <div class="showcase">
+        <div class="show-img">
+          <img class="shot" src="/assets/debt/03.webp" width="720" height="1558" loading="lazy"
+               alt="Payment logged: $6.50 gone, saving $0.79 in interest you will never pay, with a Share this win button" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Small wins</span>
+          <h3>"$6.50 gone. That's $0.79 in interest you'll never pay."</h3>
+          <p>Every payment shows the interest it just wiped out, plus a share button for the wins your audience will want to cheer on.</p>
+        </div>
+      </div>
+
+      <h2 style="text-align:center; font-size:clamp(22px,3.6vw,28px); margin-top:20px;">Four easy ways to log</h2>
+      <div class="features">
+        <div class="feature"><span class="ic">⌨️</span><h3>Type it</h3><p>Amount, payee, done.</p></div>
+        <div class="feature"><span class="ic">🎙️</span><h3>Say it</h3><p>"Twelve dollars, coffee."</p></div>
+        <div class="feature"><span class="ic">🧾</span><h3>Scan it</h3><p>Point your camera at a receipt.</p></div>
+        <div class="feature"><span class="ic">📱</span><h3>Screenshot it</h3><p>Log many at once. The image is never stored.</p></div>
+      </div>
+
+      <div class="about-cta"><a href="#form">Register your interest &uarr;</a></div>
+    </div>
+  </section>
 
   <footer>
     © 2026 KeepyCash · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
