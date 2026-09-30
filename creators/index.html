@@ -18,6 +18,7 @@
     gtag('config', 'G-VT8YBKWKXT');
   </script>
 
+  <script src="https://js.hcaptcha.com/1/api.js?render=explicit&onload=initCaptcha" async defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
@@ -150,6 +151,8 @@
     }
     button:hover { background: var(--primary-variant); transform: translateY(-1px); }
     button:disabled { opacity: .6; cursor: default; transform: none; }
+
+    .captcha { min-height: 78px; margin: 4px 0 8px; display: flex; justify-content: center; }
 
     .error {
       display: none;
@@ -309,6 +312,8 @@
           <input id="email" name="email" type="email" autocomplete="email" maxlength="254" required />
         </div>
 
+        <div id="captcha" class="captcha"></div>
+
         <button type="submit" id="submit">Register</button>
         <div class="error" id="error" role="alert"></div>
       </form>
@@ -425,8 +430,15 @@
   </footer>
 
   <script>
-    var SUPABASE_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co';
-    var SUPABASE_KEY = 'sb_publishable_WctlTXMnpCSW_i0LuStx9g_fq4atrcG';
+    var REGISTER_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co/functions/v1/creator-registration';
+    // Public hCaptcha site key (not a secret). The matching secret lives in the edge function.
+    var HCAPTCHA_SITEKEY = '113e2b40-ab96-4f1c-b61c-b084bc7a8758';
+    var captchaId = null;
+
+    function initCaptcha() {
+      if (HCAPTCHA_SITEKEY.indexOf('REPLACE_') === 0) return;
+      captchaId = hcaptcha.render('captcha', { sitekey: HCAPTCHA_SITEKEY });
+    }
 
     var form = document.getElementById('form');
     var submitBtn = document.getElementById('submit');
@@ -473,30 +485,39 @@
         return;
       }
 
+      var token = captchaId !== null && window.hcaptcha ? hcaptcha.getResponse(captchaId) : '';
+      if (!token) {
+        showError(captchaId === null && window.hcaptcha
+          ? 'Captcha is not configured yet. Please try again later.'
+          : 'Please tick the box to confirm you are human.');
+        return;
+      }
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting...';
 
-      fetch(SUPABASE_URL + '/rest/v1/creator_registrations', {
+      fetch(REGISTER_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          apikey: SUPABASE_KEY,
-          Authorization: 'Bearer ' + SUPABASE_KEY,
-          Prefer: 'return=minimal'
-        },
-        body: JSON.stringify({ name: name, handle: handle, followers: followers, email: email })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, handle: handle, followers: followers, email: email, captcha: token })
       }).then(function (res) {
-        // 409 = this email is already registered; treat as success
-        if (!res.ok && res.status !== 409) throw new Error('failed');
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          if (!res.ok) { var err = new Error(data.error || 'failed'); throw err; }
+          return data;
+        });
+      }).then(function () {
         form.style.display = 'none';
         sticky.remove();
         stickyObs.disconnect();
         document.getElementById('success').classList.add('show');
         if (window.gtag) gtag('event', 'creator_registration');
-      }).catch(function () {
+      }).catch(function (err) {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Register';
-        showError('Something went wrong. Please try again.');
+        if (window.hcaptcha && captchaId !== null) hcaptcha.reset(captchaId);
+        showError(err && err.message === 'captcha_failed'
+          ? 'Captcha check failed. Please try again.'
+          : 'Something went wrong. Please try again.');
       });
     });
 
