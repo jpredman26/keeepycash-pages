@@ -63,7 +63,7 @@
     .hero {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 64px 24px 80px;
+      padding: 56px 24px 56px;
       display: grid;
       grid-template-columns: 1.1fr 1fr;
       gap: 56px;
@@ -178,12 +178,12 @@
     footer a { color: var(--text-secondary); }
 
     @media (max-width: 800px) {
-      .hero { grid-template-columns: 1fr; gap: 36px; padding: 40px 20px 56px; }
+      .hero { grid-template-columns: 1fr; gap: 28px; padding: 32px 20px 40px; }
       .card { padding: 24px 20px; }
     }
 
     /* WHAT'S KEEPYCASH */
-    .about { background: var(--surface); padding: 72px 24px; }
+    .about { background: var(--surface); padding: 64px 24px 72px; border-top: 1px solid var(--border); scroll-margin-top: 0; }
     .about-inner { max-width: 1000px; margin: 0 auto; }
     .about-head { text-align: center; max-width: 660px; margin: 0 auto 8px; }
     .about h2 { font-family: var(--font-display); font-size: clamp(26px, 4.5vw, 36px); line-height: 1.15; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 14px; }
@@ -225,6 +225,40 @@
       .shot { max-width: 260px; }
     }
     @media (max-width: 480px) { .features { grid-template-columns: 1fr; } }
+
+    /* HERO PEEK: shows there's more below */
+    .peek {
+      display: flex; align-items: center; gap: 18px; margin-top: 32px; padding: 14px 18px 0 16px;
+      background: #fff; border: 1.5px solid var(--primary); border-radius: 18px; text-decoration: none; color: var(--text);
+      overflow: hidden; box-shadow: 0 8px 24px rgba(30,90,62,0.12); transition: transform .15s, box-shadow .2s;
+    }
+    .peek:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(30,90,62,0.18); }
+    .peek-shots { display: flex; flex: none; align-items: flex-start; height: 96px; overflow: hidden; }
+    .peek-shots img { width: 64px; height: auto; border-radius: 10px 10px 0 0; box-shadow: 0 2px 10px rgba(21,32,26,0.18); }
+    .peek-shots img + img { margin-left: -14px; }
+    .peek-text { display: flex; flex-direction: column; gap: 2px; padding-bottom: 14px; }
+    .peek-text strong { font-family: var(--font-display); font-size: 19px; font-weight: 800; letter-spacing: -0.3px; }
+    .peek-text span { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+    /* STICKY MOBILE CTA: appears once the form has scrolled away */
+    html { scroll-behavior: smooth; }
+    .sticky-cta { display: none; }
+    @media (max-width: 560px) {
+      .sticky-cta {
+        display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border); text-align: center;
+        transform: translateY(110%); transition: transform .3s ease;
+      }
+      .sticky-cta.show { transform: none; }
+      .sticky-cta a {
+        display: block; background: var(--primary); color: #fff; font-weight: 700; font-size: 16px;
+        text-decoration: none; padding: 14px 20px; border-radius: 100px;
+      }
+      footer { padding-bottom: 96px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .sticky-cta { transition: none; } }
   </style>
 </head>
 <body>
@@ -241,6 +275,14 @@
         <li>Earn a share of revenue from the subscribers you bring in</li>
         <li>We'll be in touch personally after you register</li>
       </ul>
+      <a class="peek" href="#about">
+        <span class="peek-shots">
+          <img src="/assets/debt/05.webp" alt="" width="720" height="1558" />
+          <img src="/assets/debt/04.webp" alt="" width="720" height="1558" />
+          <img src="/assets/debt/01.webp" alt="" width="720" height="1558" />
+        </span>
+        <span class="peek-text"><strong>What's KeepyCash?</strong><span>Learn more &darr;</span></span>
+      </a>
     </div>
 
     <div class="card">
@@ -290,6 +332,22 @@
 
       <div class="showcase">
         <div class="show-img">
+          <img class="shot" src="/assets/debt/05.webp" width="720" height="1558" loading="lazy"
+               alt="Insights screen showing money in, bills, everyday spending and money kept, with category totals" />
+        </div>
+        <div class="show-text">
+          <span class="tag">Insights</span>
+          <h3>See where it all goes.</h3>
+          <p>Plain-English charts show money in, money out and what's left, with your biggest categories and top payees at a glance. No accounting degree needed.</p>
+          <ul class="ticks">
+            <li>Money in vs. money out, in one picture</li>
+            <li>Overspend alerts before a category runs dry</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="showcase flip">
+        <div class="show-img">
           <img class="shot" src="/assets/debt/04.webp" width="720" height="1558" loading="lazy"
                alt="Add Transaction screen logging a $34.99 expense at KFC under Dining Out" />
         </div>
@@ -301,22 +359,6 @@
             <li>Split one receipt across categories</li>
             <li>Mark bills as recurring so they log themselves</li>
             <li>Cash counts just like card</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="showcase flip">
-        <div class="show-img">
-          <img class="shot" src="/assets/debt/05.webp" width="720" height="1558" loading="lazy"
-               alt="Insights screen showing money in, bills, everyday spending and money kept, with category totals" />
-        </div>
-        <div class="show-text">
-          <span class="tag">Insights</span>
-          <h3>See where it all goes.</h3>
-          <p>Plain-English charts show money in, money out and what's left, with your biggest categories and top payees at a glance. No accounting degree needed.</p>
-          <ul class="ticks">
-            <li>Money in vs. money out, in one picture</li>
-            <li>Overspend alerts before a category runs dry</li>
           </ul>
         </div>
       </div>
@@ -373,6 +415,10 @@
       <div class="about-cta"><a href="#form">Register your interest &uarr;</a></div>
     </div>
   </section>
+
+  <div class="sticky-cta" id="sticky">
+    <a href="#form" id="sticky-link">Register your interest</a>
+  </div>
 
   <footer>
     © 2026 KeepyCash · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a>
@@ -443,6 +489,8 @@
         // 409 = this email is already registered; treat as success
         if (!res.ok && res.status !== 409) throw new Error('failed');
         form.style.display = 'none';
+        sticky.remove();
+        stickyObs.disconnect();
         document.getElementById('success').classList.add('show');
         if (window.gtag) gtag('event', 'creator_registration');
       }).catch(function () {
@@ -451,6 +499,22 @@
         showError('Something went wrong. Please try again.');
       });
     });
+
+    // Sticky CTA: show once the form card has scrolled out of view; tapping goes back to the form.
+    var card = document.querySelector('.card');
+    var sticky = document.getElementById('sticky');
+    var stickyObs = new IntersectionObserver(function (entries) {
+      sticky.classList.toggle('show', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
+    });
+    stickyObs.observe(card);
+
+    function goToForm(e) {
+      e.preventDefault();
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (form.style.display !== 'none') form.name.focus({ preventScroll: true });
+    }
+    document.getElementById('sticky-link').addEventListener('click', goToForm);
+    document.querySelector('.about-cta a').addEventListener('click', goToForm);
   </script>
 </body>
 </html>
