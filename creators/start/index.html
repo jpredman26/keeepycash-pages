@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeepyCash Creator Setup</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --background: #FBFBF8;
+      --surface: #F1F3EE;
+      --text: #15201A;
+      --text-secondary: #5D6A62;
+      --text-tertiary: #8C978F;
+      --primary: #1E5A3E;
+      --primary-variant: #16452F;
+      --danger: #B0442C;
+      --border: #E2E6DE;
+      --primary-bg: #E6F1DF;
+      --danger-bg: #F8E6E0;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.9);
+    }
+    .logo { font-family: var(--font-display); font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--primary); }
+
+    main { max-width: 460px; margin: 0 auto; padding: 40px 16px 24px; }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 8px 30px rgba(21,32,26,0.06);
+    }
+    .card h2 { font-family: var(--font-display); font-size: 24px; font-weight: 800; letter-spacing: -0.3px; margin-bottom: 6px; }
+    .card .sub { font-size: 15px; color: var(--text-secondary); margin-bottom: 22px; overflow-wrap: anywhere; }
+
+    .field { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    input {
+      width: 100%;
+      font: inherit;
+      font-size: 16px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--background);
+      color: var(--text);
+      transition: border-color .15s, box-shadow .15s;
+    }
+    input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-bg); }
+    .hint { font-size: 12px; color: var(--text-tertiary); margin-top: 5px; }
+
+    button, .btn {
+      display: block;
+      width: 100%;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      background: var(--primary);
+      border: 0;
+      border-radius: 100px;
+      padding: 14px 24px;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background .2s, transform .15s;
+    }
+    button:hover, .btn:hover { background: var(--primary-variant); transform: translateY(-1px); }
+    button:disabled { opacity: .6; cursor: default; transform: none; }
+    .btn.secondary { background: var(--surface); color: var(--text); }
+    .btn.secondary:hover { background: var(--border); }
+    .stores { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+    .stores .btn { margin-top: 0; font-size: 15px; padding: 12px 10px; }
+
+    .error {
+      display: none;
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--danger-bg);
+      color: var(--danger);
+      font-size: 14px;
+    }
+    .error.show { display: block; }
+
+    .state { display: none; }
+    .state.show { display: block; }
+    .center { text-align: center; }
+    .tick {
+      width: 56px; height: 56px; margin: 0 auto 16px;
+      border-radius: 50%;
+      background: var(--primary-bg); color: var(--primary);
+      font-size: 28px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    ol.steps { text-align: left; margin: 18px 0 0 20px; color: var(--text-secondary); font-size: 15px; }
+    ol.steps li { margin-bottom: 8px; }
+    ol.steps strong { color: var(--text); }
+    .code-box {
+      margin-top: 22px; padding: 14px 16px; border-radius: 14px;
+      background: var(--primary-bg); text-align: left; font-size: 14px; color: var(--text-secondary);
+    }
+    .code-box strong { display: block; font-size: 18px; color: var(--primary); overflow-wrap: anywhere; }
+
+    footer { text-align: center; padding: 24px 16px 48px; font-size: 13px; color: var(--text-tertiary); }
+    footer a { color: var(--text-secondary); }
+
+    @media (max-width: 480px) {
+      .card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav><div class="logo">Keepy<span>Cash</span></div></nav>
+
+  <main>
+    <div class="card">
+      <div class="state show center" id="loading">
+        <p class="sub" style="margin:0">Checking your link...</p>
+      </div>
+
+      <div class="state" id="invalid">
+        <h2>This link has expired</h2>
+        <p class="sub">Set-up links work once and last 14 days. If you've already set a password, just sign in to the app. Otherwise, reset your password to choose a new one.</p>
+        <a class="btn" href="/password-reset.html">Reset my password</a>
+        <div class="stores">
+          <a class="btn secondary" href="https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114">App Store</a>
+          <a class="btn secondary" href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash">Google Play</a>
+        </div>
+      </div>
+
+      <form class="state" id="form" novalidate>
+        <h2 id="greeting">Welcome to KeepyCash</h2>
+        <p class="sub">Choose a password for <strong id="email-label"></strong>. You'll use it to sign in to the app.</p>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required />
+          <div class="hint">At least 8 characters</div>
+        </div>
+        <div class="field">
+          <label for="confirm">Confirm password</label>
+          <input id="confirm" type="password" autocomplete="new-password" minlength="8" maxlength="72" required />
+        </div>
+        <input id="username" type="email" autocomplete="username" hidden />
+        <button type="submit" id="submit">Set password</button>
+        <div class="error" id="error" role="alert"></div>
+      </form>
+
+      <div class="state center" id="done">
+        <div class="tick">✓</div>
+        <h2>You're all set</h2>
+        <p class="sub" style="margin-bottom:0">Lifetime Pro is already on your account.</p>
+        <ol class="steps">
+          <li>Download <strong>KeepyCash</strong> below</li>
+          <li>Tap <strong>I already have an account</strong></li>
+          <li>Sign in with <strong id="done-email"></strong> and your new password</li>
+        </ol>
+        <div class="stores">
+          <a class="btn" href="https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114">App Store</a>
+          <a class="btn" href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash">Google Play</a>
+        </div>
+        <div class="code-box" id="code-box" hidden>
+          Your creator link
+          <strong id="code-link"></strong>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Need a hand? <a href="/support.html">Contact support</a> · <a href="/privacy.html">Privacy</a>
+  </footer>
+
+  <script>
+    var API_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co/functions/v1/creator-set-password';
+    var token = new URLSearchParams(location.search).get('t') || '';
+
+    function show(id) {
+      ['loading', 'invalid', 'form', 'done'].forEach(function (s) {
+        document.getElementById(s).classList.toggle('show', s === id);
+      });
+    }
+
+    function call(body) {
+      return fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          data.status = res.status;
+          return data;
+        });
+      });
+    }
+
+    function fill(data) {
+      if (data.name) document.getElementById('greeting').textContent = 'Welcome, ' + data.name;
+      document.getElementById('email-label').textContent = data.email || '';
+      document.getElementById('done-email').textContent = data.email || 'your email';
+      document.getElementById('username').value = data.email || '';
+      if (data.code) {
+        document.getElementById('code-link').textContent = 'keepycash.com/c/' + data.code;
+        document.getElementById('code-box').hidden = false;
+      }
+    }
+
+    if (!token) {
+      show('invalid');
+    } else {
+      call({ token: token })
+        .then(function (data) {
+          if (!data.ok) return show('invalid');
+          fill(data);
+          show('form');
+          document.getElementById('password').focus();
+        })
+        .catch(function () { show('invalid'); });
+    }
+
+    var form = document.getElementById('form');
+    var submitBtn = document.getElementById('submit');
+    var errorBox = document.getElementById('error');
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.classList.add('show');
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorBox.classList.remove('show');
+      var password = document.getElementById('password').value;
+      var confirm = document.getElementById('confirm').value;
+      if (password.length < 8) return showError('Your password needs at least 8 characters.');
+      if (password !== confirm) return showError("Those passwords don't match.");
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving...';
+      call({ token: token, password: password })
+        .then(function (data) {
+          if (data.ok && data.done) {
+            fill(data);
+            return show('done');
+          }
+          if (data.error === 'invalid_link') return show('invalid');
+          if (data.error === 'password_rejected') {
+            showError(data.message || 'That password was rejected. Try a different one.');
+          } else if (data.error === 'weak_password') {
+            showError('Your password needs between 8 and 72 characters.');
+          } else {
+            showError('Something went wrong. Please try again.');
+          }
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Set password';
+        })
+        .catch(function () {
+          showError('Something went wrong. Check your connection and try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Set password';
+        });
+    });
+  </script>
+</body>
+</html>
