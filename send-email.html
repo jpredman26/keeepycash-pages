@@ -342,6 +342,16 @@
 
         <!-- ── Dynamic variables passed to the Loops template ── -->
         <div class="field">
+          <div class="pill-group">
+            <button type="button" class="pill" onclick="selectSubject(this)">Re: test</button>
+            <button type="button" class="pill" onclick="selectSubject(this)">Re: Question (because you cancelled)</button>
+            <button type="button" class="pill" onclick="selectSubject(this)">Re: Help with KeepyCash</button>
+            <button type="button" class="pill" onclick="selectSubject(this)">Re: KeepyCash Support</button>
+            <button type="button" class="pill" onclick="selectSubject(this)">Re: You’ve (kinda) cancelled KeepyCash</button>
+          </div>
+        </div>
+
+        <div class="field">
           <label for="var-subject">Subject</label>
           <input type="text" id="var-subject" placeholder="Your subject line…" />
           <p class="field-hint">Available in template as <code>{{subject}}</code></p>
@@ -437,9 +447,16 @@
     let selectedSender = { name: '', email: '' };
 
     function selectSender(el) {
-      document.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+      el.parentElement.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
       selectedSender = { name: el.dataset.name, email: el.dataset.email, reply: el.dataset.reply };
+    }
+
+    // ── Subject pill (fills the subject box, which stays editable) ──────────
+    function selectSubject(el) {
+      el.parentElement.querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('var-subject').value = el.textContent;
     }
 
     // ── Send email via Loops ─────────────────────────────────────────────────
@@ -514,6 +531,8 @@
     function clearForm() {
       ['to-email', 'var-subject', 'var-preview', 'var-first-name', 'var-message', 'var-cta-text', 'var-cta-url']
         .forEach(id => { document.getElementById(id).value = ''; });
+      document.getElementById('var-subject').closest('.field').previousElementSibling
+        .querySelectorAll('.pill').forEach(p => p.classList.remove('selected'));
     }
 
     // ── Toast helper ─────────────────────────────────────────────────────────
