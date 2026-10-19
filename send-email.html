@@ -266,6 +266,17 @@
       transition: border-color 0.15s, background 0.15s, color 0.15s;
     }
 
+    .pill-group.scroll {
+      overflow-x: auto;
+      padding-bottom: 6px;
+      scrollbar-width: thin;
+    }
+
+    .pill-group.scroll .pill {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+
     .pill:hover {
       border-color: var(--primary);
       color: var(--primary);
@@ -342,7 +353,7 @@
 
         <!-- ── Dynamic variables passed to the Loops template ── -->
         <div class="field">
-          <div class="pill-group">
+          <div class="pill-group scroll">
             <button type="button" class="pill" onclick="selectSubject(this)">Re: test</button>
             <button type="button" class="pill" onclick="selectSubject(this)">Re: Question (because you cancelled)</button>
             <button type="button" class="pill" onclick="selectSubject(this)">Re: Help with KeepyCash</button>
