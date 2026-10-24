@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lifetime Access | KeepyCash</title>
+  <meta name="description" content="Pay once and keep KeepyCash for life. One payment, never renews, 30-day money-back guarantee." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VT8YBKWKXT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VT8YBKWKXT');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --background: #FBFBF8;
+      --surface: #F1F3EE;
+      --text: #15201A;
+      --text-secondary: #5D6A62;
+      --text-tertiary: #8C978F;
+      --primary: #1E5A3E;
+      --primary-variant: #16452F;
+      --success: #237A4B;
+      --border: #E2E6DE;
+      --primary-bg: #E6F1DF;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: 640px; margin: 0 auto; padding: 0 24px; }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      padding: 14px 24px;
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .logo { font-family: var(--font-display); font-size: 19px; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--primary); }
+
+    /* Where they are: picked a plan, one step before checkout */
+    .progress {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px 0 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+    }
+    .progress .on { color: var(--primary); }
+
+    main { padding: 32px 0 56px; }
+
+    .eyebrow { display: block; font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--primary); margin-bottom: 12px; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(30px, 6vw, 42px);
+      line-height: 1.12;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 18px;
+    }
+    h1 .hl { color: var(--primary); }
+    p { margin-bottom: 18px; color: var(--text-secondary); font-size: 17px; }
+    p.lead { font-size: 19px; color: var(--text); }
+    strong { color: var(--text); font-weight: 700; }
+
+    .offer {
+      margin: 28px 0 24px;
+      text-align: center;
+      background: #fff;
+      border: 2px solid var(--primary);
+      border-radius: 20px;
+      padding: 32px 24px 28px;
+    }
+    .offer .badge {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--primary);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .offer .price {
+      font-family: var(--font-display);
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+    .offer .price small { font-size: 18px; font-weight: 600; color: var(--text-secondary); letter-spacing: 0; }
+    .offer .vs { font-size: 15px; color: var(--text-tertiary); margin: 6px 0 20px; }
+
+    .ticks { list-style: none; text-align: left; max-width: 400px; margin: 0 auto 24px; }
+    .ticks li { position: relative; padding: 7px 0 7px 30px; font-size: 16px; color: var(--text); }
+    .ticks li::before { content: "\2713"; position: absolute; left: 4px; top: 7px; color: var(--success); font-weight: 800; }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 18px 40px;
+      border-radius: 100px;
+      box-shadow: 0 10px 28px rgba(30,90,62,0.32);
+      transition: background .2s, transform .15s, box-shadow .2s;
+      letter-spacing: -0.2px;
+    }
+    .btn:hover { background: var(--primary-variant); transform: translateY(-2px); box-shadow: 0 14px 34px rgba(30,90,62,0.4); }
+    .btn-sub { font-size: 14px; color: var(--text-tertiary); margin-top: 12px; }
+    .cur-note { font-size: 13px; font-weight: 600; color: var(--text-tertiary); margin-top: 6px; }
+
+    .decline { text-align: center; margin-top: 8px; }
+    .decline a {
+      display: inline-block;
+      padding: 12px 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .decline a:hover { color: var(--text); }
+
+    .sig { font-family: var(--font-display); font-weight: 700; color: var(--primary); }
+
+    footer { text-align: center; padding: 32px 24px 40px; color: var(--text-tertiary); font-size: 13px; }
+    footer a { color: var(--text-tertiary); }
+
+    @media (max-width: 560px) {
+      .wrap { padding: 0 16px; }
+      .btn { width: 100%; padding: 17px 20px; font-size: 17px; }
+      .offer { padding: 28px 18px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Keepy<span>Cash</span></div>
+  </nav>
+
+  <div class="progress" aria-label="Checkout progress">
+    <span>Plan</span><span>&rarr;</span><span class="on">Upgrade</span><span>&rarr;</span><span>Checkout</span>
+  </div>
+
+  <main>
+    <div class="wrap">
+      <span class="eyebrow">One quick thing before you check out&hellip;</span>
+      <h1>Pay once. <span class="hl">Keep KeepyCash for life.</span></h1>
+      <p class="lead">You&rsquo;re about to grab KeepyCash for <span data-annual-price>$19.99</span> a year. Before you do, I want to give you the option to never pay for it again.</p>
+      <p>Lifetime access is one payment. No renewals, no &ldquo;your subscription is about to renew&rdquo; emails, and every feature I add from here on is yours too.</p>
+      <p>On the yearly plan, you&rsquo;d pass the lifetime price in <strong data-breakeven>about 3 years</strong>. After that, every year is free.</p>
+
+      <div class="offer">
+        <div class="badge">Lifetime access</div>
+        <div class="price"><span data-lifetime-price>$59.99</span><small> once</small></div>
+        <div class="vs">instead of <span data-annual-price>$19.99</span> every year, forever</div>
+
+        <ul class="ticks">
+          <li>Every feature, now and in the future</li>
+          <li>Never renews, nothing to cancel</li>
+          <li>Same 30-day money-back guarantee</li>
+          <li>No ads, no bank linking, ever</li>
+        </ul>
+
+        <a class="btn" id="accept" href="#">Yes, give me lifetime access &rarr;</a>
+        <div class="btn-sub">One payment. Instant access.</div>
+      </div>
+
+      <div class="decline">
+        <a id="decline" href="#">No thanks, continue with <span data-annual-price>$19.99</span>/year</a>
+      </div>
+
+      <p style="margin-top: 32px;">Either way, you&rsquo;re covered by the KeepyCash Promise. If it doesn&rsquo;t earn its place on your phone in 30 days, email <a href="mailto:support@keepycash.com" style="color: var(--primary); font-weight: 700;">support@keepycash.com</a> and I&rsquo;ll refund every cent.</p>
+      <p class="sig">James, founder of KeepyCash</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 KeepyCash. All rights reserved. &nbsp;&middot;&nbsp;
+    <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
+    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms</a> &nbsp;&middot;&nbsp;
+    <a href="support.html">Contact</a>
+  </footer>
+
+  <script>
+    /* The offer lives here. Change prices or RevenueCat packages in one place.
+       Sales pages link to: lifetimeOffer?from=<page>&cta=<location>
+       Optional overrides: ?lifetime=<pay.rev.cat url>&next=<pay.rev.cat url> */
+    var OFFER = {
+      lifetimePrice: 59.99,
+      annualPrice: 19.99,
+      lifetimeUrl: 'https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_lifetime',
+      annualUrl: 'https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_annual'
+    };
+
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var from = q.get('from') || 'direct';
+      var cta = q.get('cta') || '';
+
+      // Only ever send people to RevenueCat checkout, never an arbitrary URL.
+      function checkout(u, fallback) {
+        return u && /^https:\/\/pay\.rev\.cat\//.test(u) ? u : fallback;
+      }
+      var acceptUrl = checkout(q.get('lifetime'), OFFER.lifetimeUrl);
+      var declineUrl = checkout(q.get('next'), OFFER.annualUrl);
+
+      function money(n) { return '$' + n.toFixed(2); }
+      document.querySelectorAll('[data-lifetime-price]').forEach(function (el) { el.textContent = money(OFFER.lifetimePrice); });
+      document.querySelectorAll('[data-annual-price]').forEach(function (el) { el.textContent = money(OFFER.annualPrice); });
+      var years = Math.ceil(OFFER.lifetimePrice / OFFER.annualPrice);
+      document.querySelector('[data-breakeven]').textContent = years <= 1 ? 'your first year' : 'about ' + years + ' years';
+
+      var accept = document.getElementById('accept');
+      var decline = document.getElementById('decline');
+      accept.href = acceptUrl;
+      decline.href = declineUrl;
+
+      var ctx = { from: from, cta: cta };
+      gtag('event', 'upsell_view', ctx);
+      accept.addEventListener('click', function () { gtag('event', 'upsell_accept', ctx); });
+      decline.addEventListener('click', function () { gtag('event', 'upsell_decline', ctx); });
+    })();
+
+    /* RevenueCat charges in the visitor's local currency but doesn't label which
+       dollars. If the locale tells us it's AU, CA or NZ, say so. */
+    (function () {
+      var MAP = { AU: 'AUD 🇦🇺', CA: 'CAD 🇨🇦', NZ: 'NZD 🇳🇿' };
+      function region() {
+        var langs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < langs.length; i++) {
+          var m = /[-_]([A-Za-z]{2})$/.exec(langs[i] || '');
+          if (m && MAP[m[1].toUpperCase()]) return m[1].toUpperCase();
+        }
+        try {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+          if (/^Australia\//.test(tz)) return 'AU';
+          if (/^Pacific\/Auckland/.test(tz)) return 'NZ';
+          if (/^America\/(Toronto|Vancouver|Edmonton|Winnipeg|Halifax|St_Johns|Regina|Moncton|Montreal)$/.test(tz)) return 'CA';
+        } catch (e) {}
+        return '';
+      }
+      var r = region();
+      if (!r) return;
+      var n = document.createElement('div');
+      n.className = 'cur-note';
+      n.textContent = 'Billed in ' + MAP[r];
+      var sub = document.querySelector('.btn-sub');
+      sub.parentNode.insertBefore(n, sub.nextSibling);
+    })();
+  </script>
+
+</body>
+</html>
