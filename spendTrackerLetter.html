@@ -214,7 +214,7 @@
     }
 
     .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-    .wrap.wide { max-width: 1040px; }
+    .wrap.wide { max-width: 1200px; }
 
     /* NAV */
     nav {
@@ -247,20 +247,24 @@
     /* SECTIONS */
     section { padding: 56px 0; }
     section.tight { padding: 32px 0; }
-    .surface { background: var(--surface); }
+    .surface {
+      background: var(--surface);
+      --text-secondary: #333F38;
+      --text-tertiary: #5D6A62;
+    }
 
     .eyebrow {
       display: inline-block;
-      font-size: 13px;
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      letter-spacing: 0;
+      line-height: 1.3;
       color: var(--primary);
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     h1 {
-      font-size: clamp(32px, 6vw, 50px);
+      font-size: clamp(28px, 6vw, 50px);
       line-height: 1.1;
       font-weight: 800;
       letter-spacing: -1.2px;
@@ -283,13 +287,16 @@
     strong { color: var(--text); font-weight: 700; }
 
     /* HERO */
-    .hero { padding-top: 56px; }
+    .hero h1 { font-size: clamp(26px, 3.6vw, 38px); line-height: 1.18; letter-spacing: -0.8px; }
+    .hero p.lead { font-size: clamp(17px, 2.2vw, 19px); font-weight: 400; }
+    .hero { padding-top: 40px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 48px;
-      align-items: center;
+      grid-template-columns: 1.85fr 1fr;
+      gap: 44px;
+      align-items: start;
     }
+    .hero-grid > div:first-child { padding-top: 24px; }
     .hero .cta-block { text-align: left; }
     .trust {
       display: flex;
@@ -362,7 +369,8 @@
     }
     .stat .lbl { display: block; font-size: 14px; color: var(--text-secondary); margin-top: 6px; line-height: 1.4; }
     .callout {
-      padding: 16px 18px;
+      padding: 12px 12px;
+      margin-bottom: 16px;
       background: var(--danger-bg);
       border-radius: 12px;
       font-size: 16px;
@@ -401,15 +409,12 @@
     }
     .show-text .tag {
       display: inline-block;
-      font-size: 12px;
+      font-size: 17px;
       font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
+      letter-spacing: 0;
+      line-height: 1.3;
       color: var(--primary);
-      background: var(--primary-bg);
-      padding: 4px 10px;
-      border-radius: 100px;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
     .ticks { list-style: none; margin: 4px 0 0; }
     .ticks li {
@@ -598,6 +603,7 @@
 
     @media (max-width: 860px) {
       .hero-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .hero-grid > div:first-child { padding-top: 0; }
       .hero .cta-block { text-align: center; }
       .trust { justify-content: center; }
       .showcase { grid-template-columns: 1fr; gap: 28px; }
@@ -701,7 +707,15 @@
   </style>
   <style>
     /* DEBT SIDE NOTE: a quieter "by the way" block near the end */
-    .hero .shot { max-width: 440px; }
+    .hero .shot {
+      max-width: 440px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: top;
+      box-shadow: none;
+      -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+    }
     @media (max-width: 560px) { .hero .shot { max-width: 100%; } }
     .sidenote {
       background: #fff;
@@ -729,19 +743,12 @@
     <div class="wrap wide">
       <div class="hero-grid">
         <div class="fade">
-          <span class="eyebrow">For busy parents</span>
-          <h1>Money disappearing <span class="hl">faster than it should?</span></h1>
-          <p class="lead">How to go from worried about money to complete clarity &amp; control in 30 days &ndash; without cutting out trips to your favourite coffee shop.</p>
-          <p>Meet KeepyCash: a spending tracker app that takes seconds to use and helps you see where your money goes, so you can keep more of it.</p>
-
-          <div class="trust">
-            <span>30-day money-back guarantee</span>
-            <span>No bank linking</span>
-            <span>No ads, ever</span>
-          </div>
+          <span class="eyebrow">Money disappearing faster than it should?</span>
+          <h1>How to go from worried about money to complete clarity &amp; control in 30 days,  <span class="hl">without cutting out trips to your favourite coffee shop</span></h1>
+          <p class="lead">Meet KeepyCash: a spending tracker app that takes seconds to use and helps you see where your money goes, so you can keep more of it.</p>
         </div>
         <div class="fade">
-          <img class="shot" src="assets/debt/budget.webp" width="720" height="1421" fetchpriority="high"
+          <img class="shot" src="assets/debt/budget.webp" width="720" height="600" fetchpriority="high"
                alt="KeepyCash Family Budget screen showing monthly bills like rent, childcare and insurance, with Fun Money categories below" />
         </div>
       </div>
@@ -757,24 +764,24 @@
       <p>Using one of the &ldquo;easy-track&rdquo; options that work for the busiest (even most ADHD) parents.</p>
       <p>There&rsquo;s no other spending tracker app (that I know of) that makes tracking your money this easy, and even alerts you when you&rsquo;re near somewhere that&rsquo;s cost you money before! We call that feature <strong>GuardianMode</strong>.</p>
       <p>It even works for those who feel they&rsquo;re bad with money or have never tracked a dollar in their life. And you might be happy to know&hellip; you&rsquo;ll never have to look at a spreadsheet!</p>
-      <p>If you can spare 60 seconds per day, you can get clear on where your money&rsquo;s going, so you can keep more of it &ndash; which can help all of us during this crazy cost of living crisis.</p>
-      <div class="callout">I&rsquo;m certain KeepyCash will help you find <strong>hundreds, even thousands of dollars</strong> you didn&rsquo;t realise you had&hellip;</div>
+      <p>If you can spare 60 seconds per day, you can get clear on where your money&rsquo;s going, so you can keep more of it - which can help all of us during this crazy cost of living crisis.</p>
+      <div class="callout">I&rsquo;m certain KeepyCash will help you find <strong>hundreds, even thousands of dollars</strong> you didn&rsquo;t realise you were spending&hellip;</div>
       <p>Because when I casually &ldquo;launched&rdquo; this app in a few Facebook groups&hellip; it took off like a rocket! It&rsquo;s already helped over <strong>2,000 busy Aussie parents</strong> (like me) finally get control of their money, make savings and even start clearing debt.</p>
-      <p>Though first, let me introduce myself&hellip;</p>
+      <p><strong>Though first, let me introduce myself&hellip;</strong></p>
     </div>
   </section>
 
   <!-- ===== FOUNDER ===== -->
   <section>
     <div class="wrap fade founder">
-      <span class="eyebrow">Why I built this</span>
       <h2>Hi, I&rsquo;m James, and I built KeepyCash :)</h2>
       <img src="assets/debt/james-carl.webp" width="900" height="900" loading="lazy"
            style="display:block; width:100%; max-width:460px; height:auto; margin:8px auto 20px;"
            alt="James and his mate Carl, KeepyCash's first guinea pig, in a selfie with handwritten annotations" />
-      <p>Why? Because I was struggling with money.</p>
+      <p>Why?</p>
+      <p>Because I was struggling with money.</p>
       <p>Balancing our income, mortgage, two young kids, car payments and all the other expenses that come with a &ldquo;full life&rdquo; was getting on top of me.</p>
-      <p>I looked for ways to help me see where my money was going, so I could make it last a full month &ndash; no stress!</p>
+      <p>I looked for ways to help me see where my money was going, so I could make it last a full month - no stress!</p>
       <p>That&rsquo;s when I found budgeting apps. At first, the one I used was great. I started tracking my money, making savings and not worrying if all my bills were covered.</p>
       <p>But then the big-name budgeting app I was using started charging more and more. Until one day, they asked for <strong>$180 per YEAR!</strong></p>
       <p>All I wanted was to track my spending and find out where my money was going&hellip; so I could stop worrying if I had enough money to pay my (ever-rising) bills.</p>
@@ -811,7 +818,7 @@
       <p>Instead of killing off an entire Sunday afternoon going through your bank statements and bills to create a budget&hellip;</p>
       <p>&hellip;before you get the chance to track a single penny&hellip;</p>
       <p>&hellip;only to become overwhelmed, quit, and feel like you&rsquo;ve failed or are bad with money&hellip;</p>
-      <div class="callout">KeepyCash lets you spend <strong>less than a minute per day</strong> tracking your spending &ndash; while it builds a budget FOR YOU in the background!</div>
+      <div class="callout">KeepyCash lets you spend <strong>less than a minute per day</strong> tracking your spending - while it builds a budget FOR YOU in the background!</div>
       <p>SO easy, right?!</p>
       <p>Whether you&rsquo;re good with money or not &mdash; doesn&rsquo;t matter. You shouldn&rsquo;t have to feel like you&rsquo;re halfway to becoming an accountant just to get a grip on where your money is going.</p>
       <p>All it takes is using KeepyCash to help you build one simple, yet powerful habit:</p>
