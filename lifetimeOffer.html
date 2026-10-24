@@ -177,7 +177,6 @@
       <h1>Pay once. <span class="hl">Keep KeepyCash for life.</span></h1>
       <p class="lead">You&rsquo;re about to grab KeepyCash for <span data-annual-price>$19.99</span> a year. Before you do, I want to give you the option to never pay for it again.</p>
       <p>Lifetime access is one payment. No renewals, no &ldquo;your subscription is about to renew&rdquo; emails, and every feature I add from here on is yours too.</p>
-      <p>On the yearly plan, you&rsquo;d pass the lifetime price in <strong data-breakeven>about 3 years</strong>. After that, every year is free.</p>
 
       <div class="offer">
         <div class="badge">Lifetime access</div>
@@ -218,7 +217,7 @@
     var OFFER = {
       lifetimePrice: 59.99,
       annualPrice: 19.99,
-      lifetimeUrl: 'https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_lifetime',
+      lifetimeUrl: 'https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=web_lifetime',
       annualUrl: 'https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_annual'
     };
 
@@ -237,8 +236,6 @@
       function money(n) { return '$' + n.toFixed(2); }
       document.querySelectorAll('[data-lifetime-price]').forEach(function (el) { el.textContent = money(OFFER.lifetimePrice); });
       document.querySelectorAll('[data-annual-price]').forEach(function (el) { el.textContent = money(OFFER.annualPrice); });
-      var years = Math.ceil(OFFER.lifetimePrice / OFFER.annualPrice);
-      document.querySelector('[data-breakeven]').textContent = years <= 1 ? 'your first year' : 'about ' + years + ' years';
 
       var accept = document.getElementById('accept');
       var decline = document.getElementById('decline');
