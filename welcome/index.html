@@ -214,6 +214,9 @@
     .badges a:hover { transform: translateY(-2px); }
     .badges .apple img { height: 48px; width: auto; }
     .badges .google img { height: 71px; width: auto; margin: -11.5px -9px; }
+    .steps .badges { justify-content: flex-start; margin-top: 10px; }
+    .steps .badges .apple img { height: 40px; }
+    .steps .badges .google img { height: 59px; margin: -9.5px -7.5px; }
 
     /* DOWNLOAD BAND */
     .download { background: var(--surface); border-top: 1px solid var(--border); padding: 64px 24px 72px; text-align: center; }
@@ -241,17 +244,25 @@
     <div>
       <span class="eyebrow">✓ Payment confirmed</span>
       <h1>You're in.<br />Now let's <em>find your money.</em></h1>
-      <p class="lead">That $19.99 is about to pay for itself. Most people find more than that in <strong>forgotten subscriptions and $5 leaks</strong> in their first week.</p>
+      <p class="lead">Most people find more than we cost in <strong>forgotten subscriptions and $5 leaks</strong> in their first week.</p>
       <p class="lead">Three quick steps and you'll be logging your first spend tonight.</p>
 
       <ol class="steps">
         <li><div><strong>Create your account</strong><span>Takes 30 seconds. Your subscription will be waiting for you.</span></div></li>
-        <li><div><strong>Download KeepyCash</strong><span>Free on the App Store and Google Play.</span></div></li>
+        <li><div><strong>Download KeepyCash</strong><span>Free on the App Store and Google Play.</span>
+          <div class="badges">
+            <a class="apple" data-store="apple" href="https://apps.apple.com/us/app/keepycash-budget-planner/id6760102114" target="_blank" rel="noopener">
+              <img src="/assets/badges/app-store.svg" alt="Download on the App Store" width="144" height="48" />
+            </a>
+            <a class="google" data-store="google" href="https://play.google.com/store/apps/details?id=com.jpredman27.keepycash" target="_blank" rel="noopener">
+              <img src="/assets/badges/google-play.png" alt="Get it on Google Play" width="184" height="71" />
+            </a>
+          </div>
+        </div></li>
         <li><div><strong>Log in and start keeping more</strong><span>Use the same email and password you set here.</span></div></li>
       </ol>
 
       <div class="trust">
-        <span>30-day money-back guarantee</span>
         <span>No bank linking</span>
         <span>No ads, ever</span>
       </div>

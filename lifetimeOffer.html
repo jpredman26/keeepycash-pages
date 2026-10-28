@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lifetime Access | KeepyCash</title>
-  <meta name="description" content="Pay once and keep KeepyCash for life. One payment, never renews, 30-day money-back guarantee." />
+  <meta name="description" content="Upgrade your new KeepyCash plan to lifetime access for one extra payment. Never renews." />
   <meta name="robots" content="noindex, nofollow" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VT8YBKWKXT"></script>
@@ -57,7 +57,7 @@
     .logo { font-family: var(--font-display); font-size: 19px; font-weight: 800; letter-spacing: -0.5px; }
     .logo span { color: var(--primary); }
 
-    /* Where they are: picked a plan, one step before checkout */
+    /* Confirms the annual purchase went through (RevenueCat's own success screen is skipped) */
     .progress {
       display: flex;
       justify-content: center;
@@ -167,38 +167,38 @@
     <div class="logo">Keepy<span>Cash</span></div>
   </nav>
 
-  <div class="progress" aria-label="Checkout progress">
-    <span>Plan</span><span>&rarr;</span><span class="on">Upgrade</span><span>&rarr;</span><span>Checkout</span>
+  <div class="progress" role="status">
+    <span class="on">&#10003; Payment complete. Your yearly plan is active.</span>
   </div>
 
   <main>
     <div class="wrap">
-      <span class="eyebrow">One quick thing before you check out&hellip;</span>
-      <h1>Pay once. <span class="hl">Keep KeepyCash for life.</span></h1>
-      <p class="lead">You&rsquo;re about to grab KeepyCash for <span data-annual-price>$19.99</span> a year. Before you do, I want to give you the option to never pay for it again.</p>
-      <p>Lifetime access is one payment. No renewals, no &ldquo;your subscription is about to renew&rdquo; emails, and every feature I add from here on is yours too.</p>
+      <span class="eyebrow">You&rsquo;re in! One quick thing before you set up your account&hellip;</span>
+      <h1>Upgrade to lifetime <span class="hl">for just <span data-upgrade-price>$39.99</span> more.</span></h1>
+      <p class="lead">Thanks for grabbing KeepyCash for <span data-annual-price>$19.99</span> a year. Because you&rsquo;ve just joined, you can upgrade to lifetime access right now and never pay for it again.</p>
+      <p>It&rsquo;s one extra payment of <span data-upgrade-price>$39.99</span>, about what the next two years would cost. After that there are no renewals, no &ldquo;your subscription is about to renew&rdquo; emails, and every feature I add from here on is yours too.</p>
 
       <div class="offer">
-        <div class="badge">Lifetime access</div>
-        <div class="price"><span data-lifetime-price>$59.99</span><small> once</small></div>
+        <div class="badge">Lifetime upgrade</div>
+        <div class="price"><span data-upgrade-price>$39.99</span><small> one-off</small></div>
         <div class="vs">instead of <span data-annual-price>$19.99</span> every year, forever</div>
 
         <ul class="ticks">
           <li>Every feature, now and in the future</li>
-          <li>Never renews, nothing to cancel</li>
-          <li>Same 30-day money-back guarantee</li>
-          <li>No ads, no bank linking, ever</li>
+          <li>One payment, never renews</li>
+          <li>No bank linking</li>
+          <li>No ads, ever</li>
         </ul>
 
-        <a class="btn" id="accept" href="#">Yes, give me lifetime access &rarr;</a>
-        <div class="btn-sub">One payment. Instant access.</div>
+        <a class="btn" id="accept" href="#">Yes, upgrade me to lifetime &rarr;</a>
+        <div class="btn-sub">One payment. Added to the plan you just bought.</div>
       </div>
 
       <div class="decline">
-        <a id="decline" href="#">No thanks, continue with <span data-annual-price>$19.99</span>/year</a>
+        <a id="decline" href="#">No thanks, keep my yearly plan</a>
       </div>
 
-      <p style="margin-top: 32px;">Either way, you&rsquo;re covered by the KeepyCash Promise. If it doesn&rsquo;t earn its place on your phone in 30 days, email <a href="mailto:support@keepycash.com" style="color: var(--primary); font-weight: 700;">support@keepycash.com</a> and I&rsquo;ll refund every cent.</p>
+      <p style="margin-top: 32px;">Either way, you&rsquo;re all set. Your yearly plan is active, and if you ever need a hand getting set up, email <a href="mailto:support@keepycash.com" style="color: var(--primary); font-weight: 700;">support@keepycash.com</a> and I&rsquo;ll get back to you personally.</p>
       <p class="sig">James, founder of KeepyCash</p>
     </div>
   </main>
@@ -211,41 +211,37 @@
   </footer>
 
   <script>
-    /* The offer lives here. Change prices or RevenueCat packages in one place.
-       Sales pages link to: lifetimeOffer?from=<page>&cta=<location>
-       Optional overrides: ?lifetime=<pay.rev.cat url>&next=<pay.rev.cat url> */
+    /* Post-purchase upsell. RevenueCat's success redirect for the annual purchase
+       lands here with ?app_user_id=...&redeem_url=... (redeem_url only when
+       Redemption Links are on). The upgrade link must carry that same App User ID,
+       or RevenueCat shows a 404. Declining forwards everything to /welcome. */
     var OFFER = {
-      lifetimePrice: 59.99,
+      upgradePrice: 39.99,
       annualPrice: 19.99,
-      lifetimeUrl: 'https://pay.rev.cat/bcytrhiyhmswyjxl/?package_id=%24rc_lifetime',
-      annualUrl: 'https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_annual'
+      // Web Purchase Link for the web_lifetime_upgrade offering; the App User ID is appended.
+      upgradeLink: 'https://pay.rev.cat/jyrvoiflpnktydfq/'
     };
 
     (function () {
       var q = new URLSearchParams(location.search);
-      var from = q.get('from') || 'direct';
-      var cta = q.get('cta') || '';
+      var appUserId = (q.get('app_user_id') || '').slice(0, 200);
+      var welcomeUrl = '/welcome/' + location.search;
 
-      // Only ever send people to RevenueCat checkout, never an arbitrary URL.
-      function checkout(u, fallback) {
-        return u && /^https:\/\/pay\.rev\.cat\//.test(u) ? u : fallback;
-      }
-      var acceptUrl = checkout(q.get('lifetime'), OFFER.lifetimeUrl);
-      var declineUrl = checkout(q.get('next'), OFFER.annualUrl);
+      // Without an App User ID the upgrade link 404s, so go straight to account setup.
+      if (!appUserId) { location.replace(welcomeUrl); return; }
 
       function money(n) { return '$' + n.toFixed(2); }
-      document.querySelectorAll('[data-lifetime-price]').forEach(function (el) { el.textContent = money(OFFER.lifetimePrice); });
+      document.querySelectorAll('[data-upgrade-price]').forEach(function (el) { el.textContent = money(OFFER.upgradePrice); });
       document.querySelectorAll('[data-annual-price]').forEach(function (el) { el.textContent = money(OFFER.annualPrice); });
 
       var accept = document.getElementById('accept');
       var decline = document.getElementById('decline');
-      accept.href = acceptUrl;
-      decline.href = declineUrl;
+      accept.href = OFFER.upgradeLink + encodeURIComponent(appUserId);
+      decline.href = welcomeUrl;
 
-      var ctx = { from: from, cta: cta };
-      gtag('event', 'upsell_view', ctx);
-      accept.addEventListener('click', function () { gtag('event', 'upsell_accept', ctx); });
-      decline.addEventListener('click', function () { gtag('event', 'upsell_decline', ctx); });
+      gtag('event', 'upsell_view');
+      accept.addEventListener('click', function () { gtag('event', 'upsell_accept'); });
+      decline.addEventListener('click', function () { gtag('event', 'upsell_decline'); });
     })();
 
     /* RevenueCat charges in the visitor's local currency but doesn't label which
