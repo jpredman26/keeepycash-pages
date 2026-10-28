@@ -728,6 +728,19 @@
       -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
       mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
     }
+    /* Desktop: size the shot to the text column's height so it never runs past the copy */
+    @media (min-width: 861px) {
+      .hero-grid { align-items: stretch; }
+      .hero-grid > div:last-child { position: relative; }
+      .hero .shot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: auto;
+        max-width: 100%;
+      }
+    }
     @media (max-width: 560px) { .hero .shot { max-width: 100%; } }
     .sidenote {
       background: #fff;
