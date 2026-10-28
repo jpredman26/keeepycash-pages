@@ -236,7 +236,7 @@
 
       var accept = document.getElementById('accept');
       var decline = document.getElementById('decline');
-      accept.href = OFFER.upgradeLink + encodeURIComponent(appUserId);
+      accept.href = OFFER.upgradeLink + encodeURIComponent(appUserId) + '?package_id=%24rc_lifetime';
       decline.href = welcomeUrl;
 
       gtag('event', 'upsell_view');
