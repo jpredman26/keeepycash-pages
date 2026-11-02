@@ -726,11 +726,11 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '3622106317966905');
+    fbq('init', '1045628235162494');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-                 src="https://www.facebook.com/tr?id=3622106317966905&ev=PageView&noscript=1"
+                 src="https://www.facebook.com/tr?id=1045628235162494&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
 
@@ -1201,6 +1201,15 @@
         pn.appendChild(s);
       }
     })();
+  </script>
+
+  <script>
+    /* Meta Pixel: any RevenueCat checkout click is an InitiateCheckout. Delegated
+       so links whose href is set later by JS are still caught. */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
+      if (a) fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+    });
   </script>
 
 </body>

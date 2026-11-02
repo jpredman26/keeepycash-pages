@@ -757,7 +757,7 @@
     }
   </style>
 
-  <!-- Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '3622106317966905'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=3622106317966905&ev=PageView&noscript=1"/></noscript><!-- End Facebook Pixel Code -->
+  <!-- Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1045628235162494'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=1045628235162494&ev=PageView&noscript=1"/></noscript><!-- End Facebook Pixel Code -->
 
 </head>
 <body>
@@ -1173,6 +1173,15 @@
         pn.appendChild(s);
       }
     })();
+  </script>
+
+  <script>
+    /* Meta Pixel: any RevenueCat checkout click is an InitiateCheckout. Delegated
+       so links whose href is set later by JS are still caught. */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
+      if (a) fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+    });
   </script>
 
 </body>
