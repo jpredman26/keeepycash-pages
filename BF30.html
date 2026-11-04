@@ -1102,5 +1102,35 @@
     });
   </script>
 
+  <script>
+    /* Identified checkout: Loops links arrive as ?uid={contact.rcAppUserId}.
+       RevenueCat links take the user as a path segment: pay.rev.cat/<token>/<app_user_id>?...
+       Kept in sessionStorage so a refresh still works, and stripped from the address bar
+       so the ID isn't sent to GA/Meta in the page URL. */
+    (function () {
+      var KEY = 'kc_rc_uid';
+      var q = new URLSearchParams(location.search);
+      var uid = (q.get('uid') || '').trim().slice(0, 200);
+      try {
+        if (uid) sessionStorage.setItem(KEY, uid);
+        else uid = sessionStorage.getItem(KEY) || '';
+      } catch (e) {}
+      if (q.has('uid')) {
+        q.delete('uid');
+        var qs = q.toString();
+        history.replaceState(null, '', location.pathname + (qs ? '?' + qs : '') + location.hash);
+      }
+      /* Ignore empty or unfilled merge tags, e.g. "{contact.rcAppUserId}". */
+      if (!uid || /[{}]/.test(uid)) return;
+      document.querySelectorAll('a[href*="pay.rev.cat/"]').forEach(function (a) {
+        var u = new URL(a.href);
+        var parts = u.pathname.split('/').filter(Boolean);
+        if (parts.length !== 1) return; /* already has a user ID */
+        u.pathname = '/' + parts[0] + '/' + encodeURIComponent(uid);
+        a.href = u.toString();
+      });
+    })();
+  </script>
+
 </body>
 </html>
