@@ -759,6 +759,7 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
 
+  <script src="/assets/js/kc-purchase.js"></script>
 </head>
 <body>
 
@@ -1099,12 +1100,16 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade').forEach(function (el) { obs.observe(el); });
 
-    /* Mobile sticky CTA: show once the hero button has scrolled away. */
+    /* Mobile sticky CTA: show once the hero has scrolled away. (This used to watch
+       '.hero .trust', which the hero doesn't have, so it threw and the sticky bar
+       and the cta_click tracking below never ran.) */
     var sticky = document.getElementById('sticky');
-    var heroBtn = document.querySelector('.hero .trust');
-    new IntersectionObserver(function (entries) {
-      sticky.classList.toggle('show', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
-    }).observe(heroBtn);
+    var heroEl = document.querySelector('.hero');
+    if (sticky && heroEl) {
+      new IntersectionObserver(function (entries) {
+        sticky.classList.toggle('show', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
+      }).observe(heroEl);
+    }
 
     /* Which section converts: every CTA reports its data-cta label to GA. */
     document.querySelectorAll('[data-cta]').forEach(function (a) {
@@ -1163,7 +1168,10 @@
        so links whose href is set later by JS are still caught. */
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
-      if (a) fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+      if (a) {
+        fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+        if (window.kcRememberCheckout) kcRememberCheckout('yearly', 19.99);
+      }
     });
   </script>
 
