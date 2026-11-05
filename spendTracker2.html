@@ -759,6 +759,7 @@
 
   <!-- Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1045628235162494'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=1045628235162494&ev=PageView&noscript=1"/></noscript><!-- End Facebook Pixel Code -->
 
+  <script src="/assets/js/kc-purchase.js"></script>
 </head>
 <body>
 
@@ -1116,12 +1117,16 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.fade').forEach(function (el) { obs.observe(el); });
 
-    /* Mobile sticky CTA: show once the hero button has scrolled away. */
+    /* Mobile sticky CTA: show once the hero has scrolled away. (This used to watch
+       '.hero .trust', which the hero doesn't have, so it threw and the sticky bar
+       and the cta_click tracking below never ran.) */
     var sticky = document.getElementById('sticky');
-    var heroBtn = document.querySelector('.hero .trust');
-    new IntersectionObserver(function (entries) {
-      sticky.classList.toggle('show', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
-    }).observe(heroBtn);
+    var heroEl = document.querySelector('.hero');
+    if (sticky && heroEl) {
+      new IntersectionObserver(function (entries) {
+        sticky.classList.toggle('show', !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
+      }).observe(heroEl);
+    }
 
     /* Which section converts: every CTA reports its data-cta label to GA. */
     document.querySelectorAll('[data-cta]').forEach(function (a) {
@@ -1180,7 +1185,10 @@
        so links whose href is set later by JS are still caught. */
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
-      if (a) fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+      if (a) {
+        fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+        if (window.kcRememberCheckout) kcRememberCheckout('yearly', 19.99);
+      }
     });
   </script>
 

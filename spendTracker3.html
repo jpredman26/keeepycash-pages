@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KeepyCash: See Where Your Money Goes | $19.99/year</title>
+  <meta name="description" content="KeepyCash is the spending tracker for busy parents. Log a spend in seconds and it builds your budget for you. No bank login. $19.99/year with a 30-day money-back guarantee." />
+  <link rel="canonical" href="https://keepycash.com/spendTracker3" />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="apple-itunes-app" content="app-id=6760102114" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="KeepyCash" />
+  <meta property="og:url" content="https://keepycash.com/spendTracker3" />
+  <meta property="og:title" content="KeepyCash: See Exactly Where Your Money Goes" />
+  <meta property="og:description" content="Log a spend in seconds and KeepyCash builds your budget for you. $19.99/year, 30-day money-back guarantee." />
+  <meta property="og:image" content="https://keepycash.com/assets/debt/05.png" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VT8YBKWKXT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-VT8YBKWKXT');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://pay.rev.cat" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font-display: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --background: #FBFBF8;
+      --surface: #F1F3EE;
+      --text: #15201A;
+      --text-secondary: #5D6A62;
+      --text-tertiary: #8C978F;
+      --primary: #1E5A3E;
+      --primary-variant: #16452F;
+      --success: #237A4B;
+      --border: #E2E6DE;
+      --primary-bg: #E6F1DF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+    .wrap.wide { max-width: 1080px; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .logo { font-size: 19px; font-weight: 800; letter-spacing: -0.5px; }
+    .logo span { color: var(--primary); }
+    .nav-cta {
+      background: var(--primary);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    section { padding: 48px 0; }
+    .surface { background: var(--surface); --text-secondary: #333F38; }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+    }
+    h1 .hl, h2 .hl { color: var(--primary); }
+    h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      margin-bottom: 16px;
+    }
+    h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 4px; }
+    p { margin-bottom: 16px; color: var(--text-secondary); font-size: 17px; }
+    strong { color: var(--text); font-weight: 700; }
+    .logo, h1, h2, h3, .price { font-family: var(--font-display); }
+
+    /* HERO: headline, price and button all fit the first phone screen */
+    .hero { padding: 22px 0 36px; }
+    .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; }
+    .eyebrow { display: block; font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .lead { font-size: 18px; color: var(--text); margin-bottom: 18px; }
+
+    .buy { margin: 0 0 4px; }
+    .price-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+    .price { font-size: 34px; font-weight: 800; letter-spacing: -1px; font-variant-numeric: tabular-nums; }
+    .price small { font-size: 16px; font-weight: 600; color: var(--text-secondary); letter-spacing: 0; }
+    .was { font-size: 15px; color: var(--text-tertiary); }
+    .was s { text-decoration-color: var(--text-tertiary); }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      padding: 17px 36px;
+      border-radius: 100px;
+      box-shadow: 0 10px 28px rgba(30,90,62,0.30);
+      transition: background .2s, transform .15s;
+    }
+    .btn:hover { background: var(--primary-variant); transform: translateY(-2px); }
+    .btn-sub { font-size: 14px; color: var(--text-tertiary); margin-top: 10px; }
+    .cur-note { font-size: 13px; font-weight: 600; color: var(--text-tertiary); margin-top: 4px; }
+
+    .trust { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+    .trust li::before { content: "\2713"; color: var(--success); margin-right: 6px; font-weight: 800; }
+
+    .shot {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 28px;
+      background: #fff;
+      box-shadow: 0 24px 60px rgba(21,32,26,0.14), 0 2px 8px rgba(21,32,26,0.06);
+    }
+    .hero .shot {
+      max-width: 360px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: top;
+      box-shadow: none;
+      -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+    }
+
+    /* WAYS TO TRACK */
+    .ways { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+    .way { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 16px; }
+    .way .ic { font-size: 22px; display: block; margin-bottom: 6px; }
+    .way p { font-size: 14.5px; margin-bottom: 0; }
+
+    /* SHOWCASE */
+    .showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: center; }
+    .showcase.flip .show-img { order: 2; }
+    .tag { display: block; font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+    .ticks { list-style: none; margin: 4px 0 0; }
+    .ticks li { position: relative; padding-left: 28px; margin-bottom: 10px; font-size: 16px; color: var(--text); }
+    .ticks li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--success); font-weight: 800; }
+
+    /* QUOTES */
+    .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .quote { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: 12px; padding: 18px 20px; }
+    .quote p { font-size: 15.5px; color: var(--text); font-style: italic; margin-bottom: 8px; }
+    .quote .who { font-size: 13.5px; color: var(--text-tertiary); }
+
+    /* OFFER */
+    .offer { text-align: center; background: #fff; border: 2px solid var(--primary); border-radius: 20px; padding: 30px 22px 26px; }
+    .badge { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: #fff; background: var(--primary); padding: 6px 14px; border-radius: 100px; margin-bottom: 12px; }
+    .offer .price { font-size: 46px; display: block; margin: 2px 0; }
+    .offer .ticks { max-width: 360px; margin: 16px auto 22px; text-align: left; }
+    .promise { margin-top: 18px; font-size: 15.5px; color: var(--text); background: var(--primary-bg); border-radius: 14px; padding: 16px 18px; text-align: left; }
+    .promise p { font-size: 15.5px; margin-bottom: 0; color: var(--text); }
+
+    /* AFTER YOU BUY */
+    .steps { list-style: none; margin: 4px 0 0; }
+    .steps li { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px dashed var(--border); }
+    .steps li:last-child { border-bottom: none; }
+    .steps .n { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--primary-bg); color: var(--primary); font-family: var(--font-display); font-weight: 800; line-height: 32px; text-align: center; }
+    .steps p { margin-bottom: 0; font-size: 15.5px; }
+
+    /* FAQ */
+    .faq details { border-bottom: 1px solid var(--border); padding: 14px 0; }
+    .faq summary { font-weight: 700; font-size: 16.5px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--primary); font-weight: 700; }
+    .faq details[open] summary::after { content: "\2013"; }
+    .faq details p { margin: 10px 0 0; font-size: 15.5px; }
+
+    .center { text-align: center; }
+    .cta-block { text-align: center; margin-top: 28px; }
+
+    footer { text-align: center; padding: 36px 20px; color: var(--text-tertiary); font-size: 13px; }
+    footer a { color: var(--text-tertiary); }
+    footer .fine { max-width: 520px; margin: 8px auto 0; line-height: 1.5; }
+
+    /* STICKY MOBILE CTA: appears once the hero button scrolls away */
+    .sticky-cta { display: none; }
+
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .showcase { grid-template-columns: 1fr; gap: 24px; }
+      .showcase.flip .show-img { order: 0; }
+      .ways { grid-template-columns: 1fr 1fr; }
+      .quotes { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .wrap { padding: 0 16px; }
+      .btn { display: block; width: 100%; padding: 16px 20px; font-size: 17px; }
+      .hero .shot { max-width: 300px; }
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        z-index: 90;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+        background: rgba(255,255,255,0.96);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--border);
+        text-align: center;
+        transform: translateY(110%);
+        transition: transform .3s ease;
+      }
+      .sticky-cta.show { transform: none; }
+      .sticky-cta .btn { padding: 13px 20px; font-size: 16px; box-shadow: none; }
+      .sticky-cta span { display: block; font-size: 12px; color: var(--text-tertiary); margin-top: 4px; }
+      footer { padding-bottom: 110px; }
+    }
+  </style>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1045628235162494');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=1045628235162494&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script src="/assets/js/kc-purchase.js"></script>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Keepy<span>Cash</span></div>
+    <a class="nav-cta" data-cta="nav" href="https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_annual&skip_purchase_success=true">$19.99/yr</a>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="wrap wide">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">The spending tracker for busy parents</span>
+          <h1>See where your money goes. <span class="hl">In under a minute a day.</span></h1>
+          <p class="lead">Log a spend in seconds and KeepyCash builds your budget for you. No spreadsheets, and it never asks for your bank login.</p>
+
+          <div class="buy" id="hero-buy">
+            <div class="price-row">
+              <span class="price">$19.99<small> / year</small></span>
+              <span class="was">Big-name apps: <s>$180/year</s></span>
+            </div>
+            <a class="btn" data-cta="hero" href="https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_annual&skip_purchase_success=true">Get KeepyCash &rarr;</a>
+            <div class="btn-sub">Secure checkout, takes about a minute.</div>
+          </div>
+
+          <ul class="trust">
+            <li>30-day money-back guarantee</li>
+            <li>No bank login</li>
+            <li>iPhone &amp; Android</li>
+          </ul>
+        </div>
+        <div>
+          <img class="shot" src="assets/debt/budget-v2.webp" width="720" height="1422" fetchpriority="high"
+               alt="KeepyCash Family Budget screen showing monthly bills like rent, childcare and insurance, with Fun Money categories below" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WAYS TO TRACK ===== -->
+  <section class="surface">
+    <div class="wrap">
+      <h2 class="center">Four quick ways to log a spend</h2>
+      <div class="ways">
+        <div class="way"><span class="ic">⌨️</span><h3>Type it</h3><p>Amount, payee, done.</p></div>
+        <div class="way"><span class="ic">🎙️</span><h3>Say it</h3><p>Voice entry when your hands are full.</p></div>
+        <div class="way"><span class="ic">🧾</span><h3>Scan it</h3><p>Snap the receipt.</p></div>
+        <div class="way"><span class="ic">📱</span><h3>Screenshot it</h3><p>Log a whole statement at once. The image isn&rsquo;t stored.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUILDS YOUR BUDGET ===== -->
+  <section>
+    <div class="wrap wide">
+      <div class="showcase">
+        <div class="show-img">
+          <img class="shot" src="assets/debt/04.webp" width="720" height="1558" loading="lazy"
+               alt="Add Transaction screen logging a $34.99 expense at KFC under Dining Out, with $120 left in that category" />
+        </div>
+        <div class="show-text">
+          <span class="tag">No Sunday afternoon of setup</span>
+          <h2>Just track. <span class="hl">KeepyCash builds the budget.</span></h2>
+          <p>Most budgeting apps make you sort through statements before you can log a single dollar. KeepyCash starts with what you actually spend and turns it into a budget in the background.</p>
+          <ul class="ticks">
+            <li>Works even if you&rsquo;ve never budgeted before</li>
+            <li>Alerts before a category runs dry</li>
+            <li>Cash spending counts too</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INSIGHTS ===== -->
+  <section class="surface">
+    <div class="wrap wide">
+      <div class="showcase flip">
+        <div class="show-img">
+          <img class="shot" src="assets/debt/05.webp" width="720" height="1558" loading="lazy"
+               alt="Where Your Money Went chart flowing income into bills, everyday spending and money kept, with a Top Payees chart below" />
+        </div>
+        <div class="show-text">
+          <span class="tag">The Insights tab</span>
+          <h2>Find the money <span class="hl">you didn&rsquo;t know you were spending.</span></h2>
+          <p>One glance shows where it all went. Parents are spotting things like:</p>
+          <ul class="ticks">
+            <li>A subscription they forgot about</li>
+            <li>An insurance bill that quietly went up</li>
+            <li>An easy saving on groceries or takeaway</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROOF ===== -->
+  <section>
+    <div class="wrap wide">
+      <h2 class="center">Over 2,000 Aussie parents already use it</h2>
+      <div class="quotes">
+        <div class="quote">
+          <p>"I've tried every budgeting app out there. KeepyCash is the first one that actually made me stick to my budget for more than a week."</p>
+          <span class="who">Stevie T.</span>
+        </div>
+        <div class="quote">
+          <p>"Simple tracking method no extra jargon just a simple way to keep track of your finances and stop you from spending all those little costs you don't realise you have! Highly recommend"</p>
+          <span class="who">Luke Z.</span>
+        </div>
+        <div class="quote">
+          <p>"Exactly what a budgeting app should be. Simple, powerful, and it finally got me on top of my money. Love it!"</p>
+          <span class="who">Alex G.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFFER ===== -->
+  <section class="surface">
+    <div class="wrap">
+      <div class="offer">
+        <div class="badge">30-day money-back guarantee</div>
+        <span class="price">$19.99<small> / year</small></span>
+        <div class="was">Less than 6 cents a day. Big-name apps charge $180.</div>
+        <ul class="ticks">
+          <li>Every feature, unlimited use</li>
+          <li>No ads, no bank linking</li>
+          <li>iPhone and Android, synced</li>
+        </ul>
+        <a class="btn" data-cta="offer" href="https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_annual&skip_purchase_success=true">Get KeepyCash for $19.99 &rarr;</a>
+        <div class="btn-sub">Renews yearly. Turn it off any time from your receipt email.</div>
+
+        <div class="promise">
+          <p><strong>My promise:</strong> use it for 30 days. If it hasn&rsquo;t found you at least double what it costs, email <a href="mailto:support@keepycash.com" style="color: var(--primary); font-weight: 700;">support@keepycash.com</a> and I&rsquo;ll refund you within 24 hours. No questions asked. <span style="color: var(--primary); font-weight: 700;">James, dad of 2 and founder</span></p>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 40px;">What happens after you tap buy</h2>
+      <ol class="steps">
+        <li><span class="n">1</span><div><h3>Secure checkout</h3><p>Pay $19.99 for the year on our checkout page. Takes about a minute.</p></div></li>
+        <li><span class="n">2</span><div><h3>Create your login</h3><p>Straight after checkout you&rsquo;ll pick an email and password. Your receipt lands in your inbox too.</p></div></li>
+        <li><span class="n">3</span><div><h3>Download and log your first spend</h3><p>Get KeepyCash on iPhone or Android, sign in, and you&rsquo;re away.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section>
+    <div class="wrap">
+      <h2>Quick answers</h2>
+      <div class="faq">
+        <details>
+          <summary>What if it&rsquo;s not for me?</summary>
+          <p>Email <a href="mailto:support@keepycash.com">support@keepycash.com</a> within 30 days and you&rsquo;ll get a full refund. No questions asked.</p>
+        </details>
+        <details>
+          <summary>Why pay upfront instead of a free trial?</summary>
+          <p>Most free trials are built around you forgetting to cancel. I&rsquo;d rather be straight with you: pay $19.99, get everything, and if it isn&rsquo;t worth it, I&rsquo;ll give it back.</p>
+        </details>
+        <details>
+          <summary>Do I have to link my bank?</summary>
+          <p>No. You log spending yourself by typing, voice, receipt scan or statement screenshot. It takes seconds and your data stays private.</p>
+        </details>
+        <details>
+          <summary>Does it renew?</summary>
+          <p>Yes, once a year at $19.99. Turn renewal off any time from the link in your confirmation email. A couple of taps, no phone call.</p>
+        </details>
+      </div>
+
+      <div class="cta-block">
+        <a class="btn" data-cta="close" href="https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_annual&skip_purchase_success=true">See where my money goes &rarr;</a>
+        <div class="btn-sub">$19.99/year. 30-day money-back guarantee.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sticky-cta" id="sticky">
+    <a class="btn" data-cta="sticky" href="https://pay.rev.cat/jcaxkdyaqubscwxr/?package_id=%24rc_annual&skip_purchase_success=true">Get KeepyCash &middot; $19.99/yr</a>
+    <span>30-day money-back guarantee</span>
+  </div>
+
+  <footer>
+    &copy; 2026 KeepyCash. All rights reserved. &nbsp;&middot;&nbsp;
+    <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp;
+    <a href="terms.html">Terms</a> &nbsp;&middot;&nbsp;
+    <a href="support.html">Contact</a>
+    <div class="fine">Spending examples are illustrative. Your savings depend on your own income, spending and habits.</div>
+  </footer>
+
+  <script>
+    /* Sticky CTA on mobile: show once the hero buy block has scrolled off the top. */
+    (function () {
+      var sticky = document.getElementById('sticky');
+      var heroBuy = document.getElementById('hero-buy');
+      if (!sticky || !heroBuy || !('IntersectionObserver' in window)) return;
+      new IntersectionObserver(function (entries) {
+        var e = entries[0];
+        sticky.classList.toggle('show', !e.isIntersecting && e.boundingClientRect.top < 0);
+      }).observe(heroBuy);
+    })();
+
+    /* Which button converts: each CTA reports its data-cta label to GA. */
+    document.querySelectorAll('[data-cta]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (window.gtag) gtag('event', 'cta_click', { location: a.getAttribute('data-cta'), page: 'spendTracker3' });
+      });
+    });
+
+    /* RevenueCat charges in the visitor's local currency but doesn't label which
+       dollars. If the locale says AU, CA or NZ, show it under each button. */
+    (function () {
+      var MAP = { AU: 'AUD 🇦🇺', CA: 'CAD 🇨🇦', NZ: 'NZD 🇳🇿' };
+      function region() {
+        var langs = navigator.languages || [navigator.language || ''];
+        for (var i = 0; i < langs.length; i++) {
+          var m = /[-_]([A-Za-z]{2})$/.exec(langs[i] || '');
+          if (m && MAP[m[1].toUpperCase()]) return m[1].toUpperCase();
+        }
+        try {
+          var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+          if (/^Australia\//.test(tz)) return 'AU';
+          if (/^Pacific\/Auckland/.test(tz)) return 'NZ';
+          if (/^America\/(Toronto|Vancouver|Edmonton|Winnipeg|Halifax|St_Johns|Regina|Moncton|Montreal)$/.test(tz)) return 'CA';
+        } catch (e) {}
+        return '';
+      }
+      var r = region();
+      if (!r) return;
+      document.querySelectorAll('.btn-sub').forEach(function (el) {
+        var n = document.createElement('div');
+        n.className = 'cur-note';
+        n.textContent = 'Billed in ' + MAP[r];
+        el.parentNode.insertBefore(n, el.nextSibling);
+      });
+    })();
+
+    /* Meta Pixel: a checkout tap is an InitiateCheckout, and we remember the
+       product so the success page can report the Purchase at the right value. */
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
+      if (a) {
+        fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+        if (window.kcRememberCheckout) kcRememberCheckout('yearly', 19.99);
+      }
+    });
+  </script>
+
+</body>
+</html>

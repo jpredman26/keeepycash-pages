@@ -254,6 +254,7 @@
                  src="https://www.facebook.com/tr?id=1045628235162494&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <script src="/assets/js/kc-purchase.js"></script>
 
 </head>
 <body>
@@ -350,6 +351,24 @@
     © 2026 KeepyCash · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/support.html">Support</a>
   </footer>
 
+  <script>
+    /* Meta Purchase, kept in its own block so it still fires if the Supabase
+       script below fails to load. A lifetime upgrade tapped on /lifetimeOffer by
+       this same App User ID means they've come back from paying for the upgrade;
+       anything else with an App User ID is a yearly purchase (already counted if
+       they came via /lifetimeOffer, so kcTrackPurchase skips it). */
+    (function () {
+      var id = (new URLSearchParams(location.search).get('app_user_id') || '').slice(0, 200);
+      if (!id || !window.kcTrackPurchase) return;
+      var last = kcLastCheckout();
+      if (last && last.product === 'lifetime_upgrade' && last.appUserId === id) {
+        kcTrackPurchase('lifetime_upgrade', id, 39.99);
+        kcForgetCheckout();
+      } else {
+        kcTrackPurchase('yearly', id, 19.99);
+      }
+    })();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     var SUPABASE_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co';

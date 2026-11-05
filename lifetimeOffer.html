@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lifetime Access | KeepyCash</title>
-  <meta name="description" content="Upgrade your new KeepyCash plan to lifetime access for one extra payment. Never renews." />
+  <meta name="description" content="Upgrade your new KeepyCash subscription to lifetime access for one extra payment. Never renews." />
   <meta name="robots" content="noindex, nofollow" />
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-VT8YBKWKXT"></script>
@@ -178,6 +178,7 @@
                  src="https://www.facebook.com/tr?id=1045628235162494&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <script src="/assets/js/kc-purchase.js"></script>
 
 </head>
 <body>
@@ -187,7 +188,7 @@
   </nav>
 
   <div class="progress" role="status">
-    <span class="on">&#10003; Payment complete. Your yearly plan is active.</span>
+    <span class="on">&#10003; Payment complete. Your yearly subscription is active.</span>
   </div>
 
   <main>
@@ -210,14 +211,14 @@
         </ul>
 
         <a class="btn" id="accept" href="#">Yes, upgrade me to lifetime &rarr;</a>
-        <div class="btn-sub">One payment. Added to the plan you just bought.</div>
+        <div class="btn-sub">One payment. Added to the subscription you just bought.</div>
       </div>
 
       <div class="decline">
-        <a id="decline" href="#">No thanks, keep my yearly plan</a>
+        <a id="decline" href="#">No thanks, keep my yearly subscription</a>
       </div>
 
-      <p style="margin-top: 32px;">Either way, you&rsquo;re all set. Your yearly plan is active, and if you ever need a hand getting set up, email <a href="mailto:support@keepycash.com" style="color: var(--primary); font-weight: 700;">support@keepycash.com</a> and I&rsquo;ll get back to you personally.</p>
+      <p style="margin-top: 32px;">Either way, you&rsquo;re all set. Your yearly subscription is active, and if you ever need a hand getting set up, email <a href="mailto:support@keepycash.com" style="color: var(--primary); font-weight: 700;">support@keepycash.com</a> and I&rsquo;ll get back to you personally.</p>
       <p class="sig">James, founder of KeepyCash</p>
     </div>
   </main>
@@ -249,6 +250,9 @@
       // Without an App User ID the upgrade link 404s, so go straight to account setup.
       if (!appUserId) { location.replace(welcomeUrl); return; }
 
+      // RevenueCat only redirects here after the yearly payment succeeds, so this is the sale.
+      kcTrackPurchase('yearly', appUserId, OFFER.annualPrice);
+
       function money(n) { return '$' + n.toFixed(2); }
       document.querySelectorAll('[data-upgrade-price]').forEach(function (el) { el.textContent = money(OFFER.upgradePrice); });
       document.querySelectorAll('[data-annual-price]').forEach(function (el) { el.textContent = money(OFFER.annualPrice); });
@@ -259,8 +263,17 @@
       decline.href = welcomeUrl;
 
       gtag('event', 'upsell_view');
-      accept.addEventListener('click', function () { gtag('event', 'upsell_accept'); });
-      decline.addEventListener('click', function () { gtag('event', 'upsell_decline'); });
+      accept.addEventListener('click', function () {
+        gtag('event', 'upsell_accept');
+        // Kept separate from InitiateCheckout so buyers tapping the upgrade don't
+        // look like new checkouts to the ad sets optimising on that event.
+        fbq('trackCustom', 'LifetimeUpgradeInitiate', { value: OFFER.upgradePrice, currency: 'AUD' });
+        kcRememberCheckout('lifetime_upgrade', OFFER.upgradePrice, appUserId);
+      });
+      decline.addEventListener('click', function () {
+        gtag('event', 'upsell_decline');
+        kcForgetCheckout();
+      });
     })();
 
     /* RevenueCat charges in the visitor's local currency but doesn't label which
@@ -289,15 +302,6 @@
       var sub = document.querySelector('.btn-sub');
       sub.parentNode.insertBefore(n, sub.nextSibling);
     })();
-  </script>
-
-  <script>
-    /* Meta Pixel: any RevenueCat checkout click is an InitiateCheckout. Delegated
-       so links whose href is set later by JS are still caught. */
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
-      if (a) fbq('track', 'InitiateCheckout', { value: OFFER.upgradePrice, currency: 'AUD' });
-    });
   </script>
 
 </body>

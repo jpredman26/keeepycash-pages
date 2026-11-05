@@ -734,6 +734,7 @@
   /></noscript>
   <!-- End Meta Pixel Code -->
 
+  <script src="/assets/js/kc-purchase.js"></script>
 </head>
 <body>
 
@@ -1208,7 +1209,10 @@
        so links whose href is set later by JS are still caught. */
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
-      if (a) fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+      if (a) {
+        fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+        if (window.kcRememberCheckout) kcRememberCheckout('yearly', 19.99);
+      }
     });
   </script>
 

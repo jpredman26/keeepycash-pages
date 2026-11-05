@@ -604,6 +604,7 @@
     .bf-ends { font-size: 14px; font-weight: 700; color: var(--danger); margin-top: 10px; }
     .bf-ends .cd { font-variant-numeric: tabular-nums; }
   </style>
+  <script src="/assets/js/kc-purchase.js"></script>
 </head>
 <body>
 
@@ -1115,7 +1116,10 @@
     /* Meta Pixel: any RevenueCat checkout click is an InitiateCheckout. */
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
-      if (a) fbq('track', 'InitiateCheckout', { value: 14.99, currency: 'AUD' });
+      if (a) {
+        fbq('track', 'InitiateCheckout', { value: 14.99, currency: 'AUD' });
+        if (window.kcRememberCheckout) kcRememberCheckout('yearly', 14.99);
+      }
     });
   </script>
 
