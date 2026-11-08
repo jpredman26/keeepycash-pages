@@ -353,10 +353,11 @@
 
   <script>
     /* Meta Purchase, kept in its own block so it still fires if the Supabase
-       script below fails to load. A lifetime upgrade tapped on /lifetimeOffer by
-       this same App User ID means they've come back from paying for the upgrade;
-       anything else with an App User ID is a yearly purchase (already counted if
-       they came via /lifetimeOffer, so kcTrackPurchase skips it). */
+       script below fails to load. Only the lifetime upgrade is counted here: a
+       lifetime tap on /lifetimeOffer by this same App User ID means they've come
+       back from paying for it. Paid yearly sales are counted on /lifetimeOffer,
+       and free-trial flows (index, BF) land here without paying, so nothing
+       else should send a Purchase from this page. */
     (function () {
       var id = (new URLSearchParams(location.search).get('app_user_id') || '').slice(0, 200);
       if (!id || !window.kcTrackPurchase) return;
@@ -364,8 +365,6 @@
       if (last && last.product === 'lifetime_upgrade' && last.appUserId === id) {
         kcTrackPurchase('lifetime_upgrade', id, 39.99);
         kcForgetCheckout();
-      } else {
-        kcTrackPurchase('yearly', id, 19.99);
       }
     })();
   </script>
