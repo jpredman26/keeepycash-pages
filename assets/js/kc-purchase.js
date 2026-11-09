@@ -1,4 +1,4 @@
-/* KeepyCash web purchase tracking for Meta.
+/* KeepyCash web purchase tracking for Meta and GA4.
 
    RevenueCat's hosted checkout (pay.rev.cat) can't run our pixel, so:
    1. Landing pages call kcRememberCheckout() when someone taps a checkout link,
@@ -48,16 +48,38 @@
     return null;
   };
 
+  var ITEM_NAMES = { yearly: 'KeepyCash yearly', lifetime_upgrade: 'KeepyCash lifetime upgrade' };
+
+  // GA4 purchase (the key event). Kept apart from the Meta one so it still
+  // fires when the pixel is blocked, with its own once-only flag. The same id is
+  // the transaction_id, which GA also uses to drop duplicates.
+  function trackGaPurchase(eventId, product, value) {
+    if (typeof window.gtag !== 'function') return;
+    var flag = 'kc_ga_purchase_' + eventId;
+    var s = store();
+    try { if (s && s.getItem(flag)) return; } catch (e) {}
+    window.gtag('event', 'purchase', {
+      transaction_id: eventId,
+      currency: 'AUD',
+      value: value,
+      items: [{ item_id: product, item_name: ITEM_NAMES[product] || product, price: value }]
+    });
+    try { if (s) s.setItem(flag, String(Date.now())); } catch (e) {}
+  }
+
   window.kcTrackPurchase = function (product, appUserId, fallbackValue) {
-    if (!appUserId || typeof window.fbq !== 'function') return false;
+    if (!appUserId) return false;
 
     var eventId = product + '_' + appUserId;
+    var c = window.kcLastCheckout();
+    var value = (c && c.product === product && typeof c.value === 'number') ? c.value : fallbackValue;
+
+    trackGaPurchase(eventId, product, value);
+
+    if (typeof window.fbq !== 'function') return false;
     var flag = 'kc_purchase_' + eventId;
     var s = store();
     try { if (s && s.getItem(flag)) return false; } catch (e) {}
-
-    var c = window.kcLastCheckout();
-    var value = (c && c.product === product && typeof c.value === 'number') ? c.value : fallbackValue;
 
     window.fbq('track', 'Purchase', {
       value: value,

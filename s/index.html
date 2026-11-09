@@ -1832,7 +1832,14 @@
        so links whose href is set later by JS are still caught. */
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('a[href*="pay.rev.cat"]');
-      if (a) fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+      if (a) {
+        // GA4 first, so an ad blocker that stops the pixel doesn't stop this too.
+        if (window.gtag) gtag('event', 'begin_checkout', {
+          currency: 'AUD', value: 19.99, cta: a.getAttribute('data-cta') || '',
+          items: [{ item_id: 'yearly', item_name: 'KeepyCash yearly', price: 19.99 }]
+        });
+        fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
+      }
     });
   </script>
 
