@@ -245,7 +245,8 @@
     (function () {
       var q = new URLSearchParams(location.search);
       var appUserId = (q.get('app_user_id') || '').slice(0, 200);
-      var welcomeUrl = '/welcome/' + location.search;
+      // from=lifetimeOffer tells /welcome this is a paid buyer, not a free trial.
+      var welcomeUrl = '/welcome/' + (location.search ? location.search + '&' : '?') + 'from=lifetimeOffer';
 
       // Without an App User ID the upgrade link 404s, so go straight to account setup.
       if (!appUserId) { location.replace(welcomeUrl); return; }

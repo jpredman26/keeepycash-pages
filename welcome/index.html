@@ -368,6 +368,36 @@
       }
     })();
   </script>
+  <script>
+    /* GA4 trial_start. Free-trial checkouts (homepage 1 month, BF 3 months)
+       come straight here from RevenueCat. Paid buyers also end up here, but
+       only via /lifetimeOffer (which adds from=lifetimeOffer and records the
+       GA purchase) or after the lifetime upgrade, so those are skipped. */
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var id = (q.get('app_user_id') || '').slice(0, 200);
+      if (!id || !window.gtag || q.get('from') === 'lifetimeOffer') return;
+
+      var s = null;
+      try { s = window.localStorage; } catch (e) {}
+      function has(k) { try { return !!(s && s.getItem(k)); } catch (e) { return false; } }
+      if (has('kc_ga_purchase_yearly_' + id) || has('kc_ga_purchase_lifetime_upgrade_' + id)) return;
+
+      var last = window.kcLastCheckout ? kcLastCheckout() : null;
+      if (last && last.product === 'lifetime_upgrade') return;
+
+      var flag = 'kc_trial_' + id;
+      if (has(flag)) return;
+
+      var page = last && last.page ? last.page.replace(/\.html$/, '') : '(unknown)';
+      var TRIALS = { '/': '1_month', '/index': '1_month', '/BF': '3_month' };
+      gtag('event', 'trial_start', {
+        trial_length: TRIALS[page] || '(unknown)',
+        checkout_page: page
+      });
+      try { if (s) s.setItem(flag, String(Date.now())); } catch (e) {}
+    })();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
     var SUPABASE_URL = 'https://nwdiwonrskdluigqwjbm.supabase.co';
