@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creator code for KeepyCash</title>
-<meta name="description" content="Enter a creator's code when you sign up for KeepyCash.">
+<!-- This page serves every unknown URL (including /c/CODE and /s/CODE), and
+     link-preview crawlers don't run the JS below, so keep these tags generic. -->
+<title>KeepyCash: the spending tracker that helps you keep more</title>
+<meta name="description" content="KeepyCash is the spending tracker for iPhone and Android. No bank linking, no ads.">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KeepyCash">
-<meta property="og:title" content="Creator code for KeepyCash">
-<meta property="og:description" content="Download KeepyCash and enter this code when you create your account.">
+<meta property="og:title" content="KeepyCash: the spending tracker that helps you keep more">
+<meta property="og:description" content="Track your spending, find your money leaks and keep more of your cash. No bank linking, no ads.">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Creator code for KeepyCash">
-<meta name="twitter:description" content="Download KeepyCash and enter this code when you create your account.">
+<meta name="twitter:title" content="KeepyCash: the spending tracker that helps you keep more">
+<meta name="twitter:description" content="Track your spending, find your money leaks and keep more of your cash. No bank linking, no ads.">
 
 <!-- iOS Smart App Banner -->
 <meta name="apple-itunes-app" content="app-id=6760102114">
@@ -221,7 +223,7 @@
 
     // Not a /c/ or /s/ link: plain not-found page.
     if (raw === null) {
-      document.title = 'Page not found';
+      document.title = 'Page not found | KeepyCash';
       container.innerHTML =
         '<h1 class="headline">Page not found</h1>' +
         '<p class="sub">That page does not exist.</p>' +
@@ -230,6 +232,7 @@
     }
 
     if (!isValidCode(raw)) {
+      document.title = 'Creator code for KeepyCash';
       container.innerHTML =
         '<h1 class="headline">Missing creator code</h1>' +
         '<p class="sub">This link is missing a valid code. Ask the creator for their code, or download KeepyCash below.</p>' +
