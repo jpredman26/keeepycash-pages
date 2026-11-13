@@ -67,6 +67,30 @@
     try { if (s) s.setItem(flag, String(Date.now())); } catch (e) {}
   }
 
+  // OpenAI Ads pixel. Yearly is a paid subscription starting; the lifetime
+  // upgrade is a one-off order. Amounts go in cents. The same id goes in
+  // event_id, which OpenAI uses to drop duplicates, and there's a once-only flag too.
+  function trackOaiPurchase(eventId, product, value) {
+    if (typeof window.oaiq !== 'function') return;
+    var flag = 'kc_oai_purchase_' + eventId;
+    var s = store();
+    try { if (s && s.getItem(flag)) return; } catch (e) {}
+    var amount = Math.round(value * 100);
+    try {
+      if (product === 'yearly') {
+        window.oaiq('measure', 'subscription_created', {
+          type: 'plan_enrollment', plan_id: product, amount: amount, currency: 'AUD'
+        }, { event_id: eventId });
+      } else {
+        window.oaiq('measure', 'order_created', {
+          type: 'contents', amount: amount, currency: 'AUD',
+          contents: [{ id: product, name: ITEM_NAMES[product] || product, content_type: 'product', quantity: 1, amount: amount, currency: 'AUD' }]
+        }, { event_id: eventId });
+      }
+    } catch (e) { return; }
+    try { if (s) s.setItem(flag, String(Date.now())); } catch (e) {}
+  }
+
   window.kcTrackPurchase = function (product, appUserId, fallbackValue) {
     if (!appUserId) return false;
 
@@ -75,6 +99,7 @@
     var value = (c && c.product === product && typeof c.value === 'number') ? c.value : fallbackValue;
 
     trackGaPurchase(eventId, product, value);
+    trackOaiPurchase(eventId, product, value);
 
     if (typeof window.fbq !== 'function') return false;
     var flag = 'kc_purchase_' + eventId;

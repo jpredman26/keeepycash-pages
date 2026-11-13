@@ -178,6 +178,7 @@
                  src="https://www.facebook.com/tr?id=1045628235162494&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"DP8qzv6s52LwapBbuuJDPT",debug:true});</script>
   <script src="/assets/js/kc-purchase.js"></script>
 
 </head>
@@ -270,6 +271,10 @@
         // look like new checkouts to the ad sets optimising on that event.
         fbq('trackCustom', 'LifetimeUpgradeInitiate', { value: OFFER.upgradePrice, currency: 'AUD' });
         kcRememberCheckout('lifetime_upgrade', OFFER.upgradePrice, appUserId);
+        // Custom rather than checkout_started, for the same reason as Meta above.
+        if (window.oaiq) oaiq('measure', 'custom', {
+          type: 'custom', amount: Math.round(OFFER.upgradePrice * 100), currency: 'AUD'
+        }, { custom_event_name: 'lifetime_upgrade_started' });
       });
       decline.addEventListener('click', function () {
         gtag('event', 'upsell_decline');

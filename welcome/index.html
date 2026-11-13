@@ -254,6 +254,7 @@
                  src="https://www.facebook.com/tr?id=1045628235162494&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"DP8qzv6s52LwapBbuuJDPT",debug:true});</script>
   <script src="/assets/js/kc-purchase.js"></script>
 
 </head>
@@ -369,14 +370,14 @@
     })();
   </script>
   <script>
-    /* GA4 trial_start. Free-trial checkouts (homepage 1 month, BF 3 months)
+    /* GA4 trial_start + OpenAI trial_started. Free-trial checkouts (homepage 1 month, BF 3 months)
        come straight here from RevenueCat. Paid buyers also end up here, but
        only via /lifetimeOffer (which adds from=lifetimeOffer and records the
        GA purchase) or after the lifetime upgrade, so those are skipped. */
     (function () {
       var q = new URLSearchParams(location.search);
       var id = (q.get('app_user_id') || '').slice(0, 200);
-      if (!id || !window.gtag || q.get('from') === 'lifetimeOffer') return;
+      if (!id || q.get('from') === 'lifetimeOffer') return;
 
       var s = null;
       try { s = window.localStorage; } catch (e) {}
@@ -391,10 +392,15 @@
 
       var page = last && last.page ? last.page.replace(/\.html$/, '') : '(unknown)';
       var TRIALS = { '/': '1_month', '/index': '1_month', '/BF': '3_month' };
-      gtag('event', 'trial_start', {
-        trial_length: TRIALS[page] || '(unknown)',
+      var trialLength = TRIALS[page] || '(unknown)';
+      if (window.gtag) gtag('event', 'trial_start', {
+        trial_length: trialLength,
         checkout_page: page
       });
+      // OpenAI Ads: event_id lets OpenAI drop a repeat if the flag below is lost.
+      if (window.oaiq) oaiq('measure', 'trial_started', {
+        type: 'plan_enrollment', plan_id: 'trial_' + trialLength
+      }, { event_id: 'trial_' + id });
       try { if (s) s.setItem(flag, String(Date.now())); } catch (e) {}
     })();
   </script>

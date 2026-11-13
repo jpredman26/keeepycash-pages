@@ -512,6 +512,10 @@
         });
         fbq('track', 'InitiateCheckout', { value: 19.99, currency: 'AUD' });
         if (window.kcRememberCheckout) kcRememberCheckout('yearly', 19.99);
+        if (window.oaiq) oaiq('measure', 'checkout_started', {
+          type: 'contents', amount: 1999, currency: 'AUD',
+          contents: [{ id: 'yearly', name: 'KeepyCash yearly', content_type: 'product', quantity: 1, amount: 1999, currency: 'AUD' }]
+        });
       }
     });
   </script>
